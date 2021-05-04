@@ -9,6 +9,7 @@ Route::namespace('Auth')->group(function () {
     Route::get('/', 'UsersLoginController@loginForm')->name('Auth.loginForm');
 
     Route::post('/login', 'UsersLoginController@login')->name('Auth.login');
+    Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('Auth.logout');
 
 
 });

@@ -61,10 +61,7 @@
                 success:function (response){
 
                     if(response.success===true){
-                        Dashmix.loader('show', 'bg-primary');
-                        setTimeout(function () {
-                            Dashmix.loader('hide');
-                        }, 5000);
+
                         window.location.href="{{route('Admin.dash')}}"
 
                     }else{

@@ -64,8 +64,13 @@ class UsersLoginController extends Controller
     public function rememberPassword(Request $request){
 
     }
+
+    public function logout(){
+        $this->middleware('guest')->except('logout');
+    }
     public function __construct()
     {
         $this->middleware('guest:user');
+
     }
 }
