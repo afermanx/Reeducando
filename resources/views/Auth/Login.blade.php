@@ -39,7 +39,7 @@
 
                          <button type="submit" class="login-btn">Acessar</button>
 
-                         <p class="mb-0">Don’t have an account? <a href="register-with-image.html">Sign Up</a></p>
+                         <p class="mb-0">Caso não tenha usuario? <a href="{{route('Auth.registerForm')}}">Click aqui cadastrar</a></p>
                      </form>
                  </div>
              </div>

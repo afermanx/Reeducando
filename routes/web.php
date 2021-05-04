@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Route;
  * */
 Route::namespace('Auth')->group(function () {
     Route::get('/', 'UsersLoginController@loginForm')->name('Auth.loginForm');
+    Route::get('/register', 'UsersLoginController@registerForm')->name('Auth.registerForm');
+    Route::get('/logout', 'LoginController@logout')->name('Auth.logout');
 
     Route::post('/login', 'UsersLoginController@login')->name('Auth.login');
-    Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('Auth.logout');
+
+
 
 
 });

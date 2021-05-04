@@ -1,0 +1,6 @@
+@include('themes.Admin.includes.header')
+@include('themes.Admin.includes.sidemenu')
+@include('themes.Admin.includes.topnavbar')
+@include('themes.Admin.includes.breadcrumb')
+@include('themes.Admin.includes.content')
+@include('themes.Admin.includes.footer')

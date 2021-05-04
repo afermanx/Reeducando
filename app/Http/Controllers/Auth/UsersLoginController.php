@@ -23,6 +23,11 @@ class UsersLoginController extends Controller
         return view('Auth.login');
 
     }
+    public function registerForm(){
+
+        return view('Auth.register');
+
+    }
     public function login(Request $request){
 
         $this->validate($request, [
