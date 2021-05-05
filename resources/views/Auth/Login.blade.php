@@ -17,7 +17,7 @@
                      <form name="formLogin">
                          @csrf
                          <div class="form-group">
-                             <input type="text" class="form-control" name="email" placeholder="Digite seu email">
+                             <input type="text" class="form-control" name="email" id="email" placeholder="Digite seu email">
                              <span class="label-title"><i class='bx bx-user'></i></span>
                          </div>
 
@@ -37,7 +37,7 @@
                              </div>
                          </div>
 
-                         <button type="submit" class="login-btn">Acessar</button>
+                         <button type="submit" class="login-btn"><span id="loading" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>Acessar</button>
 
                          <p class="mb-0">Caso não tenha usuario? <a href="{{route('Auth.registerForm')}}">Click aqui cadastrar</a></p>
                      </form>
@@ -53,6 +53,22 @@
         $('form[name="formLogin"]').submit(function (event){
             event.preventDefault();
 
+            let email= $("#email").val();
+
+            $("#loading").removeClass('d-none');
+
+            if(email===""){
+                $("#loading").addClass('d-none');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Certifique-se que todos os campos estão preenchidos!',
+
+                })
+
+            }
+
+
             $.ajax({
                 url:"{{route('Auth.login')}}",
                 type:"post",
@@ -62,9 +78,11 @@
 
                     if(response.success===true){
 
+
                         window.location.href="{{route('Admin.dash')}}"
 
                     }else{
+                        $("#loading").addClass('d-none');
                         let timerInterval
                         Swal.fire({
                             icon: 'error',
@@ -99,7 +117,7 @@
                         //     footer: '<a href>Tente novamente!</a>'
                         // })
                     }
-                    console.log(response)
+
                 }
 
 

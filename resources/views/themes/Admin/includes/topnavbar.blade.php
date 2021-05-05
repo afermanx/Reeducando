@@ -97,7 +97,7 @@
 
         <form class="nav-search-form d-none ml-auto d-md-block">
             <label><i class='bx bx-search'></i></label>
-            <input type="text" class="form-control" placeholder="Search here...">
+            <input type="text" class="form-control" placeholder="Pesquise aqui...">
         </form>
 
         <ul class="navbar-nav right-nav align-items-center">
@@ -107,44 +107,44 @@
                 </a>
             </li>
 
-            <li class="nav-item dropdown language-switch-nav-item">
-                <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="assets/img/us-flag.jpg" alt="image">
-                    <span>English <i class='bx bx-chevron-down'></i></span>
-                </a>
+{{--            <li class="nav-item dropdown language-switch-nav-item">--}}
+{{--                <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                    <img src="assets/img/us-flag.jpg" alt="image">--}}
+{{--                    <span>English <i class='bx bx-chevron-down'></i></span>--}}
+{{--                </a>--}}
 
-                <div class="dropdown-menu">
-                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                        <span>German</span>
+{{--                <div class="dropdown-menu">--}}
+{{--                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">--}}
+{{--                        <span>German</span>--}}
 
-                        <img src="assets/img/germany-flag.jpg" alt="flag">
-                    </a>
+{{--                        <img src="assets/img/germany-flag.jpg" alt="flag">--}}
+{{--                    </a>--}}
 
-                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                        <span>French</span>
+{{--                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">--}}
+{{--                        <span>French</span>--}}
 
-                        <img src="assets/img/france-flag.jpg" alt="flag">
-                    </a>
+{{--                        <img src="assets/img/france-flag.jpg" alt="flag">--}}
+{{--                    </a>--}}
 
-                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                        <span>Spanish</span>
+{{--                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">--}}
+{{--                        <span>Spanish</span>--}}
 
-                        <img src="assets/img/spain-flag.jpg" alt="flag">
-                    </a>
+{{--                        <img src="assets/img/spain-flag.jpg" alt="flag">--}}
+{{--                    </a>--}}
 
-                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                        <span>Russian</span>
+{{--                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">--}}
+{{--                        <span>Russian</span>--}}
 
-                        <img src="assets/img/russia-flag.jpg" alt="flag">
-                    </a>
+{{--                        <img src="assets/img/russia-flag.jpg" alt="flag">--}}
+{{--                    </a>--}}
 
-                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">
-                        <span>Italian</span>
+{{--                    <a href="#" class="dropdown-item d-flex justify-content-between align-items-center">--}}
+{{--                        <span>Italian</span>--}}
 
-                        <img src="assets/img/italy-flag.jpg" alt="flag">
-                    </a>
-                </div>
-            </li>
+{{--                        <img src="assets/img/italy-flag.jpg" alt="flag">--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            </li>--}}
 
             <li class="nav-item message-box dropdown">
                 <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -306,20 +306,20 @@
             <li class="nav-item dropdown profile-nav-item">
                 <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="menu-profile">
-                        <span class="name">Hi! Andro</span>
-                        <img src="assets/img/user1.jpg" class="rounded-circle" alt="image">
+                        <span class="name">Oi! {{$user->name}}</span>
+                        <img src="{{asset('img/user1.jpg')}}" class="rounded-circle" alt="image">
                     </div>
                 </a>
 
                 <div class="dropdown-menu">
                     <div class="dropdown-header d-flex flex-column align-items-center">
                         <div class="figure mb-3">
-                            <img src="assets/img/user1.jpg" class="rounded-circle" alt="image">
+                            <img src="{{asset('img/user1.jpg')}}" class="rounded-circle" alt="image">
                         </div>
 
                         <div class="info text-center">
-                            <span class="name">Andro Smith</span>
-                            <p class="mb-3 email">hello@androsmith.com</p>
+                            <span class="name">{{$user->name}}</span>
+                            <p class="mb-3 email">{{$user->email}}</p>
                         </div>
                     </div>
 
@@ -327,35 +327,24 @@
                         <ul class="profile-nav p-0 pt-3">
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class='bx bx-user'></i> <span>Profile</span>
+                                    <i class='bx bx-user'></i> <span>Perfil</span>
                                 </a>
                             </li>
 
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class='bx bx-envelope'></i> <span>My Inbox</span>
-                                </a>
-                            </li>
 
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class='bx bx-edit-alt'></i> <span>Edit Profile</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class='bx bx-cog'></i> <span>Settings</span>
-                                </a>
-                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a href="#" class="nav-link">--}}
+{{--                                    <i class='bx bx-cog'></i> <span>Settings</span>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                         </ul>
                     </div>
 
                     <div class="dropdown-footer">
                         <ul class="profile-nav">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class='bx bx-log-out'></i> <span>Logout</span>
+                                <a href="{{route('Auth.logout')}}" class="nav-link">
+                                    <i class='bx bx-log-out'></i> <span>Sair</span>
                                 </a>
                             </li>
                         </ul>

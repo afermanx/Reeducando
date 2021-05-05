@@ -1,13 +1,15 @@
 <!-- Breadcrumb Area -->
 <div class="breadcrumb-area">
-    <h1>Dashboard</h1>
+    <h1>Painel</h1>
 
     <ol class="breadcrumb">
-        <li class="item"><a href="dashboard-analytics.html"><i class='bx bx-home-alt'></i></a></li>
+        <li class="item"><a href="{{route('Admin.dash')}}"><i class='bx bx-home-alt'></i></a></li>
 
-        <li class="item">Dashboard</li>
+        <li class="item">Painel</li>
 
-        <li class="item">Analytics</li>
+        @yield('breadcrumb')
+
+{{--        <li class="item"></li>--}}
     </ol>
 </div>
 <!-- End Breadcrumb Area -->

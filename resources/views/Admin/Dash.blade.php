@@ -1,5 +1,8 @@
 @extends('themes.Admin.adminLayout')
 @section('titleAdmin','Reeducando | Painel')
+@section('breadcrumb')
+{{--    <li class="item">Anal</li>--}}
+{{--@endsection--}}
 
 @section('content')
     <!-- Start -->
@@ -689,4 +692,8 @@
         </div>
     </div>
     <!-- End -->
+@endsection
+
+@section('jsAdmin')
+    <script>alert('Teste')</script>
 @endsection
