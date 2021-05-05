@@ -14,9 +14,11 @@
             <h3><i class="bx bxs-group"></i> Lista de Usuarios</h3>
 
             <div class="dropdown">
-                <button class="dropdown-toggle" type="button" title="Novo Usuario" data-toggle="dropdown"
+                <button class="btn btn-outline-primary bx bxs-user-plus" type="button" data-toggle="tooltip"
+                         data-placement="top"
+                        title="Novo Usuario"
                         aria-haspopup="true" aria-expanded="false">
-                    <i class='bx bxs-add-to-queue'></i>
+
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item d-flex align-items-center" href="#">
@@ -39,7 +41,7 @@
                 <div class="col-xl-12">
 
 
-                    <table  class="table table-hover jsTables">
+                    <table  class="table table-hover table-striped jsTables">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -58,8 +60,15 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->type}}</td>
                             <td>{{$user->status}}</td>
-                            <td>
-
+                            <td >
+                                <button class="btn btn-outline-info bx bx-edit"
+                                        data-toggle="tooltip" data-placement="top"
+                                        title="Ver dados do usuário">
+                                </button>
+                                <button class="btn btn-outline-danger bx bx-trash"
+                                        data-toggle="tooltip" data-placement="top"
+                                        title="Deletar dados do usuário">
+                                </button>
                             </td>
                         </tr>
 

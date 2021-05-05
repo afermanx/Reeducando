@@ -1,6 +1,13 @@
 // dataTables para efetivar esse componente adicione a clase jsTables na sua tabela
     $(document).ready( function () {
     $('.jsTables').DataTable({
+        dom: 'Bfrtip',
+        buttons:[
+            'colvis',
+            'excel',
+            'print'
+
+        ],
         "language": {
             "emptyTable": "Nenhum registro encontrado",
             "info": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -44,7 +51,7 @@
                     "_": "%d linhas copiadas com sucesso"
                 },
                 "collection": "Coleção  <span class=\"ui-button-icon-primary ui-icon ui-icon-triangle-1-s\"><\/span>",
-                "colvis": "Visibilidade da Coluna",
+                "colvis": "Ocultar Coluna",
                 "colvisRestore": "Restaurar Visibilidade",
                 "copy": "Copiar",
                 "copyKeys": "Pressione ctrl ou u2318 + C para copiar os dados da tabela para a área de transferência do sistema. Para cancelar, clique nesta mensagem ou pressione Esc..",
