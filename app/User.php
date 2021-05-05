@@ -59,4 +59,11 @@ class User extends Authenticatable
         return $this->password;
     }
 
+
+    public function list(){
+        $users=User::orderBy('id', 'DESC')->get();
+
+        return $users;
+    }
+
 }

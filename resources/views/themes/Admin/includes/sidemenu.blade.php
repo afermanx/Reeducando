@@ -35,22 +35,20 @@
 
 
 
-            <li class="nav-item-title">
-                Financeiro
-            </li>
+
 
             <li class="nav-item">
                 <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
                     <span class="icon"><i class='bx bx-money'></i></span>
-                    <span class="menu-title"></span>
+                    <span class="menu-title">Financeiro</span>
 
                 </a>
 
                 <ul class="sidemenu-nav-second-level">
                     <li class="nav-item">
                         <a href="app-email.html" class="nav-link">
-                            <span class="icon"><i class='bx bxs-inbox'></i></span>
-                            <span class="menu-title">Inbox</span>
+                            <span class="icon"><i class='bx bxs-'></i></span>
+                            <span class="menu-title">Caixa</span>
                         </a>
                     </li>
 
@@ -645,46 +643,31 @@
 {{--                </a>--}}
 {{--            </li>--}}
 
-            <li class="nav-item-title">
-               Cadastro
-            </li>
 
-            <li class="nav-item">
+
+            <li class="nav-item " >
                 <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
-                    <span class="icon"><i class='bx bx-user'></i></span>
-                    <span class="menu-title">Usuarios</span>
+                    <span class="icon"><i class='bx bx-table'></i></span>
+                    <span class="menu-title">Cadastros</span>
                 </a>
 
                 <ul class="sidemenu-nav-second-level">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
-                            <span class="menu-title">First Level</span>
+                    <li class="nav-item ">
+                        <a href="{{route('Admin.users')}}" class="nav-link">
+                            <span class="icon"><i class='bx bxs-group'></i></span>
+                            <span class="menu-title">Usuarios</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
-                            <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
-                            <span class="menu-title">Second Level</span>
+                        <a href="{{route('Admin.services')}}" class="nav-link">
+                            <span class="icon"><i class='bx bxs-wrench'></i></span>
+                            <span class="menu-title">Serviços</span>
                         </a>
-
-                        <ul class="sidemenu-nav-third-level">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
-                                    <span class="menu-title">Second Level 2.1</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <span class="icon"><i class='bx bx-right-arrow-alt'></i></span>
-                                    <span class="menu-title">Second Level 2.2</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
+
+
+
                 </ul>
             </li>
 
