@@ -1,16 +1,14 @@
-
-function startModal(){
+function startModal() {
     $("#usersTitleModal").html('<h5>Cadastro de usuarios</h5>');
     $('#usersModal').modal('show');
 }
 
-function save(){
+function save() {
     let name = $('#name').val();
     let email = $('#email').val();
     let type = $('#typeUser').val();
     let password = $('#password').val();
     let passwordRepite = $('#passwordRepite').val();
-
 
 
     if (!name) {
@@ -42,7 +40,7 @@ function save(){
         return;
     }
 
-    if (password!==passwordRepite) {
+    if (password !== passwordRepite) {
         Swal.fire({
             icon: 'error'
             , title: 'Oops...'
@@ -52,10 +50,10 @@ function save(){
         return;
     }
     let data = JSON.stringify({
-        name:name
-        ,email:email
-        ,password:password
-        ,type:type
+        name: name
+        , email: email
+        , password: password
+        , type: type
 
     })
 
@@ -102,8 +100,6 @@ function save(){
         , error: function (XMLHttpRequest, textStatus, errorThrown) {
 
 
-
-
         }
         , contentType: "application/json"
         , dataType: 'json'
@@ -112,5 +108,51 @@ function save(){
     jQuery('#usersModal').modal('hide');
 
 
+}
+
+function show(id){
+   $('#usersModal').modal('show')
+}
+
+
+function destroy(id, name) {
+    Swal.fire({
+        title: 'Deseja realmente excluir o usuário ' + name + ' ?',
+        footer: "",
+        text: "Atenção! A exclusão deste usuário ira apagar todo o histórico do mesmo",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim',
+        cancelButtonText: 'Não'
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                type: 'POST',
+                url: '/usuario/excluir',
+                data: JSON.stringify({
+                    user_id: id
+                }),
+                success: function (data) {
+                    var retorno = $.parseJSON(JSON.stringify(data));
+                    if (retorno['excluido'] == true) {
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Usuário excluido com sucesso!',
+                            footer: '',
+                            showConfirmButton: true,
+                            onClose: () => {
+                                location.reload();
+                            }
+                        })
+                    }
+                },
+                contentType: "application/json",
+                dataType: 'json'
+            });
+        }
+    });
 
 }

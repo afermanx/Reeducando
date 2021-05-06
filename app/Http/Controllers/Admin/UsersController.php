@@ -16,10 +16,11 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        $user = Auth::guard('user')->user();
         $users = new User();
         $data= $users->list();
 
-        $user = Auth::guard('user')->user();
+
         return view('Admin.Register.Users.index')
             ->with('user', $user)
             ->with('users',$data);
@@ -127,8 +128,17 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Request $request){
+        $user = Auth::guard('user')->user();
+        $data = json_decode($request->getContent(), true);
+
+
+        $users = $data['user_id'];
+
+        User::where('id',$users)->delete();
+
+
+
+        return response()->json(['sucesso' => true, 'excluido' => true]);
     }
 }

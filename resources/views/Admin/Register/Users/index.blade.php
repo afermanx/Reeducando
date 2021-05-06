@@ -52,7 +52,7 @@
                                 <a href="">{{$user->name}}</a>
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                client1<em class="text-muted">{{$user->email}}</em>
+                                <em class="text-muted">{{$user->email}}</em>
                             </td>
                             <td>
                                 <em class="text-muted">{{$user->type}}</em>
@@ -65,10 +65,12 @@
                             <td>
                                 <em class="text-muted">
                                     <button class="btn btn-outline-info bx bx-edit"
+                                            onclick="show({{$user->id}})"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Ver dados do usuário">
                                     </button>
                                     <button class="btn btn-outline-danger bx bx-trash"
+                                            onclick="destroy({{$user->id}},'{{$user->name}}')"
                                             data-toggle="tooltip" data-placement="top"
                                             title="Deletar dados do usuário">
                                     </button>
