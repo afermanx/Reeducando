@@ -25,6 +25,8 @@ Route::namespace('Admin')->group(function () {
 
     Route::get('/cadastro/usuarios', 'UsersController@index')->name('Admin.users');
 
+    Route::post('/usuario/salvar', 'UsersController@store')->name('Admin.users.save');
+
   //end Routes Users
 
     //start router Services

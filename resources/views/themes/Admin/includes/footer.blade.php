@@ -48,18 +48,28 @@
 </div>
 
 
-<!-- Datatables Min JS -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.24/af-2.3.6/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/r-2.2.7/datatables.min.js"></script>
+<!-- Page JS Plugins -->
+<script src="{{asset('/js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('/js/plugins/datatables/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{asset('/js/plugins/datatables/buttons/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('/js/plugins/datatables/buttons/buttons.print.min.js')}}"></script>
+<script src="{{asset('/js/plugins/datatables/buttons/buttons.html5.min.js')}}"></script>
+<script src="{{asset('/js/plugins/datatables/buttons/buttons.flash.min.js')}}"></script>
+<script src="{{asset('/js/plugins/datatables/buttons/buttons.colVis.min.js')}}"></script>
+
+<!-- Page JS Code -->
+<script src="{{asset('/js/pages/be_tables_datatables.min.js')}}"></script>
+
+
 <!-- jvectormap Min JS -->
 <script src="{{asset('js/jvectormap-1.2.2.min.js')}}"></script>
 <!-- jvectormap World Mil JS -->
 <script src=""></script>
 <!-- Custom JS -->
 <script src="{{asset('js/custom.js')}}"></script>
-<!-- JS Tables ft dataTables -->
-<script src="{{asset('js/components/jsTables.js')}}"></script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 
 @yield('jsAdmin')
 </body>
