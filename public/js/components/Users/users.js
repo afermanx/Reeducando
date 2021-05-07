@@ -38,8 +38,12 @@ function save() {
         });
         return;
     }
+    if(!password){
+        password=123456
+        passwordRepite=123456
 
-    
+    }
+
     if (password.length < 6) {
         Swal.fire({
             icon: 'error'
@@ -59,6 +63,8 @@ function save() {
         });
         return;
     }
+
+
     let data = JSON.stringify({
         name: name
         , email: email

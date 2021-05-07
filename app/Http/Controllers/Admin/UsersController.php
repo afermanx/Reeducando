@@ -65,6 +65,8 @@ class UsersController extends Controller
             $type = $data['type'];
             $password = $data['password'];
 
+            
+
             $passCrypt = Hash::make($password);
 
             $users = new User();

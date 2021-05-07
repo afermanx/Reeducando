@@ -40,7 +40,8 @@
 <!-- Mesagens e auteticacão plugins -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<link rel="stylesheet" href="{{asset('js/plugins/sweetalert2/sweetalert2.css')}}">
+
 
 <!-- jvectormap Min JS -->
 <script src="{{asset('/js/jvectormap-1.2.2.min.js')}}"></script>
@@ -48,6 +49,7 @@
 <script src="{{asset('/js/jvectormap-world-mill-en.js')}}"></script>
 <!-- Custom JS -->
 <script src="{{asset('/js/custom.js')}}"></script>
+<script src="{{asset('/js/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 @yield('js')
 </body>
 </html>

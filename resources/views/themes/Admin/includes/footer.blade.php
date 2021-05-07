@@ -68,7 +68,7 @@
 <!-- Custom JS -->
 <script src="{{asset('js/custom.js')}}"></script>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="{{asset('/js/plugins/sweetalert2/sweetalert2.min.js')}}"></script>
 
 
 @yield('jsAdmin')
