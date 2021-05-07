@@ -1,4 +1,12 @@
 function startModal() {
+
+    $("#senhaExibir").hide();
+    $("#exibirInput2").show();
+    $("#password").show();
+    $("#passwordRepite").show();
+    $("#showStatus").hide();
+    $("#showMessage").hide();
+
     $("#usersTitleModal").html('<h5>Cadastro de usuarios</h5>');
     $('#usersModal').modal('show');
 }
@@ -30,6 +38,8 @@ function save() {
         });
         return;
     }
+
+    
     if (password.length < 6) {
         Swal.fire({
             icon: 'error'
@@ -111,7 +121,77 @@ function save() {
 }
 
 function show(id){
-   $('#usersModal').modal('show')
+
+
+
+    $("#senhaExibir").show();
+    $("#exibirInput2").hide();
+    $("#password").hide();
+    $("#passwordRepite").hide();
+    $("#showStatus").show();
+    $("#showMessage").show();
+    $('#senhaExibir').change(function () {
+        $("#showMessage").toggle(500);
+        $('#exibirInput2').toggle();
+        $('#password').toggle();
+        $('#passwordRepite').toggle();
+    });
+
+
+
+    $.ajax({
+        type: 'POST'
+        , url: '/usuario/mostrar'
+        , data: JSON.stringify({
+            $user_id: id
+        }),
+        success: function (data) {
+            var retorno = $.parseJSON(JSON.stringify(data));
+            if (retorno['sucesso'] == false) {
+                let mensagem = retorno['message'] + '</br>';
+                if (retorno['erro']) {
+                    var erros = $.parseJSON(JSON.stringify(retorno['erro']));
+                    for (erro in erros) {
+                        mensagem = mensagem + erros[erro] + '</br>';
+                    }
+                }
+                Swal.fire({
+                    icon: 'error'
+                    , title: 'Oops...'
+                    , html: mensagem
+                    , footer: 'Qualquer dúvida entre em contato com o Suporte'
+                });
+                return;
+            }
+
+
+            if (retorno['sucesso'] === true) {
+                $('#name').val(retorno['users']['name']);
+                $('#email').val(retorno['users']['email']);
+                $('#typeUser').val(retorno['users']['type']).change();
+
+
+
+
+
+
+                $("#usersTitleModal").html('<h5>Editar de usuarios</h5>');
+
+                $("#btnSave").html('<i class=" bx bx-edit"></i> Editar');
+                $("#senhaAlterar").html('<label>Alterar Senha</label>');
+                $("#btnSave").attr("onclick", 'edit(' + id + ')');
+                jQuery('#usersModal').modal('show');
+            }
+        }
+        , error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+            $('#btnSalvar').removeClass("disabled");
+            $("#btnSave").html('<i class=" bx bx-edit"></i> Editar');
+        }
+        , contentType: "application/json"
+        , dataType: 'json'
+    });
+
 }
 
 

@@ -46,38 +46,38 @@
 
                         <tbody>
                         @foreach($users as $user)
-                        <tr>
-                            <td class="text-center">{{$user->id}}</td>
-                            <td class="font-w600">
-                                <a href="">{{$user->name}}</a>
-                            </td>
-                            <td class="d-none d-sm-table-cell">
-                                <em class="text-muted">{{$user->email}}</em>
-                            </td>
-                            <td>
-                                <em class="text-muted">{{$user->type}}</em>
-                            </td>
-                            <td class="d-none d-sm-table-cell">
-                                <span class="badge badge-success">{{$user->status}}</span>
-                            </td>
+                            <tr>
+                                <td class="text-center">{{$user->id}}</td>
+                                <td class="font-w600">
+                                    <a href="">{{$user->name}}</a>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <em class="text-muted">{{$user->email}}</em>
+                                </td>
+                                <td>
+                                    <em class="text-muted">{{$user->type}}</em>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <span class="badge badge-success">{{$user->status}}</span>
+                                </td>
 
 
-                            <td>
-                                <em class="text-muted">
-                                    <button class="btn btn-outline-info bx bx-edit"
-                                            onclick="show({{$user->id}})"
-                                            data-toggle="tooltip" data-placement="top"
-                                            title="Ver dados do usuário">
-                                    </button>
-                                    <button class="btn btn-outline-danger bx bx-trash"
-                                            onclick="destroy({{$user->id}},'{{$user->name}}')"
-                                            data-toggle="tooltip" data-placement="top"
-                                            title="Deletar dados do usuário">
-                                    </button>
+                                <td>
+                                    <em class="text-muted">
+                                        <button class="btn btn-outline-info bx bx-edit"
+                                                onclick="show({{$user->id}})"
+                                                data-toggle="tooltip" data-placement="top"
+                                                title="Ver dados do usuário">
+                                        </button>
+                                        <button class="btn btn-outline-danger bx bx-trash"
+                                                onclick="destroy({{$user->id}},'{{$user->name}}')"
+                                                data-toggle="tooltip" data-placement="top"
+                                                title="Deletar dados do usuário">
+                                        </button>
 
-                                </em>
-                            </td>
-                        </tr>
+                                    </em>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
 
@@ -106,20 +106,27 @@
                 <div class="modal-body">
                     <div class="card user-settings-box mb-30">
                         <div class="card-body">
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                <strong>Atenção.</strong> Os campos com <span style="color:red">*</span> são
+                                obrigatórios.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                             <form>
                                 <h3><i class='bx bx-user-circle'></i>Informações Pessoais</h3>
 
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Nome:</label>
-                                            <input type="text" id='name' class="form-control"
+                                             <label><span style="color:red">*</span> Nome:</label>
+                                             <input type="text" id='name' class="form-control"
                                                    placeholder="Nome completo">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Email:</label>
+                                            <label><span style="color:red">*</span>  Email:</label>
                                             <input type="email" id='email' class="form-control"
                                                    placeholder="Digite um e-mail valido">
                                         </div>
@@ -131,17 +138,25 @@
 
                                 <div class="row">
                                     <div class="col-lg-6">
+
                                         <div class="form-group">
-                                            <label>Senha</label>
-                                            <input type="password" id="password" value="123456" class="form-control">
+
+                                            <input id="senhaExibir" class="form-check-input" type="checkbox"> <label
+                                                id="senhaAlterar"> <span style="color:red">*</span>Senha</label>
+                                            <input type="password" name="password" id="password" class="form-control"
+                                                   placeholder="Digite a senha">
+
+                                            <strong id="showMessage"><i style="color: #9B703F ; font-size: 25px" class="bx bxs-hand-up"></i> Click aqui para alterar a senha!</strong>
+
                                         </div>
                                     </div>
-
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6" id="exibirInput2">
                                         <div class="form-group">
-                                            <label>Repita a Senha</label>
-                                            <input type="password" id="passwordRepite" value="123456"
-                                                   class="form-control">
+                                            <label id="senhaAlterar"><span style="color:red">*</span> Confirme a
+                                                senha</label>
+                                            <input type="password" name="passwordRepite" id="passwordRepite" class="form-control"
+                                                   placeholder="Confirme a senha">
+
                                         </div>
                                     </div>
                                 </div>
@@ -149,7 +164,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Tipo de usuario</label>
+                                            <label> <span style="color:red">*</span> Tipo de usuario</label>
                                             <select id="typeUser" class="form-control">
                                                 <option value="ADMINISTRADOR">Adminstrador</option>
                                                 <option value="X">x</option>
@@ -158,14 +173,20 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-lg-6" id="showStatus">
+                                        <div class="form-group">
+                                            <label> <span style="color:red">*</span>Status</label>
+                                            <select id="status" class="form-control">
+                                                <option value="Ativo"><span class="badge badge-success">Ativo</span></option>
+                                                <option value="Bloqueado"><span class="badge badge-warning">Bloqueado</span></option>
+                                                <option value="Inativo"><span class="badge badge-danger">Inativo</span></option>
 
-                                    {{--                                    <div class="col-lg-6">--}}
-                                    {{--                                        <div class="form-group">--}}
-                                    {{--                                            <label>Repita a Senha</label>--}}
-                                    {{--                                            <input type="password" value="123456" class="form-control" >--}}
-                                    {{--                                        </div>--}}
-                                    {{--                                    </div>--}}
+
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>
@@ -180,7 +201,7 @@
 
                         <div class="col-xl-6 text-right">
                             <button type="button" id="btnSave" onclick="save()"
-                                    class="btn btn-outline-primary bx bxs-save text-right">Salvar
+                                    class="btn btn-outline-primary  text-right"><i class="bx bxs-save"></i> Salvar
                                 <span id="loading" class="spinner-border spinner-border-sm d-none" role="status"
                                       aria-hidden="true">
                                 </span>
