@@ -64,15 +64,24 @@ class UsersController extends Controller
             $email = $data['email'];
             $type = $data['type'];
             $password = $data['password'];
+             $passP='A1B2C3';
 
-            
+             $passPC=Hash::make($passP);
+
+
+
 
             $passCrypt = Hash::make($password);
 
             $users = new User();
             $users->name=$name;
             $users->email=$email;
-            $users->password=$passCrypt;
+            if($password){
+                $users->password=$passCrypt;
+            }else{
+                $users->password=$passPC;
+            }
+
             $users->type=$type;
             $users->status="Ativo";
             $users->save();
@@ -114,8 +123,7 @@ class UsersController extends Controller
     }
 
 
-    public function edit(Request $request)
-    {
+    public function edit(Request $request){
         $user = Auth::guard('user')->user();
         if (!$user) {
             return response()->json(['sucesso' => false, 'message' => 'Sessão inválida. Você deve fazer login novamente']);
@@ -132,36 +140,38 @@ class UsersController extends Controller
 
             ]);
 
-
-
             $data = json_decode($request->getContent(), true);
             $name = $data['name'];
             $email = $data['email'];
             $type = $data['type'];
+            $status= $data['status'];
             $password = $data['password'];
+            $id=$data['user_id'];
 
 
 
 
 
-            $users = new User();
+            $passCrypt = Hash::make($password);
+
+            $users = User::find($id);
             $users->name=$name;
             $users->email=$email;
-            //codição se tiver senha muda se for vazio faz nada
             if($password){
-                $passCrypt = Hash::make($password);
                 $users->password=$passCrypt;
             }
             $users->type=$type;
+            $users->status=$status;
             $users->status="Ativo";
             $users->save();
 
-            return response()->json(['sucesso' => true, 'message' => 'Usuario alterado com sucesso']);
+            return response()->json(['sucesso' => true, 'message' => 'Usuario editado com sucesso', 'idRegister' => $users->id]);
 
 
         } catch (\Illuminate\Validation\ValidationException $e) {
             return response()->json(['sucesso' => false, 'message' => 'Erro ao validar dados', 'erro' => $e->errors()]);
         }
+
 
     }
 

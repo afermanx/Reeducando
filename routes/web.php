@@ -28,6 +28,7 @@ Route::namespace('Admin')->group(function () {
     Route::post('/usuario/salvar', 'UsersController@store')->name('Admin.users.save');
     Route::post('/usuario/excluir', 'UsersController@destroy')->name('Admin.users.delete');
     Route::post('/usuario/mostrar', 'UsersController@show')->name('Admin.users.show');
+    Route::post('/usuario/editar', 'UsersController@edit')->name('Admin.users.edit');
   //end Routes Users
 
     //start router Services

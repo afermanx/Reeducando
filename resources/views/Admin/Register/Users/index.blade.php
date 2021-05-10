@@ -119,14 +119,14 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                             <label><span style="color:red">*</span> Nome:</label>
-                                             <input type="text" id='name' class="form-control"
+                                            <label><span style="color:red">*</span> Nome:</label>
+                                            <input type="text" id='name' class="form-control"
                                                    placeholder="Nome completo">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label><span style="color:red">*</span>  Email:</label>
+                                            <label><span style="color:red">*</span> Email:</label>
                                             <input type="email" id='email' class="form-control"
                                                    placeholder="Digite um e-mail valido">
                                         </div>
@@ -146,7 +146,9 @@
                                             <input type="password" name="password" id="password" class="form-control"
                                                    placeholder="Digite a senha">
 
-                                            <strong id="showMessage"><i style="color: #9B703F ; font-size: 25px" class="bx bxs-hand-up"></i> Click aqui para alterar a senha!</strong>
+                                            <strong id="showMessage"><i style="color: #9B703F ; font-size: 25px"
+                                                                        class="bx bxs-hand-up"></i> Click aqui para
+                                                alterar a senha!</strong>
 
                                         </div>
                                     </div>
@@ -154,7 +156,8 @@
                                         <div class="form-group">
                                             <label id="senhaAlterar"><span style="color:red">*</span> Confirme a
                                                 senha</label>
-                                            <input type="password" name="passwordRepite" id="passwordRepite" class="form-control"
+                                            <input type="password" name="passwordRepite" id="passwordRepite"
+                                                   class="form-control"
                                                    placeholder="Confirme a senha">
 
                                         </div>
@@ -177,9 +180,12 @@
                                         <div class="form-group">
                                             <label> <span style="color:red">*</span>Status</label>
                                             <select id="status" class="form-control">
-                                                <option value="Ativo"><span class="badge badge-success">Ativo</span></option>
-                                                <option value="Bloqueado"><span class="badge badge-warning">Bloqueado</span></option>
-                                                <option value="Inativo"><span class="badge badge-danger">Inativo</span></option>
+                                                <option value="Ativo"><span class="badge badge-success">Ativo</span>
+                                                </option>
+                                                <option value="Bloqueado"><span
+                                                        class="badge badge-warning">Bloqueado</span></option>
+                                                <option value="Inativo"><span class="badge badge-danger">Inativo</span>
+                                                </option>
 
 
                                             </select>
@@ -192,13 +198,12 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-xl-6 text-left ">
-                            <button type="reset" id="btnClose"
-                                    class="btn btn-outline-danger bx bxs-x-circle " data-dismiss="modal">Fechar
+                        <div class="col-xl-6 text-left">
+                            <button type="button" id="btnClose" onclick="closeModal()"
+                                    class="btn btn-outline-danger  text-left"><i class="bx bxs-save"></i> Fechar
+
                             </button>
-
                         </div>
-
                         <div class="col-xl-6 text-right">
                             <button type="button" id="btnSave" onclick="save()"
                                     class="btn btn-outline-primary  text-right"><i class="bx bxs-save"></i> Salvar
