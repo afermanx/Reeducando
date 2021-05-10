@@ -694,3 +694,23 @@
     </div>
     <!-- End -->
 @endsection
+
+@section("jsAdmin")
+  <script>
+      $(document).ready(function(){
+        if({{$user->status ==="Mudar Senha"}}){
+            Swal.fire({
+                position: 'center'
+                , icon: 'Atenção'
+                , title: 'Redefina sua senha pois ela foi gerada automatica no ato do cadastro'
+                , footer: ''
+                , showConfirmButton: true
+                , onClose: () => {
+                    $(location).attr('href', '/cadastro/usuarios')
+                }
+            })
+          }
+      });
+  </script>
+
+@endsection

@@ -62,11 +62,15 @@
                                         <span class="badge badge-success">{{$user->status}}</span>
                                     @endif
                                     @if($user->status ==="Inativo")
-                                        <span class="badge badge-warning" style="color: white">{{$user->status}}</span>
+                                        <span class="badge badge-warning" style="color: white6" >{{$user->status}}</span>
                                     @endif
                                         @if($user->status ==="Bloqueado")
                                             <span class="badge badge-danger">{{$user->status}}</span>
                                         @endif
+                                        @if($user->status ==="Mudar Senha")
+                                            <span class="badge badge-info">{{$user->status}}</span>
+                                        @endif
+
                                 </td>
 
 

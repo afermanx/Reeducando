@@ -66,10 +66,16 @@ function save() {
 
     }else {
 
+        const generatePass = Math.random().toString(36).slice(-10);
+
+
+
+
+
         Swal.fire({
             icon: 'warning',
             title: 'Atenção: Senha padrão gerada',
-            text: "Senha: A1B2C3",
+            text: "Senha: "+generatePass,
             footer: 'Senha gerada pois os campos senha não foram preenchidas',
             timer: 6000,
             didOpen: () => {
@@ -93,8 +99,9 @@ function save() {
                 let data = JSON.stringify({
                     name: name
                     , email: email
-                    , password: password
+                    , password: generatePass
                     , type: type
+                    , status:'Mudar Senha'
 
                 })
 
@@ -160,6 +167,7 @@ function save() {
         , email: email
         , password: password
         , type: type
+        , status:'Inativo'
 
     })
 

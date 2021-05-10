@@ -64,9 +64,10 @@ class UsersController extends Controller
             $email = $data['email'];
             $type = $data['type'];
             $password = $data['password'];
-             $passP='A1B2C3';
+            $status = $data['status'];
 
-             $passPC=Hash::make($passP);
+
+
 
 
 
@@ -76,14 +77,10 @@ class UsersController extends Controller
             $users = new User();
             $users->name=$name;
             $users->email=$email;
-            if($password){
-                $users->password=$passCrypt;
-            }else{
-                $users->password=$passPC;
-            }
-
+            $users->password=$passCrypt;
             $users->type=$type;
-            $users->status="Ativo";
+            $users->status=$status;
+
             $users->save();
 
             return response()->json(['sucesso' => true, 'message' => 'Usuario cadastrado com sucesso', 'idRegister' => $users->id]);
