@@ -132,16 +132,18 @@ function save() {
                             return;
 
                         } else if (retorno['sucesso'] == true) {
+
                             Swal.fire({
-                                position: 'center'
-                                , icon: 'success'
-                                , title: 'Usuario cadastrado com sucesso'
-                                , footer: ''
-                                , showConfirmButton: true
-                                , onClose: () => {
-                                    $(location).attr('href', '/cadastro/usuarios')
-                                }
+                                position: 'top-end',
+                                icon: 'success',
+                                title: 'Usuario cadastrado com sucesso',
+                                showConfirmButton: false,
+                                timer: 1500,
+                                onClose: () => {
+                                        $(location).attr('href', '/cadastro/usuarios')
+                                    }
                             })
+
                         }
 
                     }
@@ -199,12 +201,12 @@ function save() {
 
             } else if (retorno['sucesso'] == true) {
                 Swal.fire({
-                    position: 'center'
-                    , icon: 'success'
-                    , title: 'Usuario cadastrado com sucesso'
-                    , footer: ''
-                    , showConfirmButton: true
-                    , onClose: () => {
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Usuario cadastrado com sucesso',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    onClose: () => {
                         $(location).attr('href', '/cadastro/usuarios')
                     }
                 })
@@ -386,13 +388,12 @@ function edit(id) {
 
             } else if (retorno['sucesso'] == true) {
                 Swal.fire({
-                    position: 'center'
-                    , icon: 'success'
-                    , title: 'Usuario Editado com sucesso'
-                    , footer: ''
-                    , showConfirmButton: true
-                    , onClose: () => {
-
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Usuario editado com sucesso',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    onClose: () => {
                         $(location).attr('href', '/cadastro/usuarios')
                     }
                 })
@@ -436,13 +437,13 @@ function destroy(id, name) {
                     var retorno = $.parseJSON(JSON.stringify(data));
                     if (retorno['excluido'] == true) {
                         Swal.fire({
-                            position: 'center',
+                            position: 'top-end',
                             icon: 'success',
-                            title: 'Usuário excluido com sucesso!',
-                            footer: '',
-                            showConfirmButton: true,
+                            title: 'Usuario excluido com sucesso',
+                            showConfirmButton: false,
+                            timer: 1500,
                             onClose: () => {
-                                location.reload();
+                                $(location).attr('href', '/cadastro/usuarios')
                             }
                         })
                     }
