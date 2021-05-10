@@ -263,6 +263,7 @@ function show(id) {
                 $('#name').val(retorno['users']['name']);
                 $('#email').val(retorno['users']['email']);
                 $('#typeUser').val(retorno['users']['type']).change();
+                $('#status').val(retorno['users']['status']).change();
 
 
                 $("#usersTitleModal").html('<h5>Editar de usuarios</h5>');
@@ -293,7 +294,7 @@ function edit(id) {
     let passwordRepite = $('#passwordRepite').val();
     let status = $('#status').val();
 
-
+    console.log(status)
     if (!name) {
         Swal.fire({
             icon: 'error'

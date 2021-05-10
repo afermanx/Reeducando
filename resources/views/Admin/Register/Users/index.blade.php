@@ -58,7 +58,15 @@
                                     <em class="text-muted">{{$user->type}}</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <span class="badge badge-success">{{$user->status}}</span>
+                                    @if($user->status ==="Ativo")
+                                        <span class="badge badge-success">{{$user->status}}</span>
+                                    @endif
+                                    @if($user->status ==="Inativo")
+                                        <span class="badge badge-warning" style="color: white">{{$user->status}}</span>
+                                    @endif
+                                        @if($user->status ==="Bloqueado")
+                                            <span class="badge badge-danger">{{$user->status}}</span>
+                                        @endif
                                 </td>
 
 

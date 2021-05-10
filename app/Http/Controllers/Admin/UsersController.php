@@ -162,7 +162,7 @@ class UsersController extends Controller
             }
             $users->type=$type;
             $users->status=$status;
-            $users->status="Ativo";
+
             $users->save();
 
             return response()->json(['sucesso' => true, 'message' => 'Usuario editado com sucesso', 'idRegister' => $users->id]);
