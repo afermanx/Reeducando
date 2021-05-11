@@ -17,6 +17,9 @@ class UsersController extends Controller
      */
     public function index(){
         $user = Auth::guard('user')->user();
+        if (!$user | $user->status==="Bloqueado") {
+            return response()->json(['sucesso' => false, 'message' => 'Sessão inválida. Você deve fazer login novamente']);
+        };
         $users = new User();
         $data= $users->list();
 
@@ -26,25 +29,10 @@ class UsersController extends Controller
             ->with('users',$data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request){
         $user = Auth::guard('user')->user();
-        if (!$user) {
+        if (!$user | $user->status==="Bloqueado") {
             return response()->json(['sucesso' => false, 'message' => 'Sessão inválida. Você deve fazer login novamente']);
         };
 
@@ -100,7 +88,9 @@ class UsersController extends Controller
     public function show(Request $request)
     {
         $user = Auth::guard('user')->user();
-
+        if (!$user | $user->status==="Bloqueado") {
+            return response()->json(['sucesso' => false, 'message' => 'Sessão inválida. Você deve fazer login novamente']);
+        };
 
         $data = json_decode($request->getContent(), true);
         $id=$data['$user_id'];
@@ -112,9 +102,7 @@ class UsersController extends Controller
 
 
 
-        if (!$users) {
-            return response()->json(['sucesso' => false, 'message' => 'Relato não encontrado']);
-        };
+
 
         return response()->json(['sucesso' => true, 'users' => $users[0]]);
     }
@@ -122,7 +110,7 @@ class UsersController extends Controller
 
     public function edit(Request $request){
         $user = Auth::guard('user')->user();
-        if (!$user) {
+        if (!$user | $user->status==="Bloqueado") {
             return response()->json(['sucesso' => false, 'message' => 'Sessão inválida. Você deve fazer login novamente']);
         };
 
@@ -172,21 +160,13 @@ class UsersController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
 
     public function destroy(Request $request){
         $user = Auth::guard('user')->user();
+        if (!$user | $user->status==="Bloqueado") {
+            return response()->json(['sucesso' => false, 'message' => 'Sessão inválida. Você deve fazer login novamente']);
+        };
         $data = json_decode($request->getContent(), true);
 
 

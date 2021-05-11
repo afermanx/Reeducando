@@ -696,21 +696,44 @@
 @endsection
 
 @section("jsAdmin")
-  <script>
-      $(document).ready(function(){
-        if({{$user->status ==="Mudar Senha"}}){
-            Swal.fire({
-                position: 'center'
-                , icon: 'Atenção'
-                , title: 'Redefina sua senha pois ela foi gerada automatica no ato do cadastro'
-                , footer: ''
-                , showConfirmButton: true
-                , onClose: () => {
-                    $(location).attr('href', '/cadastro/usuarios')
-                }
-            })
-          }
-      });
-  </script>
+    <script>
+        $(document).ready(function () {
+            if ({{$user->status ==="Mudar Senha"}}) {
+                Swal.fire({
+                    position: 'center'
+                    , icon: 'warning'
+                    , title: 'Redefina sua senha pois ela foi gerada automatica no ato do cadastro'
+                    , footer: ''
+                    , showConfirmButton: true
+                    , onClose: () => {
+                        $(location).attr('href', '/cadastro/usuarios')
+                    }
+                })
+            }
+
+        });
+
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            if ({{$user->status ==="Bloqueado"}}) {
+                Swal.fire({
+                    position: 'center'
+                    , icon: 'error'
+                    , title: "Usuario Bloqueado"
+                    , footer: 'Entre em contato com o Administrador'
+                    , showConfirmButton: true
+                    , onClose: () => {
+                        $(location).attr('href', '/logout')
+                    }
+                })
+            }
+
+        });
+
+
+    </script>
 
 @endsection
