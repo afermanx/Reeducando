@@ -8050,7 +8050,7 @@ Error 404 CSS
 }
 
 .error-404-area.bg-image {
-  background-image: url(../../assets/img/error-404-bg.jpg);
+  background-image: url(../img/error-404-bg.jpg);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -8589,7 +8589,7 @@ Not Authorized CSS
 }
 
 .not-authorized-area.bg-image {
-  background-image: url(../../assets/img/not-authorized-bg.jpg);
+  background-image: url(../img/servicos-2.png);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -8622,7 +8622,7 @@ Not Authorized CSS
 }
 
 .not-authorized-area .not-authorized-content h2 {
-  background: url(../../assets/img/oops-bg.jpg) no-repeat;
+  background-color: #333;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: cover;
@@ -8638,6 +8638,7 @@ Not Authorized CSS
   color: #6084a4;
   line-height: 1.7;
   max-width: 500px;
+    font-size: 20px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;

@@ -47,7 +47,7 @@ Default CSS
 $font-family: 'Nunito', sans-serif;
 $main-color: #e1000a;
 $black-color: #2a2a2a;
-$white-color: #ffffff;
+$white-color: #333;
 $font-size: 15px;
 $transition: .5s;
 
@@ -317,7 +317,7 @@ Sidemenu CSS
                     &:hover {
                         background-color: #f9ecef;
                         color: $main-color;
-    
+
                         &::before {
                             width: 3px;
                         }
@@ -331,7 +331,7 @@ Sidemenu CSS
                     .nav-link {
                         background-color: #f9ecef;
                         color: $main-color;
-    
+
                         &::before {
                             width: 3px;
                         }
@@ -396,7 +396,7 @@ Sidemenu CSS
                             list-style-type: none;
                             padding-left: 15px;
                             margin-bottom: 0;
-        
+
                             .nav-item {
                                 .nav-link {
                                     color: #7e7e7e;
@@ -419,7 +419,7 @@ Sidemenu CSS
                                     }
                                     &:hover {
                                         color: $main-color;
-        
+
                                         .icon {
                                             color: $main-color;
                                         }
@@ -428,7 +428,7 @@ Sidemenu CSS
                                 &.mm-active {
                                     .nav-link {
                                         color: $main-color;
-        
+
                                         .icon {
                                             color: $main-color;
                                         }
@@ -498,13 +498,13 @@ Sidemenu CSS
     &:hover {
         &.toggle-sidemenu-area {
             width: 250px;
-    
+
             .sidemenu-header {
                 padding: 0 20px;
-    
+
                 .navbar-brand {
                     display: flex !important;
-                    
+
                     span {
                         opacity: 1;
                         visibility: visible;
@@ -568,7 +568,7 @@ Top Navbar CSS
                 margin: 6px 0;
                 transition: all .50s ease-in-out;
             }
-            &.active {                
+            &.active {
                 span {
                     &.top-bar {
                         transform: rotate(45deg);
@@ -588,7 +588,7 @@ Top Navbar CSS
         .nav-search-form {
             position: relative;
             width: 300px;
-    
+
             label {
                 display: block;
                 margin-bottom: 0;
@@ -627,12 +627,12 @@ Top Navbar CSS
         }
         .nav-item {
             margin-left: 15px;
-            
+
             .nav-link {
                 padding: 0;
                 color: #525f80;
                 font-weight: 500;
-    
+
                 &.dropdown-toggle {
                     &::after {
                         display: none;
@@ -660,7 +660,7 @@ Top Navbar CSS
                     border-radius: 50%;
                     font-size: 9px;
                     line-height: 12px;
-    
+
                     &.badge-secondary {
                         background: $main-color;
                         animation: pulse-secondary 2s infinite;
@@ -678,7 +678,7 @@ Top Navbar CSS
                     cursor: pointer;
                     top: 3px;
                     margin-right: 5px;
-    
+
                     &:hover {
                         color: $main-color;
                     }
@@ -706,7 +706,7 @@ Top Navbar CSS
                     visibility: hidden;
                     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
                     background-color: $white-color;
-    
+
                     &.show {
                         margin-top: 10px;
                         opacity: 1;
@@ -749,7 +749,7 @@ Top Navbar CSS
                         .dropdown-item {
                             padding: 5px 20px;
                             font-size: 14.5px;
-    
+
                             img {
                                 width: 27px;
                                 border-radius: 2px;
@@ -764,7 +764,7 @@ Top Navbar CSS
                     max-width: 350px;
                     border-radius: 5px 5px 0 0;
                     padding: 0;
-    
+
                     .dropdown-header {
                         border-radius: 5px 5px 0 0;
                         background-color: $main-color;
@@ -792,7 +792,7 @@ Top Navbar CSS
                         };
                         .dropdown-item {
                             padding: 7px 15px;
-    
+
                             .icon {
                                 width: 30px;
                                 height: 30px;
@@ -802,7 +802,7 @@ Top Navbar CSS
                                 text-align: center;
                                 color: $main-color;
                                 transition: $transition;
-    
+
                                 i {
                                     position: absolute;
                                     left: 0;
@@ -813,7 +813,7 @@ Top Navbar CSS
                             }
                             .content {
                                 padding-left: 15px;
-    
+
                                 span {
                                     color: $black-color;
                                     margin-bottom: 1px;
@@ -887,7 +887,7 @@ Top Navbar CSS
                         text-align: center;
                         padding: 10px 15px;
                         border-top: 1px solid #eeeeee;
-                        
+
                         .dropdown-item {
                             color: $main-color !important;
                             padding: 0;
@@ -907,7 +907,7 @@ Top Navbar CSS
                 font-size: 20px;
                 position: relative;
                 margin-right: 7px;
-    
+
                 i {
                     position: relative;
                     top: 3px;
@@ -920,7 +920,7 @@ Top Navbar CSS
                     max-width: 350px;
                     border-radius: 5px 5px 0 0;
                     padding: 0;
-    
+
                     .dropdown-header {
                         border-radius: 5px 5px 0 0;
                         background-color: #2962ff;
@@ -948,7 +948,7 @@ Top Navbar CSS
                         };
                         .dropdown-item {
                             padding: 7px 15px;
-    
+
                             .figure {
                                 img {
                                     width: 35px;
@@ -958,7 +958,7 @@ Top Navbar CSS
                             .content {
                                 width: 285px;
                                 padding-left: 12px;
-    
+
                                 span {
                                     color: $black-color;
                                     margin-bottom: 2px;
@@ -988,7 +988,7 @@ Top Navbar CSS
                         text-align: center;
                         padding: 10px 15px;
                         border-top: 1px solid #eeeeee;
-                        
+
                         .dropdown-item {
                             color: #2962ff !important;
                             padding: 0;
@@ -1008,7 +1008,7 @@ Top Navbar CSS
                 font-size: 20px;
                 position: relative;
                 margin-right: 7px;
-    
+
                 i {
                     position: relative;
                     top: 3px;
@@ -1022,7 +1022,7 @@ Top Navbar CSS
                     padding: 0;
                     left: 0;
                     right: auto;
-    
+
                     .dropdown-header {
                         border-radius: 5px 5px 0 0;
                         background-color: #2962ff;
@@ -1045,14 +1045,14 @@ Top Navbar CSS
                     }
                     .dropdown-body {
                         padding: 10px 5px;
-    
+
                         .dropdown-item {
                             -ms-flex: 0 0 25%;
                             flex: 0 0 25%;
                             max-width: 25%;
                             text-align: center;
                             padding: 8px 10px;
-    
+
                             span {
                                 margin-top: 8px;
                                 font-weight: 600;
@@ -1063,7 +1063,7 @@ Top Navbar CSS
                         text-align: center;
                         padding: 10px 15px;
                         border-top: 1px solid #eeeeee;
-                        
+
                         .dropdown-item {
                             color: #2962ff !important;
                             padding: 0;
@@ -1087,7 +1087,7 @@ Top Navbar CSS
             .nav-item {
                 .nav-link {
                     font-size: 22px;
-    
+
                     &:hover {
                         color: $main-color;
                     }
@@ -1122,14 +1122,14 @@ Top Navbar CSS
                 .dropdown-menu {
                     padding: 15px 15px 10px;
                     min-width: 230px;
-    
+
                     .dropdown-header {
                         padding: 0;
                         border-bottom: 1px solid #f2f4f9;
-    
+
                         .figure {
                             position: relative;
-    
+
                             img {
                                 width: 80px;
                                 height: 80px;
@@ -1156,7 +1156,7 @@ Top Navbar CSS
                         }
                         .nav-item {
                             margin-left: 0;
-    
+
                             .nav-link {
                                 color: $black-color;
                                 padding: 5px 15px 5px 38px;
@@ -1192,7 +1192,7 @@ Top Navbar CSS
                         margin: 10px -15px 0;
                         padding: 10px 15px 0;
                         border-top: 1px solid #eeeeee;
-    
+
                         ul {
                             padding-left: 0;
                             list-style-type: none;
@@ -1557,7 +1557,7 @@ Main Content CSS
                 background-color: #13bb37;
                 box-shadow: 1px 5px 24px 0 rgba(19, 187, 55, .15);
             }
-            .progress-list {        
+            .progress-list {
                 .bar-inner {
                     .bar {
                         background: #13bb37;
@@ -1572,7 +1572,7 @@ Main Content CSS
                 background-color: #ff4b00;
                 box-shadow: 1px 5px 24px 0 rgba(255, 75, 0, .15);
             }
-            .progress-list {        
+            .progress-list {
                 .bar-inner {
                     .bar {
                         background: #ff4b00;
@@ -1587,7 +1587,7 @@ Main Content CSS
                 background-color: #4788ff;
                 box-shadow: 1px 5px 24px 0 rgba(71, 136, 255, .15);
             }
-            .progress-list {        
+            .progress-list {
                 .bar-inner {
                     .bar {
                         background: #4788ff;
@@ -2019,7 +2019,7 @@ Main Content CSS
                 width: 100%;
                 border-radius: 0 5px 5px 0;
                 border-bottom: 5px solid #F2F4F4;
-    
+
                 .bar {
                     position: absolute;
                     left: 0;
@@ -2130,7 +2130,7 @@ Main Content CSS
         .content {
             margin-left: 15px;
             width: 100%;
-    
+
             h5 {
                 color: $black-color;
                 font: {
@@ -2143,7 +2143,7 @@ Main Content CSS
                 width: 100%;
                 border-bottom: 3px solid #d1d1d1;
                 border-radius: 5px;
-    
+
                 .bar {
                     position: absolute;
                     left: 0;
@@ -2474,7 +2474,7 @@ Main Content CSS
                     a {
                         background-color: #d1def5;
                         color: #4788ff;
-    
+
                         &:hover {
                             background-color: #4788ff;
                             color: $white-color;
@@ -2487,7 +2487,7 @@ Main Content CSS
                     a {
                         background-color: #f5d1c4;
                         color: #fb4a06;
-    
+
                         &:hover {
                             background-color: #fb4a06;
                             color: $white-color;
@@ -2500,7 +2500,7 @@ Main Content CSS
                     a {
                         background-color: #d1def5;
                         color: #4788ff;
-    
+
                         &:hover {
                             background-color: #4788ff;
                             color: $white-color;
@@ -2827,7 +2827,7 @@ Main Content CSS
                 background-color: $main-color;
                 color: #fcdedf;
             }
-        } 
+        }
     }
 }
 .social-marketing-box {
@@ -3116,7 +3116,7 @@ Main Content CSS
             &.active {
                 background-color: $main-color;
                 color: $white-color;
-                
+
                 i {
                     &::before {
                         content: "\eaf8";
@@ -3342,7 +3342,7 @@ Main Content CSS
 #revenue-growth-chart {
     &.extra-margin {
         margin: -20px 0 -25px -20px;
-        
+
         .apexcharts-toolbar {
             display: none;
         }
@@ -3351,7 +3351,7 @@ Main Content CSS
 #revenue-summary-chart {
     &.extra-margin {
         margin: 0 0 -15px -20px;
-        
+
         .apexcharts-toolbar {
             display: none;
         }
@@ -3454,7 +3454,7 @@ App Email CSS
                     .btn-primary {
                         color: $white-color;
                         background-color: $main-color;
-                    
+
                         &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, .show>&.dropdown-toggle {
                             background-color: $main-color;
                             color: $white-color;
@@ -3602,7 +3602,7 @@ App Email CSS
             .email-list {
                 background-color: $white-color;
                 box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
-                
+
                 .email-list-header {
                     padding: 15px 20px;
                     border-bottom: 1px solid #e8ebf1;
@@ -3625,7 +3625,7 @@ App Email CSS
                             padding: 0;
                             font-size: 18px;
                             border-radius: 3px;
-    
+
                             i {
                                 position: absolute;
                                 left: 0;
@@ -3653,7 +3653,7 @@ App Email CSS
                                 visibility: hidden;
                                 transition: .3s;
                                 transform: unset !important;
-                
+
                                 &.show {
                                     margin-top: 45px;
                                     opacity: 1;
@@ -3918,7 +3918,7 @@ App Email Read CSS
                     .btn-primary {
                         color: $white-color;
                         background-color: $main-color;
-                    
+
                         &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, .show>&.dropdown-toggle {
                             background-color: $main-color;
                             color: $white-color;
@@ -4066,7 +4066,7 @@ App Email Read CSS
             .email-read-list {
                 background-color: $white-color;
                 box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
-                
+
                 .email-read-list-header {
                     padding: 15px 20px;
                     border-bottom: 1px solid #e8ebf1;
@@ -4113,7 +4113,7 @@ App Email Read CSS
                             padding: 0;
                             font-size: 18px;
                             border-radius: 3px;
-    
+
                             i {
                                 position: absolute;
                                 left: 0;
@@ -4141,7 +4141,7 @@ App Email Read CSS
                                 visibility: hidden;
                                 transition: .3s;
                                 transform: unset !important;
-                
+
                                 &.show {
                                     margin-top: 45px;
                                     opacity: 1;
@@ -4259,7 +4259,7 @@ App Email Read CSS
                                     };
                                     &.active {
                                         color: #FDAC41;
-    
+
                                         i {
                                             &::before {
                                                 content: "\ed99";
@@ -4275,7 +4275,7 @@ App Email Read CSS
                                         color: #727E8C;
                                         font-size: 22px;
                                         line-height: 15px;
-                        
+
                                         &::after {
                                             display: none;
                                         }
@@ -4293,7 +4293,7 @@ App Email Read CSS
                                         transform: unset !important;
                                         left: auto !important;
                                         right: 0;
-                        
+
                                         &.show {
                                             margin-top: 25px;
                                             opacity: 1;
@@ -4650,7 +4650,7 @@ App Email Compose CSS
                             background-color: #3578e5;
                             color: $white-color;
                             border-color: #3578e5;
-    
+
                             &:hover, &:focus {
                                 background-color: #3578e5;
                                 color: $white-color;
@@ -4662,7 +4662,7 @@ App Email Compose CSS
                             background-color: $main-color;
                             color: $white-color;
                             border-color: $main-color;
-    
+
                             &:hover, &:focus {
                                 background-color: #e33e45;
                                 color: $white-color;
@@ -4715,7 +4715,7 @@ App Todo CSS
                     .btn-primary {
                         color: $white-color;
                         background-color: $main-color;
-                    
+
                         &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, .show>&.dropdown-toggle {
                             background-color: $main-color;
                             color: $white-color;
@@ -4863,7 +4863,7 @@ App Todo CSS
             .todo-list {
                 background-color: $white-color;
                 box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
-                
+
                 .todo-list-header {
                     padding: 15px 20px;
                     border-bottom: 1px solid #e8ebf1;
@@ -4886,7 +4886,7 @@ App Todo CSS
                             padding: 0;
                             font-size: 18px;
                             border-radius: 3px;
-    
+
                             i {
                                 position: absolute;
                                 left: 0;
@@ -4914,7 +4914,7 @@ App Todo CSS
                                 visibility: hidden;
                                 transition: .3s;
                                 transform: unset !important;
-                
+
                                 &.show {
                                     margin-top: 45px;
                                     opacity: 1;
@@ -5078,7 +5078,7 @@ App Todo CSS
                                 a {
                                     background-color: #d1def5;
                                     color: #4788ff;
-                
+
                                     &:hover {
                                         background-color: #4788ff;
                                         color: $white-color;
@@ -5091,7 +5091,7 @@ App Todo CSS
                                 a {
                                     background-color: #f5d1c4;
                                     color: #fb4a06;
-                
+
                                     &:hover {
                                         background-color: #fb4a06;
                                         color: $white-color;
@@ -5104,7 +5104,7 @@ App Todo CSS
                                 a {
                                     background-color: #d1def5;
                                     color: #4788ff;
-                
+
                                     &:hover {
                                         background-color: #4788ff;
                                         color: $white-color;
@@ -5145,7 +5145,7 @@ App Calendar CSS
         position: relative;
         padding: 25px 20px;
         border-bottom: 1px solid rgba(166, 168, 179, 0.12);
-        
+
         h3 {
             font: {
                 size: 18px;
@@ -5387,7 +5387,7 @@ App Chat CSS
                         &:focus {
                             box-shadow: unset;
                             background-color: #eef5f9;
-        
+
                             &::placeholder {
                                 color: transparent !important;
                             }
@@ -5482,7 +5482,7 @@ App Chat CSS
             .chat-list {
                 background-color: $white-color;
                 box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
-                
+
                 .simplebar-scrollbar {
                     &::before {
                         background: #aaaaaa;
@@ -5539,10 +5539,10 @@ App Chat CSS
                                     color: #C7CFD6;
                                     position: relative;
                                     top: -1px;
-                                    
+
                                     &.active {
                                         color: #FDAC41;
-    
+
                                         i {
                                             &::before {
                                                 content: "\ed99";
@@ -5558,7 +5558,7 @@ App Chat CSS
                                         color: #727E8C;
                                         font-size: 22px;
                                         line-height: 15px;
-                        
+
                                         &::after {
                                             display: none;
                                         }
@@ -5576,7 +5576,7 @@ App Chat CSS
                                         transform: unset !important;
                                         left: auto !important;
                                         right: 0;
-                        
+
                                         &.show {
                                             margin-top: 25px;
                                             opacity: 1;
@@ -5635,7 +5635,7 @@ App Chat CSS
                             }
                             .chat-body {
                                 overflow: hidden;
-    
+
                                 .chat-message {
                                     position: relative;
                                     float: right;
@@ -5649,7 +5649,7 @@ App Chat CSS
                                     background-color: #3578e5;
                                     border-radius: 5px;
                                     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .3);
-    
+
                                     p {
                                         color: $white-color;
                                         margin-bottom: 0;
@@ -5821,7 +5821,7 @@ Profile CSS
                 visibility: hidden;
                 transition: $transition;
                 z-index: 1;
-    
+
                 a {
                     background-color: transparent;
                     color: $white-color;
@@ -5985,7 +5985,7 @@ Profile CSS
             li {
                 color: #1d2129;
                 margin-bottom: 10px;
-                
+
                 &:last-child {
                     margin-bottom: 0;
                 }
@@ -6411,7 +6411,7 @@ Profile CSS
     }
     .post-share-footer {
         border-top: 1px solid #eeeeee;
-        
+
         .post-share-info {
             a {
                 font-size: 25px;
@@ -6488,7 +6488,7 @@ Profile CSS
             span {
                 color: #616770;
                 font-size: 14px;
-        
+
                 a {
                     color: #616770;
                 }
@@ -6530,7 +6530,7 @@ Profile CSS
     form {
         .form-group {
             margin-bottom: 20px;
-            
+
             label {
                 color: #6c757d;
                 margin-bottom: 8px;
@@ -6607,7 +6607,7 @@ Login CSS
     position: relative;
     z-index: 1;
     background: #f6f7fb;
-    
+
     &.bg-image {
         background: {
             image: url(../../assets/img/login-bg.jpg);
@@ -6705,7 +6705,7 @@ Login CSS
                     }
                     &:focus {
                         padding-left: 5px;
-                        
+
                         &::placeholder {
                             color: transparent;
                         }
@@ -6921,7 +6921,7 @@ Register CSS
                     }
                     &:focus {
                         padding-left: 5px;
-                        
+
                         &::placeholder {
                             color: transparent;
                         }
@@ -7079,12 +7079,12 @@ Reset Password CSS
             }
             form {
                 margin-top: 25px;
-    
+
                 .form-group {
                     margin-bottom: 30px;
                     width: 100%;
                     position: relative;
-    
+
                     .label-title {
                         margin-bottom: 0;
                         position: absolute;
@@ -7095,7 +7095,7 @@ Reset Password CSS
                         width: 100%;
                         height: 100%;
                         color: $black-color;
-    
+
                         i {
                             position: absolute;
                             left: 0;
@@ -7136,7 +7136,7 @@ Reset Password CSS
                         }
                         &:focus {
                             padding-left: 5px;
-                            
+
                             &::placeholder {
                                 color: transparent;
                             }
@@ -7146,7 +7146,7 @@ Reset Password CSS
                         }
                         &:focus+.label-title {
                             color: #A1A1A1;
-    
+
                             i {
                                 top: -22px;
                             }
@@ -7233,12 +7233,12 @@ Forgot Password CSS
             }
             form {
                 margin-top: 25px;
-    
+
                 .form-group {
                     margin-bottom: 30px;
                     width: 100%;
                     position: relative;
-    
+
                     .label-title {
                         margin-bottom: 0;
                         position: absolute;
@@ -7249,7 +7249,7 @@ Forgot Password CSS
                         width: 100%;
                         height: 100%;
                         color: $black-color;
-    
+
                         i {
                             position: absolute;
                             left: 0;
@@ -7290,7 +7290,7 @@ Forgot Password CSS
                         }
                         &:focus {
                             padding-left: 5px;
-                            
+
                             &::placeholder {
                                 color: transparent;
                             }
@@ -7300,7 +7300,7 @@ Forgot Password CSS
                         }
                         &:focus+.label-title {
                             color: #A1A1A1;
-    
+
                             i {
                                 top: -22px;
                             }
@@ -7383,12 +7383,12 @@ Lock Screen CSS
             }
             form {
                 margin-top: 25px;
-    
+
                 .form-group {
                     margin-bottom: 30px;
                     width: 100%;
                     position: relative;
-    
+
                     .label-title {
                         margin-bottom: 0;
                         position: absolute;
@@ -7399,7 +7399,7 @@ Lock Screen CSS
                         width: 100%;
                         height: 100%;
                         color: $black-color;
-    
+
                         i {
                             position: absolute;
                             left: 0;
@@ -7440,7 +7440,7 @@ Lock Screen CSS
                         }
                         &:focus {
                             padding-left: 5px;
-                            
+
                             &::placeholder {
                                 color: transparent;
                             }
@@ -7450,7 +7450,7 @@ Lock Screen CSS
                         }
                         &:focus+.label-title {
                             color: #A1A1A1;
-    
+
                             i {
                                 top: -22px;
                             }
@@ -7847,7 +7847,7 @@ Coming Soon CSS
                     }
                     &:focus {
                         padding-left: 5px;
-                        
+
                         &::placeholder {
                             color: transparent;
                         }
@@ -7995,7 +7995,7 @@ Not Authorized CSS
 
     &.bg-image {
         background: {
-            image: url(../../assets/img/not-authorized-bg.jpg);
+            image: url(../../img/not-authorized-bg.jpg);
             position: center center;
             size: cover;
             repeat: no-repeat;
@@ -8712,7 +8712,7 @@ Timeline CSS
         }
     }
 }
-  
+
 
 /*================================================
 Footer CSS

@@ -718,15 +718,15 @@
 
     <script>
         $(document).ready(function () {
-            if ({{$user->status ==="Bloqueado"}}) {
+            if ({{$user->status ==="Mudar Senha"}}) {
                 Swal.fire({
                     position: 'center'
                     , icon: 'error'
-                    , title: "Usuario Bloqueado"
-                    , footer: 'Entre em contato com o Administrador'
+                    , title: "Mudar senha"
+                    , footer: 'Sua senha é um senha gerada automatica, click aqui para alterar'
                     , showConfirmButton: true
                     , onClose: () => {
-                        $(location).attr('href', '/logout')
+                        $(location).attr('href', '/admin.perfil')
                     }
                 })
             }

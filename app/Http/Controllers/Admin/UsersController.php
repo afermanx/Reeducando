@@ -17,9 +17,11 @@ class UsersController extends Controller
      */
     public function index(){
         $user = Auth::guard('user')->user();
-        if (!$user | $user->status==="Bloqueado") {
-            return response()->json(['sucesso' => false, 'message' => 'Sessão inválida. Você deve fazer login novamente']);
-        };
+        if (!$user) {
+           return view('Auth.sessionExpired');
+        }
+
+
         $users = new User();
         $data= $users->list();
 
@@ -32,9 +34,9 @@ class UsersController extends Controller
 
     public function store(Request $request){
         $user = Auth::guard('user')->user();
-        if (!$user | $user->status==="Bloqueado") {
-            return response()->json(['sucesso' => false, 'message' => 'Sessão inválida. Você deve fazer login novamente']);
-        };
+        if (!$user) {
+            return view('Auth.sessionExpired');
+        }
 
         try {
 
@@ -88,9 +90,9 @@ class UsersController extends Controller
     public function show(Request $request)
     {
         $user = Auth::guard('user')->user();
-        if (!$user | $user->status==="Bloqueado") {
-            return response()->json(['sucesso' => false, 'message' => 'Sessão inválida. Você deve fazer login novamente']);
-        };
+        if (!$user) {
+            return view('Auth.sessionExpired');
+        }
 
         $data = json_decode($request->getContent(), true);
         $id=$data['$user_id'];
@@ -110,9 +112,9 @@ class UsersController extends Controller
 
     public function edit(Request $request){
         $user = Auth::guard('user')->user();
-        if (!$user | $user->status==="Bloqueado") {
-            return response()->json(['sucesso' => false, 'message' => 'Sessão inválida. Você deve fazer login novamente']);
-        };
+        if (!$user) {
+            return view('Auth.sessionExpired');
+        }
 
         try {
 
@@ -164,9 +166,9 @@ class UsersController extends Controller
 
     public function destroy(Request $request){
         $user = Auth::guard('user')->user();
-        if (!$user | $user->status==="Bloqueado") {
-            return response()->json(['sucesso' => false, 'message' => 'Sessão inválida. Você deve fazer login novamente']);
-        };
+        if (!$user) {
+            return view('Auth.sessionExpired');
+        }
         $data = json_decode($request->getContent(), true);
 
 
