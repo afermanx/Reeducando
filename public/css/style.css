@@ -8236,7 +8236,7 @@ Error 500 CSS
   font-weight: 900;
   margin-top: 0;
   margin-bottom: 5px;
-  background: url(../../assets/img/oops-bg.jpg) no-repeat;
+  background: url(../../img/oops-bg.jpg) no-repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: cover;
