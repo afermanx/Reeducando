@@ -326,7 +326,7 @@
                     <div class="dropdown-body">
                         <ul class="profile-nav p-0 pt-3">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('Admin.perfil')}}" class="nav-link">
                                     <i class='bx bx-user'></i> <span>Perfil</span>
                                 </a>
                             </li>

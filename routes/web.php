@@ -24,6 +24,7 @@ Route::namespace('Admin')->group(function () {
   //start router Users
 
     Route::get('/cadastro/usuarios', 'UsersController@index')->name('Admin.users');
+    Route::get('/usuario/perfil', 'UsersController@perfil')->name('Admin.perfil');
 
     Route::post('/usuario/salvar', 'UsersController@store')->name('Admin.users.save');
     Route::post('/usuario/excluir', 'UsersController@destroy')->name('Admin.users.delete');

@@ -26,9 +26,18 @@ class UsersController extends Controller
         $data= $users->list();
 
 
-        return view('Admin.Register.Users.index')
+        return view('Admin.Users.index')
             ->with('user', $user)
             ->with('users',$data);
+    }
+
+    public function perfil(){
+        $user = Auth::guard('user')->user();
+        if (!$user) {
+            return view('Auth.sessionExpired');
+        }
+        return view('Admin.Users.perfil')
+            ->with('user', $user);
     }
 
 
@@ -36,6 +45,8 @@ class UsersController extends Controller
         $user = Auth::guard('user')->user();
         if (!$user) {
             return view('Auth.sessionExpired');
+
+
         }
 
         try {

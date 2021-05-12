@@ -726,7 +726,7 @@
                     , footer: 'Sua senha é um senha gerada automatica, click aqui para alterar'
                     , showConfirmButton: true
                     , onClose: () => {
-                        $(location).attr('href', '/admin.perfil')
+                        $(location).attr('href', '/usuario/perfil')
                     }
                 })
             }
