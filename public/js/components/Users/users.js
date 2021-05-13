@@ -66,6 +66,7 @@ function save() {
 
     }else {
 
+
         const generatePass = Math.random().toString(36).slice(-10);
 
 
@@ -76,10 +77,11 @@ function save() {
             icon: 'warning',
             title: 'Atenção: Senha padrão gerada',
             text: "Senha: "+generatePass,
-            footer: 'Senha gerada pois os campos senha não foram preenchidas',
+            footer: 'Senha gerada automaticamente  pois os campos senha não foram preenchidas',
             timer: 6000,
             didOpen: () => {
                 timerInterval = setInterval(() => {
+                    // limpar isso aqui
                     const content = Swal.getContent()
                     if (content) {
                         const b = content.querySelector('b')
@@ -107,6 +109,7 @@ function save() {
 
 
                 $("#loading").removeClass('d-none');
+
                 $.ajax({
                     type: 'POST'
                     , url: '/usuario/salvar'

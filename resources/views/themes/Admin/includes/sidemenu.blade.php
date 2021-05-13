@@ -652,14 +652,14 @@
                 </a>
 
                 <ul class="sidemenu-nav-second-level">
-                    @if($user->status==="ADMINISTRADOR")
+
                     <li class="nav-item ">
                         <a href="{{route('Admin.users')}}" class="nav-link">
                             <span class="icon"><i class='bx bxs-group'></i></span>
                             <span class="menu-title">Usuarios</span>
                         </a>
                     </li>
-                    @endif
+
 
                     <li class="nav-item">
                         <a href="{{route('Admin.services')}}" class="nav-link">

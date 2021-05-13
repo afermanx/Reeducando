@@ -1,11 +1,9 @@
 @extends('themes.Admin.adminLayout')
 @section('titleAdmin','Reeducando | Usuarios')
-@section('breadName','Usuarios')
-@section('breadItem','Cadastro')
+@section('breadName','Usuarios')<!--Destaque do mapa de url-->
+@section('breadItem','Cadastro')<!--Meio do mapa-->
 @section('breadcrumb')
-    <li class="item">Usuarios</li>
-
-
+    <li class="item">Usuarios</li><!--Pagina atual-->
 @endsection
 
 @section('content')
@@ -126,6 +124,7 @@
                                 </button>
                             </div>
                             <form>
+
                                 <h3><i class='bx bx-user-circle'></i>Informações Pessoais</h3>
 
                                 <div class="row">
@@ -244,6 +243,7 @@
             }
         });
     </script>
+
     <script src="{{asset('js/components/Users/users.js')}}"></script>
 
 @endsection

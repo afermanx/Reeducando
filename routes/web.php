@@ -11,17 +11,12 @@ Route::namespace('Auth')->group(function () {
     Route::get('/logout', 'LoginController@logout')->name('Auth.logout');
 
     Route::post('/login', 'UsersLoginController@login')->name('Auth.login');
-
-
-
-
 });
 
 Route::namespace('Admin')->group(function () {
     Route::get('/dashboard', 'DashController@index')->name('Admin.dash');
 
-
-  //start router Users
+    //start router Users
 
     Route::get('/cadastro/usuarios', 'UsersController@index')->name('Admin.users');
     Route::get('/usuario/perfil', 'UsersController@perfil')->name('Admin.perfil');

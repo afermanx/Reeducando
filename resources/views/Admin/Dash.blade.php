@@ -1,7 +1,7 @@
 @extends('themes.Admin.adminLayout')
 @section('titleAdmin','Reeducando | Painel')
-@section('breadName','Painel')
-@section('breadItem','Painel')
+@section('breadName','Painel') <!--Destaque do mapa de url-->
+@section('breadItem','Painel') <!--url atual-->
 
 
 
