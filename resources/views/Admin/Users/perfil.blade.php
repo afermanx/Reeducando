@@ -89,6 +89,6 @@
             }
         });
     </script>
-    <script src="{{asset('js/components/Users/users.js')}}"></script>
+    <script src="{{asset('js/components/Users/services.js')}}"></script>
 
 @endsection

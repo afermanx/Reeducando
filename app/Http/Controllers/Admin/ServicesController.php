@@ -17,7 +17,7 @@ class ServicesController extends Controller
     public function index()
     {
         $user = Auth::guard('user')->user();
-        return view('Admin.Register.Services.index')
+        return view('Admin.Services.index')
             ->with('user', $user);
     }
 
