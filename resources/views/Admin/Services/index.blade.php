@@ -35,9 +35,10 @@
                         <tr>
                             <th class="text-center" style="width: 80px;">#</th>
                             <th>Nome</th>
-                            <th class="d-none d-sm-table-cell" style="width: 30%;">Email</th>
-                            <th class="d-none d-sm-table-cell" style="width: 15%;">Tipo</th>
-                            <th style="width: 15%;">Status</th>
+                            <th class="d-none d-sm-table-cell" style="width: 30%;">Descrição</th>
+                            <th class="d-none d-sm-table-cell" style="width: 15%;">Valor R$</th>
+                            <th style="width: 15%;">% Detento</th>
+                            <th style="width: 15%;">% Oficina</th>
                             <th style="width: 15%;">Opções</th>
                         </tr>
                         </thead>

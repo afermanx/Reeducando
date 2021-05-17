@@ -17,7 +17,7 @@
                      <form name="formLogin">
                          @csrf
                          <div class="form-group">
-                             <input type="text" class="form-control" name="email" id="email" placeholder="Digite seu email">
+                             <input type="text" class="form-control"  maxlength="14" name="cpf" id="cpf" placeholder="Digite seu cpf">
                              <span class="label-title"><i class='bx bx-user'></i></span>
                          </div>
 
@@ -49,15 +49,34 @@
  @endsection
 
 @section('js')
+    <script src="{{ asset('/js/plugins/jquery.mask.js') }}"></script>
+
     <script>
+        jQuery(function() {
+            $("#cpf").mask("###.###.###-##", {
+                reverse: true
+            });
+
+
+        });
+
+
+
         $('form[name="formLogin"]').submit(function (event){
             event.preventDefault();
 
-            let email= $("#email").val();
+
+
+            let cpf= $("#cpf").val();
+            jQuery(function() {
+                $("#cpf").mask("###.###.###-##", {
+                    reverse: true
+                });
+            });
 
             $("#loading").removeClass('d-none');
 
-            if(email===""){
+            if(cpf===""){
                 $("#loading").addClass('d-none');
                 Swal.fire({
                     icon: 'error',

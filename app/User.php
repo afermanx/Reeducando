@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','status','type'
+        'name', 'cpf','email', 'password','status','type'
     ];
 
     /**
@@ -45,13 +45,15 @@ class User extends Authenticatable
 
     protected $username;
     /**
-     * @var mixed
+     * @var mixed'
      */
     private $id;
 
+
+
     public function username()
     {
-        return $this->email;
+        return $this->cpf;
     }
 
     public function getAuthPassword() {

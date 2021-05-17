@@ -31,12 +31,12 @@ class UsersLoginController extends Controller
     public function login(Request $request){
 
         $this->validate($request, [
-            'email' => 'required',
+            'cpf' => 'required',
             'password' => 'required'
         ]);
 
         $credenciais = [
-            'email' => $request->email,
+            'cpf' => $request->cpf,
             'password' => $request->password
 
 
