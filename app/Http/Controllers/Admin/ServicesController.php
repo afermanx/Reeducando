@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,39 +18,72 @@ class ServicesController extends Controller
     public function index()
     {
         $user = Auth::guard('user')->user();
+
+        $data = new Service();
+        $services= $data->list();
+
         return view('Admin.Services.index')
-            ->with('user', $user);
+            ->with('user', $user)
+            ->with('services', $services);
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+
+    public function store(Request $request){
+        $user = Auth::guard('user')->user();
+        if (!$user) {
+            return view('Auth.sessionExpired');
+
+
+        }
+
+        try {
+
+            $dados = $request->validate([
+                'name' => 'required',
+                'description' => 'required',
+                'value' => 'required',
+
+
+
+            ]);
+
+            $data = json_decode($request->getContent(), true);
+            $name = $data['name'];
+            $description = $data['description'];
+            $value = $data['value'];
+            $detainee = $data['detainee'];
+            $detainee = $data['workshop'];
+
+
+
+
+
+
+
+
+
+            $service = new Service();
+            $service->name=$name;
+            $service->description=$description;
+            $service->value=$value;
+            $service->detainee=$detainee;
+            $service->workshop=$detainee;
+
+            $service->save();
+
+            return response()->json(['sucesso' => true, 'message' => $service->name.' cadastrado com sucesso', 'idRegister' => $service->id]);
+
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json(['sucesso' => false, 'message' => 'Erro ao validar dados', 'erro' => $e->errors()]);
+        }
+
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Request $request)
     {
         //
     }
@@ -77,14 +111,22 @@ class ServicesController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+
+    public function destroy(Request $request){
+        $user = Auth::guard('user')->user();
+        if (!$user) {
+            return view('Auth.sessionExpired');
+        }
+
+        $data = json_decode($request->getContent(), true);
+
+
+        $service = $data['service_id'];
+
+        Service::where('id',$service)->delete();
+
+
+
+        return response()->json(['sucesso' => true, 'excluido' => true]);
     }
 }

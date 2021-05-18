@@ -12,11 +12,11 @@
             <h3><i class="bx bxs-group"></i> Lista de Serviços</h3>
 
             <div class="dropdown">
-                <button class="btn btn-outline-primary bx bxs-user-plus" type="button" data-toggle="tooltip"
+                <button class="btn btn-outline-primary " type="button" data-toggle="tooltip"
                         onclick="startModal()"
                         data-placement="top"
-                        title="Novo Usuario"
-                        aria-haspopup="true" aria-expanded="false">
+                        title="Novo Serviço"
+                        aria-haspopup="true" aria-expanded="false"><i class="bx bxs-wrench">+</i>
 
                 </button>
 
@@ -33,63 +33,61 @@
                     <table class="table table-bordered table-striped table-vcenter js-dataTable-buttons">
                         <thead>
                         <tr>
-                            <th class="text-center" style="width: 80px;">#</th>
-                            <th>Nome</th>
-                            <th class="d-none d-sm-table-cell" style="width: 30%;">Descrição</th>
-                            <th class="d-none d-sm-table-cell" style="width: 15%;">Valor R$</th>
-                            <th style="width: 15%;">% Detento</th>
-                            <th style="width: 15%;">% Oficina</th>
-                            <th style="width: 15%;">Opções</th>
+                            <th class="text-center" >#</th>
+                            <th class="d-none d-sm-table-cell" >Nome</th>
+                            <th class="d-none d-sm-table-cell" >Descrição</th>
+                            <th class="d-none d-sm-table-cell" >Valor R$</th>
+                            <th class="d-none d-sm-table-cell">% Detento</th>
+                            <th class="d-none d-sm-table-cell">% Oficina</th>
+                            <th class="d-none d-sm-table-cell">Status</th>
+                            <th class="d-none d-sm-table-cell">Opções</th>
                         </tr>
                         </thead>
 
                         <tbody>
-{{--                        @foreach($users as $user)--}}
-{{--                            <tr>--}}
-{{--                                <td class="text-center">{{$user->id}}</td>--}}
-{{--                                <td class="font-w600">--}}
-{{--                                    <a href="">{{$user->name}}</a>--}}
-{{--                                </td>--}}
-{{--                                <td class="d-none d-sm-table-cell">--}}
-{{--                                    <em class="text-muted">{{$user->email}}</em>--}}
-{{--                                </td>--}}
-{{--                                <td>--}}
-{{--                                    <em class="text-muted">{{$user->type}}</em>--}}
-{{--                                </td>--}}
-{{--                                <td class="d-none d-sm-table-cell">--}}
-{{--                                    @if($user->status ==="Ativo")--}}
-{{--                                        <span class="badge badge-success">{{$user->status}}</span>--}}
-{{--                                    @endif--}}
-{{--                                    @if($user->status ==="Inativo")--}}
-{{--                                        <span class="badge badge-warning" style="color: white6" >{{$user->status}}</span>--}}
-{{--                                    @endif--}}
-{{--                                    @if($user->status ==="Bloqueado")--}}
-{{--                                        <span class="badge badge-danger">{{$user->status}}</span>--}}
-{{--                                    @endif--}}
-{{--                                    @if($user->status ==="Mudar Senha")--}}
-{{--                                        <span class="badge badge-info">{{$user->status}}</span>--}}
-{{--                                    @endif--}}
-
-{{--                                </td>--}}
+                        @foreach($services as $service)
+                            <tr>
+                                <td class="text-center">{{$service->id}}</td>
+                                <td class="font-w600">
+                                    <a href="">{{$service->name}}</a>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <em class="text-muted">{{$service->description}}</em>
+                                </td>
+                                <td>
+                                    <em class="text-muted">{{number_format( $service->value ,2,",",".").' R$'}}</em>
+                                </td>
+                                <td class="d-none d-sm-table-cell">{{number_format( $service->detainee ,2,",",".").'%'}}</td>
+                                <td class="d-none d-sm-table-cell">{{number_format( $service->workshop ,2,",",".").'%'}}</td>
+                                <td class="d-none d-sm-table-cell">
+                                    @if($service->status ==="Ativo")
+                                        <span class="badge badge-success">{{$service->status}}</span>
+                                    @endif
+                                    @if($service->status ==="Inativo")
+                                        <span class="badge badge-danger" style="color: white6" >{{$service->status}}</span>
+                                    @endif
 
 
-{{--                                <td>--}}
-{{--                                    <em class="text-muted">--}}
-{{--                                        <button class="btn btn-outline-info bx bx-edit"--}}
-{{--                                                onclick="show({{$user->id}})"--}}
-{{--                                                data-toggle="tooltip" data-placement="top"--}}
-{{--                                                title="Ver dados do usuário">--}}
-{{--                                        </button>--}}
-{{--                                        <button class="btn btn-outline-danger bx bx-trash"--}}
-{{--                                                onclick="destroy({{$user->id}},'{{$user->name}}')"--}}
-{{--                                                data-toggle="tooltip" data-placement="top"--}}
-{{--                                                title="Deletar dados do usuário">--}}
-{{--                                        </button>--}}
+                                </td>
 
-{{--                                    </em>--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
+
+                                <td>
+                                    <em class="text-muted">
+                                        <button class="btn btn-outline-info bx bx-edit"
+                                                onclick="show({{$service->id}})"
+                                                data-toggle="tooltip" data-placement="top"
+                                                title="Editar serviço">
+                                        </button>
+                                        <button class="btn btn-outline-danger bx bx-trash"
+                                                onclick="destroy({{$service->id}},'{{$service->name}}')"
+                                                data-toggle="tooltip" data-placement="top"
+                                                title="Deletar serviço">
+                                        </button>
+
+                                    </em>
+                                </td>
+                            </tr>
+                        @endforeach
                         </tbody>
 
                     </table>
@@ -105,11 +103,11 @@
 
 
     <!-- Modal -->
-    <div class="modal fade basicModalLG" id="usersModal" role="dialog" aria-hidden="true">
+    <div class="modal fade basicModalLG" id="servicesModal" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="usersTitleModal">Large modal</h5>
+                    <h5 class="modal-title" id="servicesTitleModal">Large modal</h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -126,76 +124,60 @@
                             </div>
                             <form>
 
-                                <h3><i class='bx bx-user-circle'></i>Informações Pessoais</h3>
+                                <h3><i class='bx bx-detail'></i>Detalhes</h3>
 
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label><span style="color:red">*</span> Nome:</label>
                                             <input type="text" id='name' class="form-control"
-                                                   placeholder="Nome completo">
+                                                   placeholder="Exemplo: INSULFIM CARRO">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label><span style="color:red">*</span> Email:</label>
-                                            <input type="email" id='email' class="form-control"
-                                                   placeholder="Digite um e-mail valido">
+                                            <label><span style="color:red"></span> Descrição:</label>
+                                            <input type="text" id='description' class="form-control"
+                                                   placeholder="Descrição do serviço">
                                         </div>
                                     </div>
                                 </div>
 
 
-                                <h3><i class='bx bx-lock'></i> Credenciais</h3>
+                                <h3><i class='bx bx-money'></i> Logistica</h3>
 
                                 <div class="row">
-                                    <div class="col-lg-6">
-
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-
-                                            <input id="senhaExibir" class="form-check-input" type="checkbox"> <label
-                                                id="senhaAlterar"> <span style="color:red">*</span>Senha</label>
-                                            <input type="password" name="password" id="password" class="form-control"
-                                                   placeholder="Digite a senha">
-
-                                            <strong id="showMessage"><i style="color: #9B703F ; font-size: 25px"
-                                                                        class="bx bxs-hand-up"></i> Click aqui para
-                                                alterar a senha!</strong>
-
+                                            <label><span style="color:red">*</span> Valor:</label>
+                                            <input type="text" id='value' class="form-control"
+                                                   placeholder="Exemplo: 0.000,00">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6" id="exibirInput2">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label id="senhaAlterar"><span style="color:red">*</span> Confirme a
-                                                senha</label>
-                                            <input type="password" name="passwordRepite" id="passwordRepite"
-                                                   class="form-control"
-                                                   placeholder="Confirme a senha">
-
+                                            <label><span style="color:red"></span>Percentual Detento:</label>
+                                            <input type="text" id='detainee' class="form-control"
+                                                   placeholder="Exemplo: 00,0">
                                         </div>
                                     </div>
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label><span style="color:red"></span> Percentual Oficina:</label>
+                                            <input type="text" id='workshop' class="form-control"
+                                                   placeholder="Exemplo:00,00">
+                                        </div>
+                                    </div>
+
                                 </div>
-
                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
-                                            <label> <span style="color:red">*</span> Tipo de usuario</label>
-                                            <select id="typeUser" class="form-control">
-                                                <option value="ADMINISTRADOR">Adminstrador</option>
-                                                <option value="X">x</option>
-                                                <option value="Y">y</option>
-
-                                            </select>
-                                        </div>
-                                    </div>
                                     <div class="col-lg-6" id="showStatus">
                                         <div class="form-group">
                                             <label> <span style="color:red">*</span>Status</label>
                                             <select id="status" class="form-control">
                                                 <option value="Ativo"><span class="badge badge-success">Ativo</span>
                                                 </option>
-                                                <option value="Bloqueado"><span
-                                                        class="badge badge-warning">Bloqueado</span></option>
+
                                                 <option value="Inativo"><span class="badge badge-danger">Inativo</span>
                                                 </option>
 
@@ -204,6 +186,8 @@
                                         </div>
                                     </div>
                                 </div>
+
+
 
                             </form>
                         </div>

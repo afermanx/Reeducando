@@ -1,5 +1,6 @@
 <?php
 
+use App\Service;
 use Illuminate\Database\Seeder;
 
 class ServicesSeeder extends Seeder
@@ -11,6 +12,12 @@ class ServicesSeeder extends Seeder
      */
     public function run()
     {
-        //
+            Service::create([
+               'name'=>'INSULFIM CARRO HATCH',
+               'description'=>'INSULFIM CARRO HATCH ',
+               'value'=>80.00,
+               'detainee'=>90,
+               'workshop'=>10
+            ]);
     }
 }
