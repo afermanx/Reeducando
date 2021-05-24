@@ -1,15 +1,13 @@
 @extends('themes.Admin.adminLayout')
-@section('titleAdmin','Reeducando | Serviços')
-@section('breadName','Serviços')<!--Destaque do mapa de url-->
-@section('breadItem','Cadastro')<!--Meio do mapa-->
-@section('breadcrumb')
-    <li class="item">Serviços</li><!--Pagina atual-->
-@endsection
+@section('titleAdmin','Reeducando | Ordens de Serviços')
+@section('breadName','Ordens de Serviços')<!--Destaque do mapa de url-->
+@section('breadItem','Ordens de Serviços')<!--Meio do mapa-->
+
 
 @section('content')
     <div class="card mb-30">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h3><i class="bx bxs-group"></i> Lista de Serviços</h3>
+            <h3><i class="bx bxs-notepad"></i> Ordens de Serviços</h3>
 
             <div class="dropdown">
                 <button class="btn btn-outline-primary " type="button" data-toggle="tooltip"
@@ -45,49 +43,49 @@
                         </thead>
 
                         <tbody>
-                        @foreach($services as $service)
-                            <tr>
-                                <td class="text-center">{{$service->id}}</td>
-                                <td class="font-w600">
-                                    <a href="">{{$service->name}}</a>
-                                </td>
-                                <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted">{{$service->description}}</em>
-                                </td>
-                                <td>
-                                    <em class="text-muted">{{number_format( $service->value ,2,",",".").' R$'}}</em>
-                                </td>
-                                <td class="d-none d-sm-table-cell">{{number_format( $service->detainee ,2,",",".").'%'}}</td>
-                                <td class="d-none d-sm-table-cell">{{number_format( $service->workshop ,2,",",".").'%'}}</td>
-                                <td class="d-none d-sm-table-cell">
-                                    @if($service->status ==="Ativo")
-                                        <span class="badge badge-success">{{$service->status}}</span>
-                                    @endif
-                                    @if($service->status ==="Inativo")
-                                        <span class="badge badge-danger" style="color: white6" >{{$service->status}}</span>
-                                    @endif
+{{--                        @foreach($services as $service)--}}
+{{--                            <tr>--}}
+{{--                                <td class="text-center">{{$service->id}}</td>--}}
+{{--                                <td class="font-w600">--}}
+{{--                                    <a href="">{{$service->name}}</a>--}}
+{{--                                </td>--}}
+{{--                                <td class="d-none d-sm-table-cell">--}}
+{{--                                    <em class="text-muted">{{$service->description}}</em>--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <em class="text-muted">{{number_format( $service->value ,2,",",".").' R$'}}</em>--}}
+{{--                                </td>--}}
+{{--                                <td class="d-none d-sm-table-cell">{{number_format( $service->detainee ,2,",",".").'%'}}</td>--}}
+{{--                                <td class="d-none d-sm-table-cell">{{number_format( $service->workshop ,2,",",".").'%'}}</td>--}}
+{{--                                <td class="d-none d-sm-table-cell">--}}
+{{--                                    @if($service->status ==="Ativo")--}}
+{{--                                        <span class="badge badge-success">{{$service->status}}</span>--}}
+{{--                                    @endif--}}
+{{--                                    @if($service->status ==="Inativo")--}}
+{{--                                        <span class="badge badge-danger" style="color: white6" >{{$service->status}}</span>--}}
+{{--                                    @endif--}}
 
 
-                                </td>
+{{--                                </td>--}}
 
 
-                                <td>
-                                    <em class="text-muted">
-                                        <button class="btn btn-outline-info bx bx-edit"
-                                                onclick="show({{$service->id}})"
-                                                data-toggle="tooltip" data-placement="top"
-                                                title="Editar serviço">
-                                        </button>
-                                        <button class="btn btn-outline-danger bx bx-trash"
-                                                onclick="destroy({{$service->id}},'{{$service->name}}')"
-                                                data-toggle="tooltip" data-placement="top"
-                                                title="Deletar serviço">
-                                        </button>
+{{--                                <td>--}}
+{{--                                    <em class="text-muted">--}}
+{{--                                        <button class="btn btn-outline-info bx bx-edit"--}}
+{{--                                                onclick="show({{$service->id}})"--}}
+{{--                                                data-toggle="tooltip" data-placement="top"--}}
+{{--                                                title="Editar serviço">--}}
+{{--                                        </button>--}}
+{{--                                        <button class="btn btn-outline-danger bx bx-trash"--}}
+{{--                                                onclick="destroy({{$service->id}},'{{$service->name}}')"--}}
+{{--                                                data-toggle="tooltip" data-placement="top"--}}
+{{--                                                title="Deletar serviço">--}}
+{{--                                        </button>--}}
 
-                                    </em>
-                                </td>
-                            </tr>
-                        @endforeach
+{{--                                    </em>--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
+{{--                        @endforeach--}}
                         </tbody>
 
                     </table>

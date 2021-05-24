@@ -33,7 +33,17 @@ Route::namespace('Admin')->group(function () {
 //     Start routes services
         Route::get('/cadastro/servicos', 'ServicesController@index')->name('Admin.services');
         Route::post('/servicos/salvar', 'ServicesController@store')->name('Admin.services.save');
+        Route::post('/servicos/mostrar', 'ServicesController@show')->name('Admin.services.show');
+        Route::post('/servicos/editar', 'ServicesController@edit')->name('Admin.services.edit');
         Route::post('/servicos/excluir', 'ServicesController@destroy')->name('Admin.services.delete');
 //     End routes services
+
+//     Start routes ordens services
+        Route::get('/os', 'OrderServiceController@index')->name('Admin.os');
+        Route::post('/os/salvar', 'OrderServiceController@store')->name('Admin.os.save');
+        Route::post('/os/mostrar', 'OrderServiceController@show')->name('Admin.os.show');
+        Route::post('/os/editar', 'OrderServiceController@edit')->name('Admin.os.edit');
+        Route::post('/os/excluir', 'OrderServiceController@destroy')->name('Admin.os.delete');
+//     End routes ordens services
 
 });

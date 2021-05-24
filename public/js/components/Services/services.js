@@ -8,7 +8,7 @@ function startModal() {
 }
 
 function closeModal() {
-    $("#usersModal").modal('hide')
+    $("#servicesModal").modal('hide')
 }
 
 function save() {
@@ -103,7 +103,7 @@ function save() {
         , dataType: 'json'
     });
     $("#loading").addClass('d-none')
-    jQuery('#usersModal').modal('hide');
+   $('#servicesModal').modal('hide');
 
 
 }
@@ -111,16 +111,12 @@ function save() {
 function show(id) {
 
 
-     $("#showStatus").show();
-
-
-
 
     $.ajax({
         type: 'POST'
         , url: '/servicos/mostrar'
         , data: JSON.stringify({
-            $user_id: id
+            service_id: id
         }),
         success: function (data) {
             var retorno = $.parseJSON(JSON.stringify(data));
@@ -151,12 +147,12 @@ function show(id) {
                 $('#status').val(retorno['services']['status']).change();
 
 
-                $("#usersTitleModal").html('<h5>Editar de usuarios</h5>');
+                $("#servicesTitleModal").html('<h5>Editar de Serviços</h5>');
 
                 $("#btnSave").html('<i class=" bx bx-edit"></i> Editar');
-                $("#senhaAlterar").html('<label>Alterar Senha</label>');
+
                 $("#btnSave").attr("onclick", 'edit(' + id + ')');
-                jQuery('#usersModal').modal('show');
+                $('#servicesModal').modal('show');
             }
         }
         , error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -171,75 +167,55 @@ function show(id) {
 }
 
 function edit(id) {
-
     let name = $('#name').val();
-    let email = $('#email').val();
-    let type = $('#typeUser').val();
-    let password = $('#password').val();
-    let passwordRepite = $('#passwordRepite').val();
-    let status = $('#status').val();
+    let description = $('#description').val();
+    let value = $('#value').val();
+    let detainee = $('#detainee').val();
+    let workshop = $('#workshop').val();
 
-    console.log(status)
+
+
+
     if (!name) {
         Swal.fire({
             icon: 'error'
             , title: 'Oops...'
-            , text: 'Digite o nome completo para continuarmos'
+            , text: 'Preencha campo nome para continuarmos'
             , footer: 'Qualquer dúvida entre em contato com o Suporte'
         });
         return;
     }
 
-    if (!email) {
+    if (!value) {
         Swal.fire({
             icon: 'error'
             , title: 'Oops...'
-            , text: 'Digite o e-mail completo para continuarmos'
+            , text: 'Preencha o campo valor'
             , footer: 'Qualquer dúvida entre em contato com o Suporte'
         });
         return;
     }
-    if (password) {
 
-        if (password.length < 6) {
-            Swal.fire({
-                icon: 'error'
-                , title: 'Oops...'
-                , text: 'Digite no minimo 6 digitos na senha'
-                , footer: 'Qualquer dúvida entre em contato com o Suporte'
-            });
-            return;
-        }
-
-        if (password !== passwordRepite) {
-            Swal.fire({
-                icon: 'error'
-                , title: 'Oops...'
-                , text: 'As senhas não conferem '
-                , footer: 'Qualquer dúvida entre em contato com o Suporte'
-            });
-            return;
-        }
-
-
-    }
 
 
     let data = JSON.stringify({
         name: name
-        , email: email
-        , password: password
-        , type: type
-        , status: status
-        , user_id: id
+        ,description:description
+        ,value:value
+        ,detainee:detainee
+        ,workshop:workshop
+        ,service_id:id
 
     })
+
+
+    console.log(data)
 
 
     $("#loading").removeClass('d-none');
     $.ajax({
         type: 'POST'
-        , url: '/usuario/editar'
+        , url: '/servicos/editar'
         , data: data,
         success: function (data) {
             var retorno = $.parseJSON(JSON.stringify(data));
@@ -265,11 +241,11 @@ function edit(id) {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Usuario editado com sucesso',
+                    title: 'Serviços cadastrado com sucesso',
                     showConfirmButton: false,
                     timer: 1500,
                     onClose: () => {
-                        $(location).attr('href', '/cadastro/usuarios')
+                        $(location).attr('href', '/cadastro/servicos')
                     }
                 })
             }
@@ -283,7 +259,7 @@ function edit(id) {
         , dataType: 'json'
     });
     $("#loading").addClass('d-none')
-    jQuery('#usersModal').modal('hide');
+    $('#servicesModal').modal('hide');
 
 
 }

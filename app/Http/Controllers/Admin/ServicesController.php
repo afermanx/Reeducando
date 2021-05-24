@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Service;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,7 +54,7 @@ class ServicesController extends Controller
             $description = $data['description'];
             $value = $data['value'];
             $detainee = $data['detainee'];
-            $detainee = $data['workshop'];
+            $workshop = $data['workshop'];
 
 
 
@@ -68,7 +69,7 @@ class ServicesController extends Controller
             $service->description=$description;
             $service->value=$value;
             $service->detainee=$detainee;
-            $service->workshop=$detainee;
+            $service->workshop=$workshop;
 
             $service->save();
 
@@ -85,31 +86,70 @@ class ServicesController extends Controller
 
     public function show(Request $request)
     {
-        //
+        $user = Auth::guard('user')->user();
+        if (!$user) {
+            return view('Auth.sessionExpired');
+        }
+
+        $data = json_decode($request->getContent(), true);
+        $id=$data['service_id'];
+
+
+        $service=Service::where('id',$id)->get();
+
+
+
+
+
+
+
+        return response()->json(['sucesso' => true, 'services' => $service[0]]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+        $user = Auth::guard('user')->user();
+        if (!$user) {
+            return view('Auth.sessionExpired');
+
+
+        }
+
+        try {
+
+            $dados = $request->validate([
+                'name' => 'required',
+                'description' => 'required',
+                'value' => 'required',
+
+            ]);
+
+            $data = json_decode($request->getContent(), true);
+            $name = $data['name'];
+            $description = $data['description'];
+            $value = $data['value'];
+            $detainee = $data['detainee'];
+            $workshop = $data['workshop'];
+            $id = $data['service_id'];
+
+            $service = Service::find($id);
+            $service->name=$name;
+            $service->description=$description;
+            $service->value=$value;
+            $service->detainee=$detainee;
+            $service->workshop=$workshop;
+
+            $service->save();
+
+            return response()->json(['sucesso' => true, 'message' => $service->name.' cadastrado com sucesso', 'idRegister' => $service->id]);
+
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json(['sucesso' => false, 'message' => 'Erro ao validar dados', 'erro' => $e->errors()]);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
 
 
     public function destroy(Request $request){

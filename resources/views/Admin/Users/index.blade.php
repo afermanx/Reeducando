@@ -244,7 +244,7 @@
         });
     </script>
 
-    <script src="{{asset('js/components/Users/services.js')}}"></script>
+    <script src="{{asset('js/components/Users/users.js')}}"></script>
 
 @endsection
 
