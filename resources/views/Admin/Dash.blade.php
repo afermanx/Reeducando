@@ -7,6 +7,24 @@
 
 @section('content')
     <!-- Start -->
+    <!-- Welcome Area -->
+    <div class="welcome-area">
+        <div class="row m-0 align-items-center">
+            <div class="col-lg-12 col-md-12 p-0 text-center" >
+                <div class="welcome-content">
+                    <h1 class="mb-2">Ola, Bem vindo de volta! {{$user->name}}</h1>
+
+                </div>
+            </div>
+
+            <div class="col-xl-8 col-md-12 p-0">
+                <div class="welcome-img">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Welcome Area -->
     <div class="row">
         <div class="col-lg-3 col-md-6">
             <div class="stats-card-box">
@@ -693,9 +711,9 @@
         </div>
     </div>
     <!-- End -->
-@endsection
+    @endsection
 
-@section("jsAdmin")
+@push("jsAdmin")
     <script>
         $(document).ready(function () {
             if ({{$user->status ==="Mudar Senha"}}) {
@@ -736,4 +754,4 @@
 
     </script>
 
-@endsection
+@endpush

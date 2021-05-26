@@ -1,9 +1,9 @@
 <!-- Start Sidemenu Area -->
 <div class="sidemenu-area">
     <div class="sidemenu-header">
-        <a href="{{route('Admin.dash')}}" class="navbar-brand d-flex align-items-center">
-            {{--            <img src="assets/img/small-logo.png" alt="image">--}}
-            <span>Reeducando</span>
+        <a href="" class="navbar-brand d-flex align-items-center">
+            <img src="{{asset('img/LogoReeducando.png')}}" width="30%" alt="image">
+            <span>Reeducar</span>
         </a>
 
         <div class="burger-menu d-none d-lg-block">
@@ -60,7 +60,7 @@
                     <li class="nav-item">
                         <a href="email-read.html" class="nav-link">
                             <span class="icon"><i class=' bx bxs-right-arrow-square'></i></span>
-                            <span class="menu-title">Entradas</span>
+                            <span class="menu-title">Recebimentos</span>
                         </a>
                     </li>
 

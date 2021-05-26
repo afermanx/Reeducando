@@ -9,11 +9,11 @@
              <div class="d-table-cell">
                  <div class="login-form">
                      <div class="logo">
-                         <a href="{{route('Auth.loginForm')}}"><h2>REEDUCANDO</h2></a>
-                     </div>
-{{--                     <img src="{{asset('img/logo.png')}}" alt="image">--}}
-                     <h2>Para acessar o sistema</h2>
+                         <div class="swal2-grow-row-6">
+                         <img src="{{asset('img/LogoReeducando.png')}}" alt="image" width="40%">
 
+                         </div>
+                     </div>
                      <form name="formLogin">
                          @csrf
                          <div class="form-group">
@@ -37,7 +37,7 @@
                              </div>
                          </div>
 
-                         <button type="submit" class="login-btn"><span id="loading" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>Acessar</button>
+                         <button type="submit" class="login-btn"><span id="loading" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span> Acessar</button>
 
                          <p class="mb-0">Caso não tenha usuario? <a href="{{route('Auth.registerForm')}}">Click aqui cadastrar</a></p>
                      </form>
