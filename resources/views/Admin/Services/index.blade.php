@@ -227,6 +227,8 @@
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             }
         });
+
+
     </script>
 
     <script src="{{asset('js/components/Services/services.js')}}"></script>

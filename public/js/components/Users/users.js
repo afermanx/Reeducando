@@ -6,6 +6,7 @@ function startModal() {
     $("#passwordRepite").show();
     $("#showStatus").hide();
     $("#showMessage").hide();
+
     $("#usersTitleModal").html('<h5>Cadastro de usuarios</h5>');
     $('#usersModal').modal('show');
 }
@@ -18,8 +19,10 @@ function save() {
     let name = $('#name').val();
     let email = $('#email').val();
     let type = $('#typeUser').val();
+    let cpf = $('#cpf').val();
     let password = $('#password').val();
     let passwordRepite = $('#passwordRepite').val();
+
 
 
     if (!name) {
@@ -37,6 +40,15 @@ function save() {
             icon: 'error'
             , title: 'Oops...'
             , text: 'Digite o e-mail completo para continuarmos'
+            , footer: 'Qualquer dúvida entre em contato com o Suporte'
+        });
+        return;
+    }
+    if (!cpf) {
+        Swal.fire({
+            icon: 'error'
+            , title: 'Oops...'
+            , text: 'Digite o seu CPF para continuarmos'
             , footer: 'Qualquer dúvida entre em contato com o Suporte'
         });
         return;
@@ -103,6 +115,7 @@ function save() {
                     , email: email
                     , password: generatePass
                     , type: type
+                    , cpf:cpf
                     , status:'Mudar Senha'
 
                 })
@@ -125,6 +138,8 @@ function save() {
                                 for (erro in erros) {
                                     mensagem = mensagem + erros[erro] + '</br>';
                                 }
+                                $('#usersModal').modal('show');
+
                             }
                             Swal.fire({
                                 icon: 'error'
@@ -172,6 +187,7 @@ function save() {
         , email: email
         , password: password
         , type: type
+        , cpf:cpf
         , status:'Inativo'
 
     })
@@ -193,12 +209,18 @@ function save() {
                     for (erro in erros) {
                         mensagem = mensagem + erros[erro] + '</br>';
                     }
+
                 }
                 Swal.fire({
                     icon: 'error'
                     , title: 'Oops...'
                     , html: mensagem
                     , footer: 'Qualquer dúvida entre em contato com o Suporte'
+                    ,showConfirmButton:true ,
+                }).then((result) => {
+                    if (result) {
+                        $("#usersModal").modal('show')
+                    }
                 });
                 return;
 
@@ -275,6 +297,7 @@ function show(id) {
             if (retorno['sucesso'] === true) {
                 $('#name').val(retorno['users']['name']);
                 $('#email').val(retorno['users']['email']);
+                $('#cpf').val(retorno['users']['cpf']);
                 $('#typeUser').val(retorno['users']['type']).change();
                 $('#status').val(retorno['users']['status']).change();
 
@@ -301,6 +324,7 @@ function show(id) {
 function edit(id) {
 
     let name = $('#name').val();
+    let cpf = $('#cpf').val();
     let email = $('#email').val();
     let type = $('#typeUser').val();
     let password = $('#password').val();
@@ -323,6 +347,15 @@ function edit(id) {
             icon: 'error'
             , title: 'Oops...'
             , text: 'Digite o e-mail completo para continuarmos'
+            , footer: 'Qualquer dúvida entre em contato com o Suporte'
+        });
+        return;
+    }
+    if (!cpf) {
+        Swal.fire({
+            icon: 'error'
+            , title: 'Oops...'
+            , text: 'Digite o CPF para continuarmos'
             , footer: 'Qualquer dúvida entre em contato com o Suporte'
         });
         return;
@@ -356,6 +389,7 @@ function edit(id) {
     let data = JSON.stringify({
         name: name
         , email: email
+        , cpf: cpf
         , password: password
         , type: type
         , status: status
@@ -420,6 +454,7 @@ function editPerfil(id) {
 
     let name = $('#name').val();
     let email = $('#email').val();
+    let cpf = $('#cpf').val();
     let type = $('#typeUser').val();
     let password = $('#password').val();
     let passwordRepite = $('#passwordRepite').val();
@@ -431,6 +466,15 @@ function editPerfil(id) {
             icon: 'error'
             , title: 'Oops...'
             , text: 'Digite o nome completo para continuarmos'
+            , footer: 'Qualquer dúvida entre em contato com o Suporte'
+        });
+        return;
+    }
+    if (!cpf) {
+        Swal.fire({
+            icon: 'error'
+            , title: 'Oops...'
+            , text: 'Digite o seu CPF para continuarmos'
             , footer: 'Qualquer dúvida entre em contato com o Suporte'
         });
         return;
@@ -470,6 +514,7 @@ function editPerfil(id) {
         let data = JSON.stringify({
             name: name
             , email: email
+            , cpf: cpf
             , password: password
             , type: type
             , status: status
@@ -531,6 +576,7 @@ function editPerfil(id) {
         let data = JSON.stringify({
             name: name
             , email: email
+            , cpf: cpf
             , password: password
             , type: type
             , status: status

@@ -10,13 +10,13 @@
             <h3><i class="bx bxs-notepad"></i> Ordens de Serviços</h3>
 
             <div class="dropdown">
-                <button class="btn btn-outline-primary " type="button" data-toggle="tooltip"
-                        onclick="startModal()"
+                <a class="btn btn-outline-primary " type="button" data-toggle="tooltip"
+                        href="{{route('Admin.os.register')}}"
                         data-placement="top"
                         title="Novo Serviço"
-                        aria-haspopup="true" aria-expanded="false"><i class="bx bxs-wrench">+</i>
+                        aria-haspopup="true" aria-expanded="false"><i class="bx bx-plus"></i>
 
-                </button>
+                </a>
 
             </div>
         </div>

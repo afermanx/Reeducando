@@ -63,28 +63,34 @@ class UsersController extends Controller
             $data = json_decode($request->getContent(), true);
             $name = $data['name'];
             $email = $data['email'];
+            $cpf = $data['cpf'];
             $type = $data['type'];
             $password = $data['password'];
             $status = $data['status'];
 
 
 
+            $userCheck=User::where('cpf',$cpf)->get();
+
+            if($userCheck===$cpf){
+                return response()->json(['sucesso'=>false,'message'=>'O Usuario com o cpf ' .$cpf. ' ja esta cadastrado']);
+            }
 
 
 
+                $passCrypt = Hash::make($password);
 
-            $passCrypt = Hash::make($password);
+            $user = new User();
+            $user->name=$name;
+            $user->email=$email;
+            $user->cpf=$cpf;
+            $user->password=$passCrypt;
+            $user->type=$type;
+            $user->status=$status;
 
-            $users = new User();
-            $users->name=$name;
-            $users->email=$email;
-            $users->password=$passCrypt;
-            $users->type=$type;
-            $users->status=$status;
+            $user->save();
 
-            $users->save();
-
-            return response()->json(['sucesso' => true, 'message' => 'Usuario cadastrado com sucesso', 'idRegister' => $users->id]);
+            return response()->json(['sucesso' => true, 'message' => 'Usuario cadastrado com sucesso', 'idRegister' => $user->id]);
 
 
         } catch (\Illuminate\Validation\ValidationException $e) {

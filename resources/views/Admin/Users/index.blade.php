@@ -128,20 +128,28 @@
                                 <h3><i class='bx bx-user-circle'></i>Informações Pessoais</h3>
 
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label><span style="color:red">*</span> Nome:</label>
                                             <input type="text" id='name' class="form-control"
                                                    placeholder="Nome completo">
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label><span style="color:red">*</span> CPF:</label>
+                                            <input type="text" maxlength="14" id='cpf' class="form-control"
+                                                   placeholder="Digite seu CPF">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
                                         <div class="form-group">
                                             <label><span style="color:red">*</span> Email:</label>
                                             <input type="email" id='email' class="form-control"
                                                    placeholder="Digite um e-mail valido">
                                         </div>
                                     </div>
+
                                 </div>
 
 
@@ -181,8 +189,8 @@
                                             <label> <span style="color:red">*</span> Tipo de usuario</label>
                                             <select id="typeUser" class="form-control">
                                                 <option value="ADMINISTRADOR">Adminstrador</option>
-                                                <option value="X">x</option>
-                                                <option value="Y">y</option>
+                                                <option value="DETENTO">Detento</option>
+                                                <option value="CLIENTE">Cliente</option>
 
                                             </select>
                                         </div>
@@ -236,15 +244,23 @@
 
 @endsection
 @section('jsAdmin')
+    <script src="{{ asset('/js/plugins/jquery.mask.js') }}"></script>
+    <script src="{{asset('js/components/Users/users.js')}}"></script>
     <script>
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             }
         });
+        jQuery(function() {
+            $("#cpf").mask("###.###.###-##", {
+                reverse: true
+            });
+        });
+
     </script>
 
-    <script src="{{asset('js/components/Users/users.js')}}"></script>
+
 
 @endsection
 

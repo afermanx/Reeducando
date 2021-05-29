@@ -15,6 +15,13 @@ class CreateOrderServicesTable extends Migration
     {
         Schema::create('order_services', function (Blueprint $table) {
             $table->id();
+            $table->integer('service_id');
+            $table->integer('user_id');
+            $table->decimal('valor');
+            $table->decimal('valorRecebido');
+            $table->dateTime('dataInicio');
+            $table->dateTime('dataFim');
+            $table->string('status');
             $table->timestamps();
         });
     }
