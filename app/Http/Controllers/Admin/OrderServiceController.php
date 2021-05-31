@@ -31,10 +31,12 @@ class OrderServiceController extends Controller
          $detentos = User::where('type','DETENTO')->get();
          $servicos = Service::orderBy('id','DESC')->get();
         $clientes = User::where('type','CLIENTE')->get();
+        $os = OrderService::get();
 
 
         return view('Admin.orderServices.registerOS')
             ->with('user', $user)
+            ->with('os', $os)
             ->with('detentos',$detentos)
             ->with('servicos',$servicos)
             ->with('clientes',$clientes);

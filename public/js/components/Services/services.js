@@ -52,10 +52,6 @@ function save() {
 
     })
 
-
-    console.log(data)
-
-
     $("#loading").removeClass('d-none');
     $.ajax({
         type: 'POST'

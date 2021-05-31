@@ -18471,7 +18471,7 @@ $.widget( "ui.tooltip", {
 		this._addDescribedBy( target, tooltip.attr( "id" ) );
 		tooltip.find( ".ui-tooltip-content" ).html( content );
 
-		// Support: Voiceover on OS X, JAWS on IE <= 9
+		// Support: Voiceover on Os X, JAWS on IE <= 9
 		// JAWS announces deletions even when aria-relevant="additions"
 		// Voiceover will sometimes re-read the entire log region's contents from the beginning
 		this.liveRegion.children().hide();

@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('js/plugins/datatables/dataTables.bootstrap4.css')}}">
     <link rel="stylesheet" href="{{asset('js/plugins/datatables/buttons-bs4/buttons.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('js/plugins/sweetalert2/sweetalert2.css')}}">
-
+    @yield('styles')
 
 
 

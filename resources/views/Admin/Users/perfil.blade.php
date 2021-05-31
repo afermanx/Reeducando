@@ -12,6 +12,15 @@
         <div class="card-body">
             <form>
                 <h3><i class='bx bx-user-circle'></i>Informações Pessoais </h3>
+                <div class="row" >
+                    <div class="col-lg-12 text-center " >
+                        <img  id="img" class="img-thumbnail" src="{{asset('img/LogoReeducando.png')}}"   width="150" height="200  "  >
+                        <input type="file" id="upload" >
+
+                    </div>
+
+                </div>
+                <br>
 
                 <div class="row">
                     <div class="col-lg-6">
@@ -88,6 +97,26 @@
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             }
         });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                let reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+                alert(e.target.result)
+            }
+        }
+
+        $("#upload").change(function(){
+            readURL(this);
+        });
+
+
+        X
     </script>
     <script src="{{asset('js/components/Users/services.js')}}"></script>
 

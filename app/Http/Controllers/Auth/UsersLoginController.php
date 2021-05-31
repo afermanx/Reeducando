@@ -57,7 +57,7 @@ class UsersLoginController extends Controller
 
         //return back()->withInput();
         $login['success']=false;
-        $login['message']='OS DADOS INSERIDOS NÃO CONFEREM';
+        $login['message']='Os DADOS INSERIDOS NÃO CONFEREM';
         echo json_encode($login);
         return;
 
