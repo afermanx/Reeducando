@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Cliente;
+use App\Detento;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -53,8 +56,7 @@ class UsersController extends Controller
 
             $dados = $request->validate([
                 'name' => 'required',
-                'email' => 'required',
-                'type' => 'required',
+
 
 
 
@@ -72,25 +74,65 @@ class UsersController extends Controller
 
             $userCheck=User::where('cpf',$cpf)->get();
 
+
+
+
             if($userCheck===$cpf){
                 return response()->json(['sucesso'=>false,'message'=>'O Usuario com o cpf ' .$cpf. ' ja esta cadastrado']);
+            }
+            $passCrypt = Hash::make($password);
+
+            if($type==="CLIENTE"){
+
+
+                $user = new Cliente();
+                $user->name=$name;
+                $user->email=$email;
+                $user->cpf=$cpf;
+                $user->password=$passCrypt;
+                $user->type=$type;
+                $user->status=$status;
+
+                $user->save();
+
+                return response()->json(['sucesso' => true, 'message' => 'Usuario cadastrado com sucesso', 'idRegister' => $user->id]);
+
+            }
+            if($type==="DETENTO"){
+
+
+                $user = new Detento();
+                $user->name=$name;
+                $user->email=$email;
+                $user->cpf=$cpf;
+                $user->password=$passCrypt;
+                $user->type=$type;
+                $user->status=$status;
+
+                $user->save();
+
+                return response()->json(['sucesso' => true, 'message' => 'Usuario cadastrado com sucesso', 'idRegister' => $user->id]);
+
+            }
+            if($type==="ADMINISTRADOR"){
+
+
+                $user = new Cliente();
+                $user->name=$name;
+                $user->email=$email;
+                $user->cpf=$cpf;
+                $user->password=$passCrypt;
+                $user->type=$type;
+                $user->status=$status;
+
+                $user->save();
+
+                return response()->json(['sucesso' => true, 'message' => 'Usuario cadastrado com sucesso', 'idRegister' => $user->id]);
+
             }
 
 
 
-                $passCrypt = Hash::make($password);
-
-            $user = new User();
-            $user->name=$name;
-            $user->email=$email;
-            $user->cpf=$cpf;
-            $user->password=$passCrypt;
-            $user->type=$type;
-            $user->status=$status;
-
-            $user->save();
-
-            return response()->json(['sucesso' => true, 'message' => 'Usuario cadastrado com sucesso', 'idRegister' => $user->id]);
 
 
         } catch (\Illuminate\Validation\ValidationException $e) {

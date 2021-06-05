@@ -20,7 +20,7 @@ class UsersLoginController extends Controller
     protected $redirectTo = '/dashboard';
 
     public function loginForm(){
-        return view('Auth.login');
+        return view('Auth.Login');
 
     }
     public function registerForm(){

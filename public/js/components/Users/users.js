@@ -35,7 +35,7 @@ function save() {
         return;
     }
 
-    if (!email) {
+    if (!email && type==='ADMINISTRADOR') {
         Swal.fire({
             icon: 'error'
             , title: 'Oops...'
@@ -44,7 +44,7 @@ function save() {
         });
         return;
     }
-    if (!cpf) {
+    if (!cpf && type==='ADMINISTRADOR') {
         Swal.fire({
             icon: 'error'
             , title: 'Oops...'
@@ -54,7 +54,7 @@ function save() {
         return;
     }
 
-    if(password){
+    if(password && type==='ADMINISTRADOR'){
         if (password.length < 6) {
             Swal.fire({
                 icon: 'error'
@@ -66,7 +66,7 @@ function save() {
         }
 
 
-        if (password !== passwordRepite) {
+        if (password !== passwordRepite && type==='ADMINISTRADOR') {
             Swal.fire({
                 icon: 'error'
                 , title: 'Oops...'
@@ -332,7 +332,7 @@ function edit(id) {
     let status = $('#status').val();
 
     console.log(status)
-    if (!name) {
+    if (!name ) {
         Swal.fire({
             icon: 'error'
             , title: 'Oops...'
@@ -342,7 +342,7 @@ function edit(id) {
         return;
     }
 
-    if (!email) {
+    if (!email && type==='ADMINISTRADOR') {
         Swal.fire({
             icon: 'error'
             , title: 'Oops...'
@@ -360,7 +360,7 @@ function edit(id) {
         });
         return;
     }
-    if (password) {
+    if (password & type==='ADMINISTRADOR') {
 
         if (password.length < 6) {
             Swal.fire({
@@ -372,7 +372,7 @@ function edit(id) {
             return;
         }
 
-        if (password !== passwordRepite) {
+        if (password !== passwordRepite & type==='ADMINISTRADOR') {
             Swal.fire({
                 icon: 'error'
                 , title: 'Oops...'
@@ -470,7 +470,7 @@ function editPerfil(id) {
         });
         return;
     }
-    if (!cpf) {
+    if (!cpf & type==='ADMINISTRADOR' ) {
         Swal.fire({
             icon: 'error'
             , title: 'Oops...'
@@ -480,7 +480,7 @@ function editPerfil(id) {
         return;
     }
 
-    if (!email) {
+    if (!email & type==='ADMINISTRADOR') {
         Swal.fire({
             icon: 'error'
             , title: 'Oops...'
@@ -489,7 +489,7 @@ function editPerfil(id) {
         });
         return;
     }
-    if (password) {
+    if (password & type==='ADMINISTRADOR' ) {
 
         if (password.length < 6) {
             Swal.fire({
@@ -501,7 +501,7 @@ function editPerfil(id) {
             return;
         }
 
-        if (password !== passwordRepite) {
+        if (password !== passwordRepite ) {
             Swal.fire({
                 icon: 'error'
                 , title: 'Oops...'

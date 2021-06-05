@@ -14,6 +14,7 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+
         User::create([
             'name'=>'Teste da silva',
             'email'=>'teste@teste.com',
@@ -22,5 +23,27 @@ class UsersSeeder extends Seeder
             'status'=>'Ativo',
             'password'=>Hash::make('teste123')
         ]);
+
+        User::create([
+            'name'=>'Teste Cliente',
+            'email'=>'teste@cliente.com',
+            'cpf'=>'000.000.000-01',
+            'type'=>'CLIENTE',
+            'status'=>'Ativo',
+            'password'=>Hash::make('teste123')
+        ]);
+
+
+        User::create([
+            'name'=>'Teste Detento',
+            'email'=>'teste@detento.com',
+            'cpf'=>'000.000.000-02',
+            'type'=>'DETENTO',
+            'status'=>'Ativo',
+            'password'=>Hash::make('teste123')
+        ]);
     }
 }
+
+
+

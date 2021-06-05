@@ -13,6 +13,7 @@
             line-height: 31px !important;
         }
 
+
         .select2-container .select2-selection--single {
             height: 47px !important;
         }
@@ -209,6 +210,117 @@
 
 
         })
+
+
+
+
+
+        function saveOs() {
+            let valor = $("#edtValor").maskMoney("unmasked")[0]
+            let dataInicio = $("#edtData").val()
+            let service = $("#cbServico").val()
+            let serviceName = $("#cbServico").text()
+
+            let cliente = $("#cbCliente").val()
+            let detento = $("#cbDetento").val()
+
+            if (!dataInicio) {
+                Swal.fire({
+                    icon: 'error'
+                    , title: 'Oops...'
+                    , text: 'Preencha o campo DATA'
+                    , footer: 'Qualquer dúvida entre em contato com o Suporte'
+                });
+                return;
+
+            }
+            if (!service) {
+                Swal.fire({
+                    icon: 'error'
+                    , title: 'Oops...'
+                    , text: 'Selecione ou cadastre um Serviço'
+                    , footer: 'Qualquer dúvida entre em contato com o Suporte'
+                });
+                return;
+
+            }
+            if (!cliente) {
+                Swal.fire({
+                    icon: 'error'
+                    , title: 'Oops...'
+                    , text: 'Selecione ou cadastre um Cliente'
+                    , footer: 'Qualquer dúvida entre em contato com o Suporte'
+                });
+                return;
+
+            }
+            if (!cliente) {
+                Swal.fire({
+                    icon: 'error'
+                    , title: 'Oops...'
+                    , text: 'Selecione ou cadastre um Cliente'
+                    , footer: 'Qualquer dúvida entre em contato com o Suporte'
+                });
+                return;
+
+            }
+
+            let data = JSON.stringify({
+                valor: valor,
+                dataInicio: dataInicio,
+                service: service,
+                cliente: cliente,
+                detento: detento,
+                serviceName: serviceName
+
+            })
+
+            $.ajax({
+                type: 'POST'
+                , url: '{{route('Admin.os.save')}}'
+                , data: data,
+                success: function (data) {
+                    var retorno = $.parseJSON(JSON.stringify(data));
+
+                    $("#btnSalvarEntidade").html('<i class="fa fa-fw fa-plus mr-1"></i> Efetuar Cadastro');
+                    if (retorno['sucesso'] === false) {
+                        let mensagem = retorno['message'] + '</br>';
+                        if (retorno['erro']) {
+                            var erros = $.parseJSON(JSON.stringify(retorno['erro']));
+                            for (erro in erros) {
+                                mensagem = mensagem + erros[erro] + '</br>';
+                            }
+                        }
+                        Swal.fire({
+                            icon: 'error'
+                            , title: 'Oops...'
+                            , html: mensagem
+                            , footer: 'Qualquer dúvida entre em contato com o Suporte'
+                        });
+                        return;
+
+                    } else if (retorno['sucesso'] == true) {
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Serviço iniciado com sucesso',
+                            showConfirmButton: false,
+                            timer: 1500,
+                            onClose: () => {
+                                $(location).attr('href', '{{route('Admin.os')}}')
+                            }
+                        })
+                    }
+
+                }
+                , error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+
+                }
+                , contentType: "application/json"
+                , dataType: 'json'
+            });
+        }
 
 
     </script>

@@ -41,8 +41,8 @@ Route::namespace('Admin')->group(function () {
 //     Start routes ordens services
         Route::get('/os', 'OrderServiceController@index')->name('Admin.os');
         Route::get('/os/cadastro', 'OrderServiceController@os')->name('Admin.os.register');
-        Route::post('/os/salvar', 'OrderServiceController@store')->name('Admin.os.save');
-        Route::post('/os/mostrar', 'OrderServiceController@show')->name('Admin.os.show');
+        Route::post('/os/salvar', 'OrderServiceController@salvar')->name('Admin.os.save');
+        Route::post('/os/mostrar/{id}', 'OrderServiceController@show')->name('Admin.os.show');
         Route::post('/os/editar', 'OrderServiceController@edit')->name('Admin.os.edit');
         Route::post('/os/excluir', 'OrderServiceController@destroy')->name('Admin.os.delete');
 //     End routes ordens services

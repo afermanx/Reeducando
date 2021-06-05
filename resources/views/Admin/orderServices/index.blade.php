@@ -32,23 +32,24 @@
                         <thead>
                         <tr>
                             <th class="text-center" >#</th>
-                            <th class="d-none d-sm-table-cell" >Nome</th>
-                            <th class="d-none d-sm-table-cell" >Descrição</th>
-                            <th class="d-none d-sm-table-cell" >Valor R$</th>
-                            <th class="d-none d-sm-table-cell">% Detento</th>
-                            <th class="d-none d-sm-table-cell">% Oficina</th>
-                            <th class="d-none d-sm-table-cell">Status</th>
-                            <th class="d-none d-sm-table-cell">Opções</th>
+
+                            <th class="d-none d-sm-table-cell" >Data</th>
+{{--                            <th class="d-none d-sm-table-cell" >Serviço</th>--}}
+{{--                            <th class="d-none d-sm-table-cell" >Cliente</th>--}}
+{{--                            <th class="d-none d-sm-table-cell" >Responsável</th>--}}
+{{--                            <th class="d-none d-sm-table-cell" >Valor R$</th>--}}
+{{--                            <th class="d-none d-sm-table-cell">Status</th>--}}
+{{--                            <th class="d-none d-sm-table-cell">Opções</th>--}}
                         </tr>
                         </thead>
 
                         <tbody>
-{{--                        @foreach($services as $service)--}}
-{{--                            <tr>--}}
-{{--                                <td class="text-center">{{$service->id}}</td>--}}
-{{--                                <td class="font-w600">--}}
-{{--                                    <a href="">{{$service->name}}</a>--}}
-{{--                                </td>--}}
+                        @foreach($ordens as $ordem)
+                            <tr>
+                                <td class="text-center">{{$ordem->id}}</td>
+                                <td class="font-w600">
+                                    <a href="">{{$ordem->data}}</a>
+                                </td>
 {{--                                <td class="d-none d-sm-table-cell">--}}
 {{--                                    <em class="text-muted">{{$service->description}}</em>--}}
 {{--                                </td>--}}
@@ -84,8 +85,8 @@
 
 {{--                                    </em>--}}
 {{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                        @endforeach--}}
+                            </tr>
+                        @endforeach
                         </tbody>
 
                     </table>
