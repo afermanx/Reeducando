@@ -1620,170 +1620,173 @@ test\\_%|schema||&apos;&apos;||UPDATE|G</Grants>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="435" parent="345" name="user_id">
+    <column id="435" parent="345" name="detento_id">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="436" parent="345" name="valor">
+    <column id="436" parent="345" name="cliente_id">
       <Position>4</Position>
-      <DataType>decimal(8,2 digit)|0s</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="437" parent="345" name="valorRecebido">
+    <column id="437" parent="345" name="valor">
       <Position>5</Position>
       <DataType>decimal(8,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="438" parent="345" name="dataInicio">
+    <column id="438" parent="345" name="valorRecebido">
       <Position>6</Position>
-      <DataType>datetime|0s</DataType>
-      <NotNull>1</NotNull>
+      <DataType>decimal(8,2 digit)|0s</DataType>
     </column>
-    <column id="439" parent="345" name="dataFim">
+    <column id="439" parent="345" name="dataInicio">
       <Position>7</Position>
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="440" parent="345" name="status">
+    <column id="440" parent="345" name="dataFim">
       <Position>8</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <column id="441" parent="345" name="status">
+      <Position>9</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="441" parent="345" name="created_at">
-      <Position>9</Position>
-      <DataType>timestamp|0s</DataType>
-    </column>
-    <column id="442" parent="345" name="updated_at">
+    <column id="442" parent="345" name="created_at">
       <Position>10</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <key id="443" parent="345" name="PRIMARY">
+    <column id="443" parent="345" name="updated_at">
+      <Position>11</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <key id="444" parent="345" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="444" parent="346" name="id">
+    <column id="445" parent="346" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="445" parent="346" name="name">
+    <column id="446" parent="346" name="name">
       <Position>2</Position>
       <DataType>varchar(80)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="446" parent="346" name="description">
+    <column id="447" parent="346" name="description">
       <Position>3</Position>
       <DataType>varchar(200)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="447" parent="346" name="value">
+    <column id="448" parent="346" name="value">
       <Position>4</Position>
       <DataType>decimal(8,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="448" parent="346" name="detainee">
+    <column id="449" parent="346" name="detainee">
       <Position>5</Position>
       <DataType>decimal(8,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="449" parent="346" name="workshop">
+    <column id="450" parent="346" name="workshop">
       <Position>6</Position>
       <DataType>decimal(8,2 digit)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="450" parent="346" name="status">
+    <column id="451" parent="346" name="status">
       <Position>7</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;Ativo&apos;</DefaultExpression>
     </column>
-    <column id="451" parent="346" name="created_at">
+    <column id="452" parent="346" name="created_at">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="452" parent="346" name="updated_at">
+    <column id="453" parent="346" name="updated_at">
       <Position>9</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <key id="453" parent="346" name="PRIMARY">
+    <key id="454" parent="346" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="454" parent="347" name="id">
+    <column id="455" parent="347" name="id">
       <Position>1</Position>
       <DataType>bigint(20) unsigned|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="455" parent="347" name="name">
+    <column id="456" parent="347" name="name">
       <Position>2</Position>
       <DataType>varchar(80)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="456" parent="347" name="cpf">
+    <column id="457" parent="347" name="cpf">
       <Position>3</Position>
       <DataType>varchar(14)|0s</DataType>
     </column>
-    <column id="457" parent="347" name="email">
+    <column id="458" parent="347" name="email">
       <Position>4</Position>
       <DataType>varchar(80)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="458" parent="347" name="email_verified_at">
+    <column id="459" parent="347" name="email_verified_at">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="459" parent="347" name="password">
+    <column id="460" parent="347" name="password">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="460" parent="347" name="status">
+    <column id="461" parent="347" name="status">
       <Position>7</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="461" parent="347" name="type">
+    <column id="462" parent="347" name="type">
       <Position>8</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="462" parent="347" name="remember_token">
+    <column id="463" parent="347" name="remember_token">
       <Position>9</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="463" parent="347" name="created_at">
+    <column id="464" parent="347" name="created_at">
       <Position>10</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <column id="464" parent="347" name="updated_at">
+    <column id="465" parent="347" name="updated_at">
       <Position>11</Position>
       <DataType>timestamp|0s</DataType>
     </column>
-    <index id="465" parent="347" name="users_cpf_unique">
+    <index id="466" parent="347" name="users_cpf_unique">
       <ColNames>cpf</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="466" parent="347" name="users_email_unique">
+    <index id="467" parent="347" name="users_email_unique">
       <ColNames>email</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="467" parent="347" name="PRIMARY">
+    <key id="468" parent="347" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="468" parent="347" name="users_cpf_unique">
+    <key id="469" parent="347" name="users_cpf_unique">
       <ColNames>cpf</ColNames>
       <UnderlyingIndexName>users_cpf_unique</UnderlyingIndexName>
     </key>
-    <key id="469" parent="347" name="users_email_unique">
+    <key id="470" parent="347" name="users_email_unique">
       <ColNames>email</ColNames>
       <UnderlyingIndexName>users_email_unique</UnderlyingIndexName>
     </key>

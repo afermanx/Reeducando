@@ -117,7 +117,7 @@ class UsersController extends Controller
             if($type==="ADMINISTRADOR"){
 
 
-                $user = new Cliente();
+                $user = new User();
                 $user->name=$name;
                 $user->email=$email;
                 $user->cpf=$cpf;

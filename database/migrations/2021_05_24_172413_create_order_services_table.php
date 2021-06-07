@@ -20,7 +20,9 @@ class CreateOrderServicesTable extends Migration
             $table->integer('cliente_id');
             $table->decimal('valor');
             $table->decimal('valorRecebido')->nullable();
+            $table->decimal('valorAtual')->nullable();
             $table->dateTime('dataInicio');
+
             $table->dateTime('dataFim')->nullable();
             $table->string('status');
             $table->timestamps();

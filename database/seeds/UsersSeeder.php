@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Cliente;
+use App\Detento;
 use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -24,7 +26,7 @@ class UsersSeeder extends Seeder
             'password'=>Hash::make('teste123')
         ]);
 
-        User::create([
+      Cliente::create([
             'name'=>'Teste Cliente',
             'email'=>'teste@cliente.com',
             'cpf'=>'000.000.000-01',
@@ -34,7 +36,7 @@ class UsersSeeder extends Seeder
         ]);
 
 
-        User::create([
+       Detento::create([
             'name'=>'Teste Detento',
             'email'=>'teste@detento.com',
             'cpf'=>'000.000.000-02',
