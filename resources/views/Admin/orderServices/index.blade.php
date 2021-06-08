@@ -85,7 +85,7 @@
 
                                         @if($ordem->status!=="FINALIZADO")
                                             <button class="btn btn-outline-primary bx bx-window-close"
-                                                    onclick="finalizarOS({{$ordem->id}},'{{$ordem->Servico}}', {{$ordem->valorAtual}})"
+                                                    onclick="finalizarOS({{$ordem->id}},'{{$ordem->Servico}}', {{$ordem->valorAtual}},{{$ordem->detento_id}},{{$ordem->service_id}})"
                                                     data-toggle="tooltip" data-placement="top"
                                                     title="Finalizar Ordem de Serviço">
                                             </button>
@@ -192,7 +192,7 @@
         })
 
 
-        function finalizarOS(id, name, valor) {
+        function finalizarOS(id, name, valor, detento_id, service_id) {
 
             $("#TitleModal").html('<h>' + name + '</h>');
             $("#edtValorReceber").val('R$ ' + valor + ',00')
@@ -200,14 +200,14 @@
 
             $('#modalFinalizarOS').modal('show');
 
-            $("#btnFinalizar").attr("onclick", 'finalizar(' + id + ',' + valor + ')');
+            $("#btnFinalizar").attr("onclick", 'finalizar(' + id + ',' + valor + ','+ detento_id +','+ service_id +')');
         }
 
         $('#cancelar').click(function () {
             $('#edtValorRecebimento').val("");
         })
 
-        function finalizar(id, valor) {
+        function finalizar(id, valor, detento_id, service_id) {
 
 
             let valorRecebido = $("#edtValorRecebimento").maskMoney("unmasked")[0]
@@ -244,6 +244,8 @@
                             calculo: calculo,
                             valorRecebido: valorRecebido,
                             tipo: '',
+                            detento_id:detento_id,
+                            service_id:service_id,
                             os_id: id
 
                         })
@@ -317,6 +319,8 @@
                         calculo: calculo,
                         valorRecebido: valorRecebido,
                         tipo: 'quitado',
+                        service_id:service_id,
+                        detento_id:detento_id,
                         os_id: id
 
                     })
@@ -392,6 +396,8 @@
                         calculo: calculo,
                         valorRecebido: valorRecebido,
                         tipo: 'quitado',
+                        detento_id:detento_id,
+                        service_id:service_id,
                         os_id: id
 
                     })

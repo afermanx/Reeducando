@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\CaixaDetento;
+use App\CaixaOficina;
 use App\Cliente;
 use App\Detento;
 use App\Http\Controllers\Controller;
+use App\Oficina;
 use App\OrderService;
 use App\Service;
 use App\User;
@@ -24,7 +27,8 @@ class OrderServiceController extends Controller
         $ordens = OrderService::join('detento','detento_id','=','detento.id')
             ->join('cliente','cliente_id','=','cliente.id')
             ->join('services','service_id','=','services.id')
-            ->get(['order_services.*', 'services.name as Servico','cliente.name as Cliente','detento.name as Detento']);
+            ->get(['order_services.*', 'services.name as Servico','cliente.name as Cliente',
+                    'detento.name as Detento', 'detento.id as detento_id', 'services.id as service_id']);
 
         return view('Admin.orderServices.index')
             ->with('user', $user)
@@ -128,9 +132,15 @@ class OrderServiceController extends Controller
         $calculo = $data['calculo'];
         $valorRecebido = $data['valorRecebido'];
         $tipo = $data['tipo'];
+        $detento_id = $data['detento_id'];
+        $service_id = $data['service_id'];
         $os_id = $data['os_id'];
 
-        //receber o id do detento e oficina ? para inserir no caixa
+        $servico = Service::where('id',$service_id)->pluck('detainee')->all();
+        $oficina = Service::where('id',$service_id)->pluck('workshop')->all();
+        $oficina_id = Oficina::where('id',1)->pluck('id')->all();
+
+
 
 
         if(!$tipo){
@@ -143,8 +153,30 @@ class OrderServiceController extends Controller
                 $os->valorAtual=$calculo;
                 $os->valorRecebido=$valorRecebido;
                 $os->status='FALTA';
-
                 $os->save();
+
+                $percentDetento= $calculo / 100 * $servico[0];
+
+
+
+                $cxDetento= new CaixaDetento();
+                $cxDetento->detento_id=$detento_id;
+                $cxDetento->valor=$percentDetento;
+
+                $cxDetento->save();
+
+
+                $percentOficina= $calculo / 100 * $oficina[0];
+
+
+
+                $cxDetento= new CaixaOficina();
+                $cxDetento->oficina_id=$oficina_id[0];
+                $cxDetento->valor=$percentOficina;
+
+                $cxDetento->save();
+
+
 
                 return response()->json(['sucesso' => true, 'message' =>' cadastrado com sucesso', 'idOs' => $os->id]);
 
@@ -169,6 +201,26 @@ class OrderServiceController extends Controller
                 $os->status='FINALIZADO';
 
                 $os->save();
+
+                $percentDetento= $valorRecebido / 100 * $servico[0];
+
+
+
+                $cxDetento= new CaixaDetento();
+                $cxDetento->detento_id=$detento_id;
+                $cxDetento->valor=$percentDetento;
+
+                $cxDetento->save();
+
+                $percentOficina= $valorRecebido / 100 * $oficina[0];
+
+
+
+                $cxDetento= new CaixaOficina();
+                $cxDetento->oficina_id=$oficina_id[0];
+                $cxDetento->valor=$percentOficina;
+
+                $cxDetento->save();
 
                 return response()->json(['sucesso' => true, 'message' =>' cadastrado com sucesso', 'idOs' => $os->id]);
 
