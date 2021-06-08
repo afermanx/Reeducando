@@ -71,6 +71,11 @@
                                               style="color: white">FALTA: {{number_format( $ordem->valorAtual ,2,",",".").' R$'}}</span>
                                     @endif
 
+                                    @if($ordem->status ==="FINALIZADO")
+                                        <span class="badge badge-success"
+                                              style="color: white">FINALIZADO</span>
+                                    @endif
+
 
                                 </td>
 
@@ -78,11 +83,13 @@
                                 <td>
                                     <em class="text-muted">
 
-                                        <button class="btn btn-outline-primary bx bx-window-close"
-                                                onclick="finalizarOS({{$ordem->id}},'{{$ordem->Servico}}', {{$ordem->valorAtual}})"
-                                                data-toggle="tooltip" data-placement="top"
-                                                title="Finalizar Ordem de Serviço">
-                                        </button>
+                                        @if($ordem->status!=="FINALIZADO")
+                                            <button class="btn btn-outline-primary bx bx-window-close"
+                                                    onclick="finalizarOS({{$ordem->id}},'{{$ordem->Servico}}', {{$ordem->valorAtual}})"
+                                                    data-toggle="tooltip" data-placement="top"
+                                                    title="Finalizar Ordem de Serviço">
+                                            </button>
+                                        @endif
 
                                         @if($user->type==="ADMINISTRADOR")
                                             <button class="btn btn-outline-info bx bx-edit"
@@ -221,9 +228,6 @@
                 const calculo = valor - valorRecebido
 
 
-
-
-
                 Swal.fire({
                     title: 'O valor recebido é inferior ao valor do serviço',
                     text: "Deseja Receber mesmo assim ?",
@@ -231,19 +235,19 @@
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    cancelButtonText:'Cancelar',
+                    cancelButtonText: 'Cancelar',
                     confirmButtonText: 'Sim, Receber!'
                 }).then((result) => {
                     if (result.isConfirmed) {
 
                         let data = JSON.stringify({
-                          calculo:calculo,
-                          valorRecebido:valorRecebido,
-                           os_id: id
+                            calculo: calculo,
+                            valorRecebido: valorRecebido,
+                            tipo: '',
+                            os_id: id
 
                         })
 
-                        console.log(data)
 
                         $.ajax({
                             type: 'POST'
@@ -273,13 +277,12 @@
 
                                     Swal.fire(
                                         {
-                                            icon:'success',
-                                            title:'Recebido com sucesso!',
-                                            text:'Valor pendente: '+calculo,
+                                            icon: 'success',
+                                            title: 'Recebido com sucesso!',
+                                            text: 'Valor pendente: ' + calculo,
                                             showConfirmButton: false,
                                             timer: 1500,
                                         }
-
                                     )
 
                                     $(location).attr('href', '/os')
@@ -304,18 +307,162 @@
                 })
 
 
-
             }
 
             if (valorRecebido >= valor) {
                 let calculo = valorRecebido - valor
-              if (calculo===0){
-                  alert("quitado")                //Condição par expor se tera troco ou não para cliente...
-              }else{
-                  alert('troco de: '+calculo)
-              }
+
+                if (calculo === 0) {
+                    let data = JSON.stringify({
+                        calculo: calculo,
+                        valorRecebido: valorRecebido,
+                        tipo: 'quitado',
+                        os_id: id
+
+                    })
+                    Swal.fire({
+                        title: 'Finalizar Ordem Serviço',
+                        text: "Finalizar e Receber?",
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Sim, Receber!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                type: 'POST'
+                                , url: '{{route('Admin.os.finalizar')}}'
+                                , data: data,
+                                success: function (data) {
+                                    const retorno = $.parseJSON(JSON.stringify(data));
+
+                                    $("#btnFinalizar").html('<i class="bx bx-add-to-queue"></i> Finalizar');
+                                    if (retorno['sucesso'] === false) {
+                                        let mensagem = retorno['message'] + '</br>';
+                                        if (retorno['erro']) {
+                                            var erros = $.parseJSON(JSON.stringify(retorno['erro']));
+                                            for (erro in erros) {
+                                                mensagem = mensagem + erros[erro] + '</br>';
+                                            }
+                                        }
+                                        Swal.fire({
+                                            icon: 'error'
+                                            , title: 'Oops...'
+                                            , html: mensagem
+                                            , footer: 'Qualquer dúvida entre em contato com o Suporte'
+                                        });
+                                        return;
+
+                                    } else if (retorno['sucesso'] == true) {
+
+                                        Swal.fire(
+                                            {
+                                                icon: 'success',
+                                                title: 'Recebido com sucesso!',
+                                                text: 'Orden de serviço finalizada',
+                                                showConfirmButton: false,
+                                                timer: 1500,
+                                            }
+                                        )
+
+                                        $(location).attr('href', '/os')
 
 
+                                    }
+
+                                }
+                                , error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+
+                                }
+                                , contentType: "application/json"
+                                , dataType: 'json'
+                            });
+
+                            $('#edtValorRecebimento').val("");
+                            $('#modalFinalizarOS').modal('hide');
+                        }
+
+
+                    })
+                } else {
+                    let data = JSON.stringify({
+                        calculo: calculo,
+                        valorRecebido: valorRecebido,
+                        tipo: 'quitado',
+                        os_id: id
+
+                    })
+                    Swal.fire({
+                        title: 'Finalizar Ordem Serviço',
+                        text: "Devolver troco de: " + calculo,
+                        icon: 'question',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Sim, Receber!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $.ajax({
+                                type: 'POST'
+                                , url: '{{route('Admin.os.finalizar')}}'
+                                , data: data,
+                                success: function (data) {
+                                    const retorno = $.parseJSON(JSON.stringify(data));
+
+                                    $("#btnFinalizar").html('<i class="bx bx-add-to-queue"></i> Finalizar');
+                                    if (retorno['sucesso'] === false) {
+                                        let mensagem = retorno['message'] + '</br>';
+                                        if (retorno['erro']) {
+                                            var erros = $.parseJSON(JSON.stringify(retorno['erro']));
+                                            for (erro in erros) {
+                                                mensagem = mensagem + erros[erro] + '</br>';
+                                            }
+                                        }
+                                        Swal.fire({
+                                            icon: 'error'
+                                            , title: 'Oops...'
+                                            , html: mensagem
+                                            , footer: 'Qualquer dúvida entre em contato com o Suporte'
+                                        });
+                                        return;
+
+                                    } else if (retorno['sucesso'] == true) {
+
+                                        Swal.fire(
+                                            {
+                                                icon: 'success',
+                                                title: 'Recebido com sucesso!',
+                                                text: 'Orden de serviço finalizada',
+                                                showConfirmButton: false,
+                                                timer: 1500,
+                                            }
+                                        )
+
+                                        $(location).attr('href', '/os')
+
+
+                                    }
+
+                                }
+                                , error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+
+                                }
+                                , contentType: "application/json"
+                                , dataType: 'json'
+                            });
+
+                            $('#edtValorRecebimento').val("");
+                            $('#modalFinalizarOS').modal('hide');
+                        }
+
+
+                    })
+                }
 
 
             }

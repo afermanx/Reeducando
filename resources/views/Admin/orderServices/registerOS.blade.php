@@ -92,8 +92,6 @@
 
                                     @endforeach
                                 </select>
-                                <input type="text" class="form-control d-none "  value="" id="edtServico"
-                                       placeholder="Nome do Serviço">
 
                             </div>
                         </div>
@@ -160,12 +158,14 @@
 @section('jsAdmin')
     <script src="{{asset('js/plugins/jquery.mask.js')}}"></script>
     <script src="{{asset('js/components/jquery.maskMoney.min.js')}}"></script>
-    <script src="{{asset('js/components/Os/os.js')}}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script>
         function update() {
             let select = document.getElementById('cbServico');
             let option = select.options[select.selectedIndex];
+
+
 
             document.getElementById('edtValor').value = option.value;
 
@@ -218,8 +218,13 @@
         function saveOs() {
             let valor = $("#edtValor").maskMoney("unmasked")[0]
             let dataInicio = $("#edtData").val()
-            let service = $("#cbServico").val()
-            let serviceName = $("#cbServico").text()
+            let select = document.getElementById('cbServico');
+            let option = select.options[select.selectedIndex];
+            let service= option.value
+            let serviceName= option.text
+
+
+
 
             let cliente = $("#cbCliente").val()
             let detento = $("#cbDetento").val()
@@ -274,6 +279,8 @@
                 serviceName: serviceName
 
             })
+
+            console.log(data)
 
             $.ajax({
                 type: 'POST'

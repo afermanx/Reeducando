@@ -49,4 +49,10 @@ Route::namespace('Admin')->group(function () {
         Route::post('/os/excluir', 'OrderServiceController@destroy')->name('Admin.os.delete');
 //     End routes ordens services
 
+     // start rotas financeiro
+    Route::get('/financeiro/caixa', 'CaixaController@index')->name('Admin.caixa');
+
+
+    //end rotas financeiro
+
 });

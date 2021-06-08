@@ -41,35 +41,28 @@
                 </a>
             </li>
 
-
-            <li class="nav-item {{ Request::segment(1) === 'financeiro' ? 'mm-active' : null }}">
+            <li class="nav-item {{ Request::segment(1) === 'financeiro' ? 'mm-active' : null }}" >
                 <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
                     <span class="icon"><i class='bx bxs-landmark'></i></span>
                     <span class="menu-title">Financeiro</span>
-
                 </a>
 
                 <ul class="sidemenu-nav-second-level">
-                    <li class="nav-item">
-                        <a href="app-email.html" class="nav-link">
+
+                    {{--                    mm-active--}}
+
+                    <li class="nav-item {{ Request::segment(2) === 'caixa' ? 'mm-active' : null }}">
+                        <a href="{{route('Admin.caixa')}}" class="nav-link">
                             <span class="icon"><i class='bx bx-money'></i></span>
                             <span class="menu-title">Caixa</span>
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="email-read.html" class="nav-link">
-                            <span class="icon"><i class=' bx bxs-right-arrow-square'></i></span>
-                            <span class="menu-title">Recebimentos</span>
-                        </a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a href="email-compose.html" class="nav-link">
-                            <span class="icon"><i class='bx bxs-left-arrow-square'></i></span>
-                            <span class="menu-title">Retiradas</span>
-                        </a>
-                    </li>
+
+
+
+
                 </ul>
             </li>
 
@@ -131,20 +124,6 @@
 
                 </ul>
             </li>
-
-            {{--            <li class="nav-item">--}}
-            {{--                <a href="#" class="nav-link">--}}
-            {{--                    <span class="icon"><i class='bx bx-file'></i></span>--}}
-            {{--                    <span class="menu-title">Documentation</span>--}}
-            {{--                </a>--}}
-            {{--            </li>--}}
-
-            {{--            <li class="nav-item">--}}
-            {{--                <a href="mailto:hello@envytheme.com" class="nav-link">--}}
-            {{--                    <span class="icon"><i class='bx bx-support'></i></span>--}}
-            {{--                    <span class="menu-title">Support</span>--}}
-            {{--                </a>--}}
-            {{--            </li>--}}
         </ul>
     </div>
 </div>

@@ -91,6 +91,10 @@ class OrderServiceController extends Controller
 
 
 
+
+
+
+
             $os = new OrderService();
             $os->dataInicio=$dataInicio;
             $os->valor=$valor;
@@ -119,29 +123,62 @@ class OrderServiceController extends Controller
             return view('Auth.sessionExpired');
 
         }
-        try {
+
+        $data = json_decode($request->getContent(), true);
+        $calculo = $data['calculo'];
+        $valorRecebido = $data['valorRecebido'];
+        $tipo = $data['tipo'];
+        $os_id = $data['os_id'];
+
+        //receber o id do detento e oficina ? para inserir no caixa
 
 
-            $data = json_decode($request->getContent(), true);
-            $calculo = $data['calculo'];
-            $valorRecebido = $data['valorRecebido'];
-            $os_id = $data['os_id'];
+        if(!$tipo){
+
+            try {
 
 
-            $os = OrderService::find($os_id);
-            $os->valorAtual=$calculo;
-            $os->valorRecebido=$valorRecebido;
-            $os->status='FALTA';
 
-            $os->save();
+                $os = OrderService::find($os_id);
+                $os->valorAtual=$calculo;
+                $os->valorRecebido=$valorRecebido;
+                $os->status='FALTA';
 
-            return response()->json(['sucesso' => true, 'message' =>' cadastrado com sucesso', 'idOs' => $os->id]);
+                $os->save();
+
+                return response()->json(['sucesso' => true, 'message' =>' cadastrado com sucesso', 'idOs' => $os->id]);
 
 
-        } catch (\Illuminate\Validation\ValidationException $e) {
-            return response()->json(['sucesso' => false, 'message' => 'Erro ao validar dados', 'erro' => $e->errors()]);
+            } catch (\Illuminate\Validation\ValidationException $e) {
+                return response()->json(['sucesso' => false, 'message' => 'Erro ao validar dados', 'erro' => $e->errors()]);
+            }
+
+
         }
+        if($tipo==="quitado"){
 
+            try {
+
+
+
+
+
+                $os = OrderService::find($os_id);
+                $os->valorAtual=$calculo;
+                $os->valorRecebido=$valorRecebido;
+                $os->status='FINALIZADO';
+
+                $os->save();
+
+                return response()->json(['sucesso' => true, 'message' =>' cadastrado com sucesso', 'idOs' => $os->id]);
+
+
+            } catch (\Illuminate\Validation\ValidationException $e) {
+                return response()->json(['sucesso' => false, 'message' => 'Erro ao validar dados', 'erro' => $e->errors()]);
+            }
+
+
+        }
 
 
 
