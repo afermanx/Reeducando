@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Oficina;
 use App\OrderService;
 use App\Service;
+use App\Transacoes;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -132,6 +133,7 @@ class OrderServiceController extends Controller
         $calculo = $data['calculo'];
         $valorRecebido = $data['valorRecebido'];
         $tipo = $data['tipo'];
+        $valor = $data['valor'];
         $detento_id = $data['detento_id'];
         $service_id = $data['service_id'];
         $os_id = $data['os_id'];
@@ -155,7 +157,7 @@ class OrderServiceController extends Controller
                 $os->status='FALTA';
                 $os->save();
 
-                $percentDetento= $calculo / 100 * $servico[0];
+                $percentDetento= $valorRecebido / 100 * $servico[0];
 
 
 
@@ -166,7 +168,7 @@ class OrderServiceController extends Controller
                 $cxDetento->save();
 
 
-                $percentOficina= $calculo / 100 * $oficina[0];
+                $percentOficina= $valorRecebido / 100 * $oficina[0];
 
 
 
@@ -175,6 +177,18 @@ class OrderServiceController extends Controller
                 $cxDetento->valor=$percentOficina;
 
                 $cxDetento->save();
+
+
+                $transacao= new Transacoes();
+                $transacao->detento_id=$detento_id;
+                $transacao->oficina_id=$oficina_id[0];
+                $transacao->orderServices_id=$os->id;
+                $transacao->valorDetento=$percentDetento;
+                $transacao->valorOficina=$percentOficina;
+                $transacao->description="ENTRADA";
+                $transacao->status="UP";
+
+                $transacao->save();
 
 
 
@@ -197,12 +211,12 @@ class OrderServiceController extends Controller
 
                 $os = OrderService::find($os_id);
                 $os->valorAtual=$calculo;
-                $os->valorRecebido=$valorRecebido;
+                $os->valorRecebido=$valor;
                 $os->status='FINALIZADO';
 
                 $os->save();
 
-                $percentDetento= $valorRecebido / 100 * $servico[0];
+                $percentDetento= $valor / 100 * $servico[0];
 
 
 
@@ -212,7 +226,7 @@ class OrderServiceController extends Controller
 
                 $cxDetento->save();
 
-                $percentOficina= $valorRecebido / 100 * $oficina[0];
+                $percentOficina= $valor / 100 * $oficina[0];
 
 
 
@@ -221,6 +235,17 @@ class OrderServiceController extends Controller
                 $cxDetento->valor=$percentOficina;
 
                 $cxDetento->save();
+
+                $transacao= new Transacoes();
+                $transacao->detento_id=$detento_id;
+                $transacao->oficina_id=$oficina_id[0];
+                $transacao->orderServices_id=$os->id;
+                $transacao->valorDetento=$percentDetento;
+                $transacao->valorOficina=$percentOficina;
+                $transacao->description="ENTRADA";
+                $transacao->status="UP";
+
+                $transacao->save();
 
                 return response()->json(['sucesso' => true, 'message' =>' cadastrado com sucesso', 'idOs' => $os->id]);
 

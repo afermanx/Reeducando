@@ -41,58 +41,48 @@
 
                         <th class="d-none d-sm-table-cell" >Data</th>
                         <th class="d-none d-sm-table-cell" >Descrição</th>
-                        <th class="d-none d-sm-table-cell" >Valor R$</th>
-                        <th class="d-none d-sm-table-cell">Valor detento R$</th>
-                        <th class="d-none d-sm-table-cell">Valor Oficina R$</th>
+                        <th class="d-none d-sm-table-cell" >Valor Serviço</th>
+                        <th class="d-none d-sm-table-cell" >Valor Recebido</th>
+                        <th class="d-none d-sm-table-cell">Valor detento</th>
+                        <th class="d-none d-sm-table-cell">Valor Oficina </th>
                         <th class="d-none d-sm-table-cell">Status</th>
 
                     </tr>
                     </thead>
 
                     <tbody>
-{{--                    @foreach($services as $service)--}}
-{{--                        <tr>--}}
-{{--                            <td class="text-center">{{$service->id}}</td>--}}
-{{--                            <td class="font-w600">--}}
-{{--                                <a href="">{{$service->name}}</a>--}}
-{{--                            </td>--}}
-{{--                            <td class="d-none d-sm-table-cell">--}}
-{{--                                <em class="text-muted">{{$service->description}}</em>--}}
-{{--                            </td>--}}
-{{--                            <td>--}}
-{{--                                <em class="text-muted">{{number_format( $service->value ,2,",",".").' R$'}}</em>--}}
-{{--                            </td>--}}
-{{--                            <td class="d-none d-sm-table-cell">{{number_format( $service->detainee ,2,",",".").'%'}}</td>--}}
-{{--                            <td class="d-none d-sm-table-cell">{{number_format( $service->workshop ,2,",",".").'%'}}</td>--}}
-{{--                            <td class="d-none d-sm-table-cell">--}}
-{{--                                @if($service->status ==="Ativo")--}}
-{{--                                    <span class="badge badge-success">{{$service->status}}</span>--}}
-{{--                                @endif--}}
-{{--                                @if($service->status ==="Inativo")--}}
-{{--                                    <span class="badge badge-danger" style="color: white6" >{{$service->status}}</span>--}}
-{{--                                @endif--}}
+                    @foreach($transacoes as $transacao)
+                        <tr>
+                            <td class="text-center">{{$transacao->updated_at}}</td>
+                            <td class="font-w600">
+                                <a href="">{{$transacao->description}}</a>
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                                <em class="text-muted">R$ {{number_format( $transacao->valor ,2,",",".")}}</em>
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                                <em class="text-muted">R$ {{number_format($transacao->valorRecebido ,2,",",".")}}</em>
+                            </td>
+                            <td>
+                                <em class="text-muted">R$ {{number_format( $transacao->valorDetento ,2,",",".")}}</em>
+                            </td>
+                            <td class="text-muted">R$ {{number_format( $transacao->valorOficina ,2,",",".")}}</td>
+
+                            <td class="d-none d-sm-table-cell text-center">
+                                @if($transacao->status ==="UP")
+                                    <span class="badge badge-success"><i class="bx bx-arrow-to-top"></i></span>
+                                @endif
+                                @if($transacao->status ==="DOWN")
+                                    <span class="badge badge-danger" style="color: white" ><i class="bx bx-arrow-to-bottom"></i></span>
+                                @endif
 
 
-{{--                            </td>--}}
+                            </td>
 
 
-{{--                            <td>--}}
-{{--                                <em class="text-muted">--}}
-{{--                                    <button class="btn btn-outline-info bx bx-edit"--}}
-{{--                                            onclick="show({{$service->id}})"--}}
-{{--                                            data-toggle="tooltip" data-placement="top"--}}
-{{--                                            title="Editar serviço">--}}
-{{--                                    </button>--}}
-{{--                                    <button class="btn btn-outline-danger bx bx-trash"--}}
-{{--                                            onclick="destroy({{$service->id}},'{{$service->name}}')"--}}
-{{--                                            data-toggle="tooltip" data-placement="top"--}}
-{{--                                            title="Deletar serviço">--}}
-{{--                                    </button>--}}
 
-{{--                                </em>--}}
-{{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforeach--}}
+                        </tr>
+                    @endforeach
                     </tbody>
 
                 </table>

@@ -244,6 +244,7 @@
                             calculo: calculo,
                             valorRecebido: valorRecebido,
                             tipo: '',
+                            valor:valor,
                             detento_id:detento_id,
                             service_id:service_id,
                             os_id: id
@@ -287,7 +288,7 @@
                                         }
                                     )
 
-                                    $(location).attr('href', '/os')
+                                    $(location).attr('href', '{{route('Admin.caixa')}}')
 
 
                                 }
@@ -318,6 +319,7 @@
                     let data = JSON.stringify({
                         calculo: calculo,
                         valorRecebido: valorRecebido,
+                        valor:valor,
                         tipo: 'quitado',
                         service_id:service_id,
                         detento_id:detento_id,
@@ -371,7 +373,7 @@
                                             }
                                         )
 
-                                        $(location).attr('href', '/os')
+                                        $(location).attr('href', '{{route('Admin.caixa')}}')
 
 
                                     }
@@ -397,6 +399,7 @@
                         valorRecebido: valorRecebido,
                         tipo: 'quitado',
                         detento_id:detento_id,
+                        valor:valor,
                         service_id:service_id,
                         os_id: id
 
@@ -448,7 +451,7 @@
                                             }
                                         )
 
-                                        $(location).attr('href', '/os')
+                                        $(location).attr('href', '{{route('Admin.caixa')}}')
 
 
                                     }
