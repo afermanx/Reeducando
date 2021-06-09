@@ -19,7 +19,6 @@ class CreateTransacoes extends Migration
             $table->integer('oficina_id');
             $table->string('description');
             $table->integer('orderServices_id');
-            $table->decimal('valor');
             $table->decimal('valorDetento');
             $table->decimal('valorOficina');
             $table->string('status');
