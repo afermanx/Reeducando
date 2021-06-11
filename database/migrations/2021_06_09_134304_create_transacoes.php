@@ -22,6 +22,7 @@ class CreateTransacoes extends Migration
             $table->decimal('valorDetento');
             $table->decimal('valorOficina');
             $table->string('status');
+            $table->softDeletes($column ='delete_at', $precision=0);
             $table->timestamps();
         });
     }

@@ -52,6 +52,8 @@ Route::namespace('Admin')->group(function () {
      // start rotas financeiro
     Route::get('/financeiro/caixa', 'CaixaController@index')->name('Admin.caixa');
     Route::get('/financeiro/caixa/detento', 'CaixaController@caixaDetento')->name('Admin.caixa.detento');
+    Route::post('/financeiro/caixa/detento', 'CaixaController@caixaDetento')->name('Admin.caixa.detento');
+
 
 
     //end rotas financeiro

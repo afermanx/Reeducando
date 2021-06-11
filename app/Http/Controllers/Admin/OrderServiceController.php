@@ -161,9 +161,8 @@ class OrderServiceController extends Controller
 
 
 
-                $cxDetento= new CaixaDetento();
-                $cxDetento->detento_id=$detento_id;
-                $cxDetento->valor=$percentDetento;
+                $cxDetento =  Detento::find($detento_id);
+                $cxDetento->valor= $cxDetento->valor+$percentDetento;
 
                 $cxDetento->save();
 
@@ -172,11 +171,11 @@ class OrderServiceController extends Controller
 
 
 
-                $cxDetento= new CaixaOficina();
-                $cxDetento->oficina_id=$oficina_id[0];
-                $cxDetento->valor=$percentOficina;
+                $cxOficina= Oficina::find($oficina_id[0]);
 
-                $cxDetento->save();
+                $cxOficina->valor= $cxOficina->valor + $percentOficina;
+
+                $cxOficina->save();
 
 
                 $transacao= new Transacoes();
@@ -220,21 +219,20 @@ class OrderServiceController extends Controller
 
 
 
-                $cxDetento= new CaixaDetento();
-                $cxDetento->detento_id=$detento_id;
-                $cxDetento->valor=$percentDetento;
+                $cxDetento =  Detento::find($detento_id);
+                $cxDetento->valor= $cxDetento->valor+$percentDetento;
 
                 $cxDetento->save();
 
-                $percentOficina= $valor / 100 * $oficina[0];
+
+                $percentOficina= $valorRecebido / 100 * $oficina[0];
 
 
 
-                $cxDetento= new CaixaOficina();
-                $cxDetento->oficina_id=$oficina_id[0];
-                $cxDetento->valor=$percentOficina;
+                $cxOficina= Oficina::find($oficina_id[0]);
 
-                $cxDetento->save();
+                $cxOficina->valor= $cxOficina->valor + $percentOficina;
+                $cxOficina->save();
 
                 $transacao= new Transacoes();
                 $transacao->detento_id=$detento_id;

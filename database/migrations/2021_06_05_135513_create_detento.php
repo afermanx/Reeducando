@@ -22,6 +22,7 @@ class CreateDetento extends Migration
             $table->string('password');
             $table->string('status',20);
             $table->string('type',20);
+            $table->decimal('valor')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

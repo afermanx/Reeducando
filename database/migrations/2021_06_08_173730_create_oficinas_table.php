@@ -18,6 +18,7 @@ class CreateOficinasTable extends Migration
             $table->string('name',80);
             $table->string('description',120);
             $table->string('status',20);
+            $table->decimal('valor')->nullable();
 
             $table->timestamps();
         });

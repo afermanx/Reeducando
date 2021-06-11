@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\CaixaDetento;
 use App\CaixaOficina;
+use App\Detento;
 use App\Http\Controllers\Controller;
+use App\Oficina;
 use App\Transacoes;
 
 use Illuminate\Http\Request;
@@ -21,8 +23,8 @@ class CaixaController extends Controller
            return view('Auth.sessionExpired');
        }
 
-       $cxDetento =CaixaDetento::sum('valor');
-       $cxOficina =CaixaOficina::sum('valor');
+       $cxDetento =Detento::sum('valor');
+       $cxOficina =Oficina::sum('valor');
 
        $trasacoes=Transacoes::join('detento','detento_id','=','detento.id')
                             ->join('oficinas','oficina_id','=','oficinas.id')
@@ -41,17 +43,20 @@ class CaixaController extends Controller
 
    }
 
-   public function caixaDetento(){
+   public function caixaDetento(Request $request){
        $user = Auth::guard('user')->user();
        if (!$user) {
            return view('Auth.sessionExpired');
        }
-       $cxDetento=CaixaDetento::join('detento','detento.id','=','caixa_detento.detento_id')
-           ->get(['caixa_detento.*' ,'detento.name as nameDetento']);
 
-       $response = Http::get('http://127.0.0.1');
+       $cxDetentos=Detento::get();
 
-        return $response->headers();
+
+
+
+        return view('Admin.Financeiro.caixaDetento')
+            ->with('user', $user)
+            ->with('cxDetentos', $cxDetentos);
 
 
 
