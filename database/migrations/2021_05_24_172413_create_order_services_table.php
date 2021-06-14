@@ -17,7 +17,7 @@ class CreateOrderServicesTable extends Migration
             $table->id();
             $table->integer('service_id');
             $table->integer('detento_id');
-            $table->integer('cliente_id');
+            $table->string('cliente')->nullable();
             $table->decimal('valor');
             $table->decimal('valorRecebido')->nullable();
             $table->decimal('valorAtual')->nullable();

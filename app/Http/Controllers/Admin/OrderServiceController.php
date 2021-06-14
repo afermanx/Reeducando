@@ -26,9 +26,8 @@ class OrderServiceController extends Controller
 
 
         $ordens = OrderService::join('detento','detento_id','=','detento.id')
-            ->join('cliente','cliente_id','=','cliente.id')
             ->join('services','service_id','=','services.id')
-            ->get(['order_services.*', 'services.name as Servico','cliente.name as Cliente',
+            ->get(['order_services.*', 'services.name as Servico',
                     'detento.name as Detento', 'detento.id as detento_id', 'services.id as service_id']);
 
         return view('Admin.orderServices.index')
@@ -107,7 +106,7 @@ class OrderServiceController extends Controller
             $os->valorRecebido=0;
             $os->service_id= $servico[0];
             $os->detento_id=$detento;
-            $os->cliente_id=$cliente;
+            $os->cliente=$cliente;
             $os->status='AGUARDANDO';
 
             $os->save();

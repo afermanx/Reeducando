@@ -105,17 +105,11 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="input-group mb-3">
-                                <label  class="input-group mb-3" for="cbCliente">Cliente :</label>
+                                <label  class="input-group mb-3" for="edtCliente">Cliente :</label>
 
-                                <select class="custom-select" id="cbCliente">
-                                    <option selected value="">Selecione uma das Opções</option>
-                                    @foreach($clientes as $cliente)
-                                        <option value="{{$cliente->id}}">{{$cliente->name}}</option>
-
-                                    @endforeach
-                                </select>
-                                <input type="text" class="form-control d-none"  value="" id="edtCliente"
+                                <input type="text"  class="form-control "  value="" id="edtCliente"
                                        placeholder="Digite o nome do cliente">
+
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -226,8 +220,12 @@
 
 
 
-            let cliente = $("#cbCliente").val()
+            let cliente = $("#edtCliente").val()
             let detento = $("#cbDetento").val()
+
+            let dataAtual= new Date();
+
+
 
             if (!dataInicio) {
                 Swal.fire({
@@ -239,6 +237,12 @@
                 return;
 
             }
+
+
+
+
+
+
             if (!service) {
                 Swal.fire({
                     icon: 'error'
@@ -249,21 +253,12 @@
                 return;
 
             }
-            if (!cliente) {
-                Swal.fire({
-                    icon: 'error'
-                    , title: 'Oops...'
-                    , text: 'Selecione ou cadastre um Cliente'
-                    , footer: 'Qualquer dúvida entre em contato com o Suporte'
-                });
-                return;
 
-            }
-            if (!cliente) {
+            if (!detento) {
                 Swal.fire({
                     icon: 'error'
                     , title: 'Oops...'
-                    , text: 'Selecione ou cadastre um Cliente'
+                    , text: 'Selecione  um Detento'
                     , footer: 'Qualquer dúvida entre em contato com o Suporte'
                 });
                 return;
@@ -280,7 +275,6 @@
 
             })
 
-            console.log(data)
 
             $.ajax({
                 type: 'POST'

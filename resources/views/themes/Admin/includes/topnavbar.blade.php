@@ -9,95 +9,96 @@
         </div>
 
         <ul class="navbar-nav left-nav align-items-center">
-            <li class="nav-item">
-                <a href="app-email.html" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Email">
-                    <i class="bx bx-envelope"></i>
-                </a>
-            </li>
+{{--            <li class="nav-item">--}}
+{{--                <a href="app-email.html" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Email">--}}
+{{--                    <i class="bx bx-envelope"></i>--}}
+{{--                </a>--}}
+{{--            </li>--}}
 
-            <li class="nav-item">
-                <a href="app-chat.html" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Message">
-                    <i class='bx bx-message'></i>
-                </a>
-            </li>
+{{--            <li class="nav-item">--}}
+{{--                <a href="app-chat.html" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Message">--}}
+{{--                    <i class='bx bx-message'></i>--}}
+{{--                </a>--}}
+{{--            </li>--}}
 
-            <li class="nav-item">
-                <a href="app-calendar.html" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Calendar">
-                    <i class='bx bx-calendar'></i>
-                </a>
-            </li>
+{{--            <li class="nav-item">--}}
+{{--                <a href="app-calendar.html" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Calendar">--}}
+{{--                    <i class='bx bx-calendar'></i>--}}
+{{--                </a>--}}
+{{--            </li>--}}
 
-            <li class="nav-item">
-                <a href="app-todo.html" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Todo List">
-                    <i class='bx bx-edit'></i>
-                </a>
-            </li>
+{{--            <li class="nav-item">--}}
+{{--                <a href="app-todo.html" class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Todo List">--}}
+{{--                    <i class='bx bx-edit'></i>--}}
+{{--                </a>--}}
+{{--            </li>--}}
 
-            <li class="nav-item dropdown apps-box">
-                <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class='bx bxs-grid' ></i>
-                </a>
+{{--            <li class="nav-item dropdown apps-box">--}}
+{{--                <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                    <i class='bx bxs-grid' ></i>--}}
+{{--                </a>--}}
 
-                <div class="dropdown-menu">
-                    <div class="dropdown-header d-flex justify-content-between align-items-center">
-                        <span class="title d-inline-block">Web Apps</span>
-                        <span class="edit-btn d-inline-block">Edit</span>
-                    </div>
+{{--                <div class="dropdown-menu">--}}
+{{--                    <div class="dropdown-header d-flex justify-content-between align-items-center">--}}
+{{--                        <span class="title d-inline-block">Web Apps</span>--}}
+{{--                        <span class="edit-btn d-inline-block">Edit</span>--}}
+{{--                    </div>--}}
 
-                    <div class="dropdown-body">
-                        <div class="d-flex flex-wrap align-items-center">
-                            <a href="#" class="dropdown-item">
-                                <img src="assets/img/icon-account.png" alt="image">
-                                <span class="d-block mb-0">Account</span>
-                            </a>
+{{--                    <div class="dropdown-body">--}}
+{{--                        <div class="d-flex flex-wrap align-items-center">--}}
+{{--                            <a href="#" class="dropdown-item">--}}
+{{--                                <img src="assets/img/icon-account.png" alt="image">--}}
+{{--                                <span class="d-block mb-0">Account</span>--}}
+{{--                            </a>--}}
 
-                            <a href="#" class="dropdown-item">
-                                <img src="assets/img/icon-google.png" alt="image">
-                                <span class="d-block mb-0">Search</span>
-                            </a>
+{{--                            <a href="#" class="dropdown-item">--}}
+{{--                                <img src="assets/img/icon-google.png" alt="image">--}}
+{{--                                <span class="d-block mb-0">Search</span>--}}
+{{--                            </a>--}}
 
-                            <a href="#" class="dropdown-item">
-                                <img src="assets/img/icon-map.png" alt="image">
-                                <span class="d-block mb-0">Maps</span>
-                            </a>
+{{--                            <a href="#" class="dropdown-item">--}}
+{{--                                <img src="assets/img/icon-map.png" alt="image">--}}
+{{--                                <span class="d-block mb-0">Maps</span>--}}
+{{--                            </a>--}}
 
-                            <a href="#" class="dropdown-item">
-                                <img src="assets/img/icon-youtube.png" alt="image">
-                                <span class="d-block mb-0">YouTube</span>
-                            </a>
+{{--                            <a href="#" class="dropdown-item">--}}
+{{--                                <img src="assets/img/icon-youtube.png" alt="image">--}}
+{{--                                <span class="d-block mb-0">YouTube</span>--}}
+{{--                            </a>--}}
 
-                            <a href="#" class="dropdown-item">
-                                <img src="assets/img/icon-playstore.png" alt="image">
-                                <span class="d-block mb-0">Play</span>
-                            </a>
+{{--                            <a href="#" class="dropdown-item">--}}
+{{--                                <img src="assets/img/icon-playstore.png" alt="image">--}}
+{{--                                <span class="d-block mb-0">Play</span>--}}
+{{--                            </a>--}}
 
-                            <a href="#" class="dropdown-item">
-                                <img src="assets/img/icon-gmail.png" alt="image">
-                                <span class="d-block mb-0">Gmail</span>
-                            </a>
+{{--                            <a href="#" class="dropdown-item">--}}
+{{--                                <img src="assets/img/icon-gmail.png" alt="image">--}}
+{{--                                <span class="d-block mb-0">Gmail</span>--}}
+{{--                            </a>--}}
 
-                            <a href="#" class="dropdown-item">
-                                <img src="assets/img/icon-drive.png" alt="image">
-                                <span class="d-block mb-0">Drive</span>
-                            </a>
+{{--                            <a href="#" class="dropdown-item">--}}
+{{--                                <img src="assets/img/icon-drive.png" alt="image">--}}
+{{--                                <span class="d-block mb-0">Drive</span>--}}
+{{--                            </a>--}}
 
-                            <a href="#" class="dropdown-item">
-                                <img src="assets/img/icon-calendar.png" alt="image">
-                                <span class="d-block mb-0">Calendar</span>
-                            </a>
-                        </div>
-                    </div>
+{{--                            <a href="#" class="dropdown-item">--}}
+{{--                                <img src="assets/img/icon-calendar.png" alt="image">--}}
+{{--                                <span class="d-block mb-0">Calendar</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                    <div class="dropdown-footer">
-                        <a href="#" class="dropdown-item">View All</a>
-                    </div>
-                </div>
-            </li>
+{{--                    <div class="dropdown-footer">--}}
+{{--                        <a href="#" class="dropdown-item">View All</a>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </li>--}}
         </ul>
 
         <form class="nav-search-form d-none ml-auto d-md-block">
-            <label><i class='bx bx-search'></i></label>
-            <input type="text" class="form-control" placeholder="Pesquise aqui...">
+
+
+
         </form>
 
         <ul class="navbar-nav right-nav align-items-center">
@@ -307,14 +308,14 @@
                 <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="menu-profile">
                         <span class="name">Oi! {{$user->name}}</span>
-                        <img src="{{asset('img/user1.jpg')}}" class="rounded-circle" alt="image">
+                        <img src="{{asset('img/70x70.jpg')}}" class="rounded-circle" alt="image">
                     </div>
                 </a>
 
                 <div class="dropdown-menu">
                     <div class="dropdown-header d-flex flex-column align-items-center">
                         <div class="figure mb-3">
-                            <img src="{{asset('img/user1.jpg')}}" class="rounded-circle" alt="image">
+                            <img src="{{asset('img/70x70.jpg')}}" class="rounded-circle" alt="image">
                         </div>
 
                         <div class="info text-center">

@@ -35,9 +35,9 @@
                             <i class='bx bx-user-pin'></i>
                         </div>
                         <b id="cxPesquisa">{{$cxDetento->name}}</b>
-                        <span class="sub-text d-block font-weight-bold">{{$cxDetento->valor}}</span>
+                        <span class="sub-text d-block font-weight-bold">R$ {{number_format( $cxDetento->valor ,2,",",".")}}</span>
                         <hr>
-                        <button class="btn btn-outline-primary" type="button">Retirada</button>
+                        <a class="btn btn-outline-primary" href="{{route('Admin.caixa.detento.retirada', $cxDetento->id)}}"  type="button">Retirada</a>
                     </div>
                 </div>
 
@@ -76,6 +76,8 @@
 
             })
         })
+
+
 
 
     </script>

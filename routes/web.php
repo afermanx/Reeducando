@@ -51,8 +51,13 @@ Route::namespace('Admin')->group(function () {
 
      // start rotas financeiro
     Route::get('/financeiro/caixa', 'CaixaController@index')->name('Admin.caixa');
-    Route::get('/financeiro/caixa/detento', 'CaixaController@caixaDetento')->name('Admin.caixa.detento');
-    Route::post('/financeiro/caixa/detento', 'CaixaController@caixaDetento')->name('Admin.caixa.detento');
+
+    //caixa detento
+    Route::get('/financeiro/caixa/detento', 'CaixaDetentoController@index')->name('Admin.caixa.detento');
+    Route::get('/caixa/detento/retirada/{id}', 'CaixaDetentoController@retirada')->name('Admin.caixa.detento.retirada');
+    Route::post('/caixa/detento/retirada/', 'CaixaDetentoController@retirar')->name('Admin.caixa.detento.retirar');
+    Route::get('/caixa/detento/recibo/', 'CaixaDetentoController@recibo')->name('Admin.caixa.detento.recibo');
+
 
 
 

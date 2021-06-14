@@ -125,5 +125,7 @@
     <orderEntry type="library" name="jquery.dataTables" level="application" />
     <orderEntry type="library" name="datatables" level="application" />
     <orderEntry type="library" name="pdfmake" level="application" />
+    <orderEntry type="library" name="select2" level="application" />
+    <orderEntry type="library" name="jspdf" level="application" />
   </component>
 </module>

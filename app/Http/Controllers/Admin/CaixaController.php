@@ -35,6 +35,8 @@ class CaixaController extends Controller
 
 
 
+
+
        return view('Admin.Financeiro.caixa')
            ->with('user', $user)
            ->with('cxDetento', $cxDetento)
@@ -43,22 +45,5 @@ class CaixaController extends Controller
 
    }
 
-   public function caixaDetento(Request $request){
-       $user = Auth::guard('user')->user();
-       if (!$user) {
-           return view('Auth.sessionExpired');
-       }
 
-       $cxDetentos=Detento::get();
-
-
-
-
-        return view('Admin.Financeiro.caixaDetento')
-            ->with('user', $user)
-            ->with('cxDetentos', $cxDetentos);
-
-
-
-   }
 }

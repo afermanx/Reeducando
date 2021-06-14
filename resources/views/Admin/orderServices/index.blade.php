@@ -54,7 +54,7 @@
                                     <em class="text-muted">{{$ordem->Servico}}</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
-                                    <em class="text-muted">{{$ordem->Cliente}}</em>
+                                    <em class="text-muted">{{$ordem->cliente}}</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
                                     <em class="text-muted">{{$ordem->Detento}}</em>

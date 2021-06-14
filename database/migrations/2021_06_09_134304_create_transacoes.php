@@ -15,14 +15,14 @@ class CreateTransacoes extends Migration
     {
         Schema::create('transacoes', function (Blueprint $table) {
             $table->id();
-            $table->integer('detento_id');
-            $table->integer('oficina_id');
-            $table->string('description');
-            $table->integer('orderServices_id');
-            $table->decimal('valorDetento');
-            $table->decimal('valorOficina');
-            $table->string('status');
-            $table->softDeletes($column ='delete_at', $precision=0);
+            $table->integer('detento_id')->nullable();
+            $table->integer('oficina_id')->nullable();
+            $table->string('description')->nullable();
+            $table->integer('orderServices_id')->nullable();
+            $table->decimal('valorDetento')->nullable();
+            $table->decimal('valorOficina')->nullable();
+            $table->decimal('valor')->nullable();
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

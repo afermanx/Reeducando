@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{datatables, jquery-3.6.0, jquery.dataTables, jquery.form, pdfmake}" />
+    <file url="PROJECT" libraries="{jspdf, select2}" />
   </component>
 </project>
