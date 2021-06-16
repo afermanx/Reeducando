@@ -179,7 +179,7 @@ class UsersController extends Controller
 
             $dados = $request->validate([
                 'name' => 'required',
-                'email' => 'required',
+                'cpf' => 'required',
                 'type' => 'required',
 
 

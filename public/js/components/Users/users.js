@@ -480,15 +480,7 @@ function editPerfil(id) {
         return;
     }
 
-    if (!email & type==='ADMINISTRADOR') {
-        Swal.fire({
-            icon: 'error'
-            , title: 'Oops...'
-            , text: 'Digite o e-mail completo para continuarmos'
-            , footer: 'Qualquer dúvida entre em contato com o Suporte'
-        });
-        return;
-    }
+
     if (password & type==='ADMINISTRADOR' ) {
 
         if (password.length < 6) {

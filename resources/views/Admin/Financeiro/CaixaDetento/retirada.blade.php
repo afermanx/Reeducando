@@ -110,11 +110,6 @@
     <script src="{{asset('js/components/jquery.maskMoney.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 
-    <script>
-
-
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script>
         $.ajaxSetup({
@@ -149,6 +144,16 @@
                     icon: 'error'
                     , title: 'Oops...'
                     , text: 'Informe o valor a ser retirado'
+                    , footer: 'Qualquer dúvida entre em contato com o Suporte'
+                });
+                return;
+            }
+
+            if (valor > {{$cxDetento->valor}}) {
+                Swal.fire({
+                    icon: 'error'
+                    , title: 'Oops...'
+                    , text: 'Este Valor é maior do que tem em caixa'
                     , footer: 'Qualquer dúvida entre em contato com o Suporte'
                 });
                 return;
