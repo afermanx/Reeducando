@@ -4,12 +4,13 @@
 @section('breadItem','Cadastro')<!--Meio do mapa-->
 @section('breadcrumb')
     <li class="item">Usuarios</li><!--Pagina atual-->
+    <li class="item">Detentos</li><!--Pagina atual-->
 @endsection
 
 @section('content')
     <div class="card mb-30">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <h3><i class="bx bxs-group"></i> Lista de Usuarios</h3>
+            <h3><i class="bx bxs-group"></i> Lista de Detentos</h3>
 
             <div class="dropdown">
                 <button class="btn btn-outline-primary bx bxs-user-plus" type="button" data-toggle="tooltip"
@@ -60,7 +61,7 @@
                                         <span class="badge badge-success">{{$user->status}}</span>
                                     @endif
                                     @if($user->status ==="Inativo")
-                                        <span class="badge badge-warning" style="color: white6" >{{$user->status}}</span>
+                                        <span class="badge badge-warning" style="color: white" >{{$user->status}}</span>
                                     @endif
                                         @if($user->status ==="Bloqueado")
                                             <span class="badge badge-danger">{{$user->status}}</span>
@@ -80,7 +81,7 @@
                                                 title="Ver dados do usuário">
                                         </button>
                                         <button class="btn btn-outline-danger bx bx-trash"
-                                                onclick="destroy({{$user->id}},'{{$user->name}}','{{$user->type}}')"
+                                                onclick="destroy({{$user->id}},'{{$user->name}}', '{{$user->type}}')"
                                                 data-toggle="tooltip" data-placement="top"
                                                 title="Deletar dados do usuário">
                                         </button>

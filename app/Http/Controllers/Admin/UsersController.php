@@ -34,6 +34,23 @@ class UsersController extends Controller
             ->with('users',$data);
     }
 
+    public function detentos(){
+        $user = Auth::guard('user')->user();
+        if (!$user) {
+            return view('Auth.sessionExpired');
+        }
+
+
+        $users = new Detento();
+        $data= $users->list();
+
+
+        return view('Admin.Detentos.index')
+            ->with('user', $user)
+            ->with('users',$data);
+    }
+
+
     public function perfil(){
         $user = Auth::guard('user')->user();
         if (!$user) {
@@ -229,12 +246,16 @@ class UsersController extends Controller
             return view('Auth.sessionExpired');
         }
         $data = json_decode($request->getContent(), true);
+        $id = $data['user_id'];
+        $type = $data['type'];
 
+        if($type==="ADMINISTRADOR"){
+            User::where('id',$id)->delete();
+        }
 
-        $users = $data['user_id'];
-
-        User::where('id',$users)->delete();
-
+        if($type==="DETENTO"){
+            Detento::where('id',$id)->delete();
+        }
 
 
         return response()->json(['sucesso' => true, 'excluido' => true]);

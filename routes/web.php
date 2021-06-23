@@ -20,6 +20,7 @@ Route::namespace('Admin')->group(function () {
 
 //     Start routes users
         Route::get('/cadastro/usuarios', 'UsersController@index')->name('Admin.users');
+        Route::get('/cadastro/detentos', 'UsersController@detentos')->name('Admin.detentos');
         Route::get('/usuario/perfil', 'UsersController@perfil')->name('Admin.perfil');
 
         Route::post('/usuario/salvar', 'UsersController@store')->name('Admin.users.save');

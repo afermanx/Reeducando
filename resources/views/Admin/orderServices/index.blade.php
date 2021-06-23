@@ -92,11 +92,7 @@
                                         @endif
 
                                         @if($user->type==="ADMINISTRADOR")
-                                            <button class="btn btn-outline-info bx bx-edit"
-                                                    onclick="show({{$ordem->id}})"
-                                                    data-toggle="tooltip" data-placement="top"
-                                                    title="Editar Ordem de Serviço">
-                                            </button>
+
                                             <button class="btn btn-outline-danger bx bx-trash"
                                                     onclick="destroy({{$ordem->id}},'{{$ordem->Servico}}')"
                                                     data-toggle="tooltip" data-placement="top"
@@ -192,10 +188,11 @@
         })
 
 
-        function finalizarOS(id, name, valor, detento_id, service_id) {
+        function finalizarOS(id, name, valor, detento_id, service_id, ) {
 
             $("#TitleModal").html('<h>' + name + '</h>');
             $("#edtValorReceber").val('R$ ' + valor + ',00')
+
 
 
             $('#modalFinalizarOS').modal('show');
@@ -207,10 +204,13 @@
             $('#edtValorRecebimento').val("");
         })
 
-        function finalizar(id, valor, detento_id, service_id) {
+        function finalizar(id, valor, detento_id,service_id) {
 
 
             let valorRecebido = $("#edtValorRecebimento").maskMoney("unmasked")[0]
+
+
+
 
 
             if (!valorRecebido) {
@@ -247,7 +247,9 @@
                             valor:valor,
                             detento_id:detento_id,
                             service_id:service_id,
-                            os_id: id
+
+                            os_id: id,
+
 
                         })
 
@@ -323,6 +325,7 @@
                         tipo: 'quitado',
                         service_id:service_id,
                         detento_id:detento_id,
+
                         os_id: id
 
                     })
@@ -401,6 +404,7 @@
                         detento_id:detento_id,
                         valor:valor,
                         service_id:service_id,
+
                         os_id: id
 
                     })

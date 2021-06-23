@@ -111,6 +111,12 @@
                             <span class="menu-title">Usuarios</span>
                         </a>
                     </li>
+                    <li class="nav-item {{ Request::segment(2) === 'detentos' ? 'mm-active' : null }}">
+                        <a href="{{route('Admin.detentos')}}" class="nav-link">
+                            <span class="icon"><i class='bx bxs-group'></i></span>
+                            <span class="menu-title">Detentos</span>
+                        </a>
+                    </li>
 
 
                     <li class="nav-item {{ Request::segment(2) === 'servicos' ? 'mm-active' : null }}">

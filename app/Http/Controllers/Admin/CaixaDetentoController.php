@@ -43,7 +43,7 @@ class CaixaDetentoController extends Controller
 
         $cxDetento= Detento::where('id', $idDetento)->first();
 
-        $detentoRetiradas=Transacoes::where('detento_id',$idDetento)->where('description', 'RETIRADA')->get();
+        $detentoRetiradas=Transacoes::where('detento_id',$idDetento)->where('status', 'RETIRADA')->get();
 
 
 
@@ -65,6 +65,7 @@ class CaixaDetentoController extends Controller
         $data = json_decode($request->getContent(), true);
         $valor = $data['valor'];
         $detento_id = $data['detento_id'];
+        $description = $data['description'];
 
         try {
 
@@ -78,8 +79,8 @@ class CaixaDetentoController extends Controller
             $transacao->detento_id=$detento_id;
             $transacao->oficina_id = 1;
             $transacao->valor=$valor;
-            $transacao->description="RETIRADA";
-            $transacao->status="DOWN";
+            $transacao->description=$description;
+            $transacao->status="RETIRADA";
 
             $transacao->save();
 

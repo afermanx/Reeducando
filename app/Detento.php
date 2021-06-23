@@ -13,7 +13,7 @@ class Detento extends Model
     ];
 
     public function list(){
-        $detentos=Cliente::orderBy('id', 'DESC')->get();
+        $detentos=Detento::orderBy('id', 'DESC')->get();
 
         return $detentos;
     }

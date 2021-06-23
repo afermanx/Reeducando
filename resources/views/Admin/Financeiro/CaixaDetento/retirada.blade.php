@@ -21,13 +21,17 @@
                 </div>
                 <br>
                 <div class="input-group mb-3">
-                    <input type="text" id="edtValor" class="form-control" placeholder="Valor a ser sacado">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-dark" type="button" id="button-addon2"
-                                onclick="retirar({{$cxDetento->id}})">Retirar
-                        </button>
-                    </div>
+                    <input type="text" id="edtValor" class="form-control" placeholder="Valor a ser sacado"><br>
+
+
                 </div>
+                <div class="input-group mb-3">
+                    <textarea id="edtDescription" style="resize: none" cols="33" rows="5" class="form-control" placeholder="Justificativa da retirda" ></textarea>
+
+                </div>
+                <button class="btn btn-outline-dark" type="button" id="button-addon2"
+                        onclick="retirar({{$cxDetento->id}})">Retirar
+                </button>
 
 
             </div>
@@ -49,7 +53,7 @@
                         <th class="d-none d-sm-table-cell">Valor </th>
 
                         <th class="d-none d-sm-table-cell">Status</th>
-                        <th class="d-none d-sm-table-cell">Opções</th>
+
 
 
                     </tr>
@@ -67,25 +71,12 @@
                                 <em class="text-muted">{{$detentoRetirada->valor}}</em>
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                <span class="badge badge-danger" style="color: white" ><i class="bx bx-arrow-to-bottom"></i></span>
+                                <span class="badge badge-danger" style="color: white" > Retirada <i class="bx bx-arrow-to-bottom"></i></span>
                             </td>
 
 
 
-                            <td>
-                                <em class="text-muted">
 
-
-                                        <a class="btn btn-outline-primary bx bxs-printer"
-                                                        href="{{route('Admin.caixa.detento.recibo')}}"
-                                                data-toggle="tooltip" data-placement="top"
-                                                title="Finalizar Ordem de Serviço">Recibo
-                                        </a>
-
-
-
-                                </em>
-                            </td>
 
 
                         </tr>
@@ -137,6 +128,7 @@
         function retirar(id) {
 
             let valor = $("#edtValor").maskMoney("unmasked")[0]
+            let description= $("#edtDescription").val()
 
 
             if (!valor) {
@@ -144,6 +136,15 @@
                     icon: 'error'
                     , title: 'Oops...'
                     , text: 'Informe o valor a ser retirado'
+                    , footer: 'Qualquer dúvida entre em contato com o Suporte'
+                });
+                return;
+            }
+            if (!description) {
+                Swal.fire({
+                    icon: 'error'
+                    , title: 'Oops...'
+                    , text: 'Por favor Justifique a Retirada'
                     , footer: 'Qualquer dúvida entre em contato com o Suporte'
                 });
                 return;
@@ -161,7 +162,8 @@
 
             let data = JSON.stringify({
                 valor: valor,
-                detento_id: id
+                detento_id: id,
+                description: description
             })
 
             $.ajax({
@@ -199,55 +201,6 @@
                                 $(location).attr('href', '/caixa/detento/retirada/'+id)
                             }
                         })
-                        var pdf = new jsPDF();
-                        //var pdf = new jsPDF('p','in','letter');
-
-                        pdf.setProperties({
-                            title: 'Gerador de Recibos Tabajara',
-                            subject: 'Recibo ' ,
-                            author: 'vulture - balenpro@gmail.com',
-                            keywords: 'gerador de recibos pessoal',
-                            creator: 'gPDF, javascript, web 2.0, ajax'
-                        });
-
-                        // pdf.setDrawColor(0);
-                        // pdf.setFillColor(255, 255, 255);
-                        //  pdf.roundedRect(5, 8, 200, 18, 2, 2, 'FD'); //  Black sqaure with rounded corners
-
-                        // pdf.addImage(imgData, 5, 30); // adicionando background
-                        pdf.setFont("helvetica");
-                        pdf.setFontType("normal");
-                        pdf.setFontSize(22);
-                        pdf.setTextColor(150); // cinza claro
-                        pdf.text(20, 20, 'RECIBO ');
-                        pdf.setTextColor(0); //isso deve ser preto
-                        pdf.setFontSize(18);
-                        pdf.text(120, 20, 'VALOR  R$ '+valor+',00');
-                        pdf.setFontSize(12);
-                        pdf.text(20, 50, '  Recebi(emos) de ',' CPF/CNPJ nº ' ,',a ');
-                        pdf.text(20, 55, 'importancia de R$ '+valor+',00 referente a(o) ');
-                        pdf.text(20, 65, '  E, para maior clareza firmo o presente recibo para que produza os seus efeitos, dando');
-                        pdf.text(20, 70, 'plena, rasa e irrevogável quitação, pelo valor recebido.');
-                        pdf.text(30, 80, ' ',' - Cacoal-RO','');
-                        pdf.text(70, 90, '___________________________');
-                        //	pdf.setLineWidth(0.5);
-                        //	pdf.line(70, 90, 60, 25);
-                        pdf.setFont("times");
-                        pdf.setFontType("italic");
-                        pdf.text(90, 95, ' ');
-                        pdf.setFont("helvetica");
-                        pdf.setFontType("normal");
-                        pdf.setFontSize(10);
-                        pdf.text(70, 105, '   ',' CPF/CNPJ: ');
-                        pdf.text(60, 110, 'E-mail: ','Fone: ');
-                        pdf.text(10, 120, ' --------------------------------------------------------------- 1a via cliente ---------------------------------------------------------------------');
-
-
-
-
-                        pdf.save('recibo_','_','.pdf');
-
-
                     }
 
                 }

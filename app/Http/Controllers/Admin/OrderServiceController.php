@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\CaixaDetento;
-use App\CaixaOficina;
 use App\Cliente;
 use App\Detento;
 use App\Http\Controllers\Controller;
@@ -11,8 +9,7 @@ use App\Oficina;
 use App\OrderService;
 use App\Service;
 use App\Transacoes;
-use App\User;
-use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -137,6 +134,8 @@ class OrderServiceController extends Controller
         $service_id = $data['service_id'];
         $os_id = $data['os_id'];
 
+
+
         $servico = Service::where('id',$service_id)->pluck('detainee')->all();
         $oficina = Service::where('id',$service_id)->pluck('workshop')->all();
         $oficina_id = Oficina::where('id',1)->pluck('id')->all();
@@ -183,7 +182,11 @@ class OrderServiceController extends Controller
                 $transacao->orderServices_id=$os->id;
                 $transacao->valorDetento=$percentDetento;
                 $transacao->valorOficina=$percentOficina;
-                $transacao->description="ENTRADA";
+                if($os->cliente){
+                    $transacao->description="Recebimento de serviço, cliente: " .$os->cliente;
+                }else{
+                    $transacao->description="Recebimento de serviço, cliente não informado " ;
+                }
                 $transacao->status="UP";
 
                 $transacao->save();
@@ -224,7 +227,7 @@ class OrderServiceController extends Controller
                 $cxDetento->save();
 
 
-                $percentOficina= $valorRecebido / 100 * $oficina[0];
+                $percentOficina= $valor / 100 * $oficina[0];
 
 
 
@@ -239,7 +242,12 @@ class OrderServiceController extends Controller
                 $transacao->orderServices_id=$os->id;
                 $transacao->valorDetento=$percentDetento;
                 $transacao->valorOficina=$percentOficina;
-                $transacao->description="ENTRADA";
+                if($os->cliente){
+                    $transacao->description="Recebimento de serviço, cliente: " .$os->cliente;
+                }else{
+                    $transacao->description="Recebimento de serviço, cliente não informado " ;
+                }
+
                 $transacao->status="UP";
 
                 $transacao->save();

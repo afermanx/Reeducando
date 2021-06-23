@@ -1,5 +1,6 @@
 <?php
 
+use App\OrderService;
 use Illuminate\Database\Seeder;
 
 class OrderServiceSeeder extends Seeder
@@ -11,6 +12,7 @@ class OrderServiceSeeder extends Seeder
      */
     public function run()
     {
-        //
+
+
     }
 }

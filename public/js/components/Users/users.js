@@ -90,7 +90,7 @@ function save() {
             title: 'Atenção: Senha padrão gerada',
             text: "Senha: "+generatePass,
             footer: 'Senha gerada automaticamente  pois os campos senha não foram preenchidas',
-            timer: 6000,
+            timer: 4000,
             didOpen: () => {
                 timerInterval = setInterval(() => {
                     // limpar isso aqui
@@ -151,16 +151,30 @@ function save() {
 
                         } else if (retorno['sucesso'] == true) {
 
-                            Swal.fire({
-                                position: 'top-end',
-                                icon: 'success',
-                                title: 'Usuario cadastrado com sucesso',
-                                showConfirmButton: false,
-                                timer: 1500,
-                                onClose: () => {
+                            if(type==="ADMINISTRADOR"){
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Usuario cadastrado com sucesso',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    onClose: () => {
                                         $(location).attr('href', '/cadastro/usuarios')
                                     }
-                            })
+                                })
+                            }
+                            if(type==="DETENTO"){
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Detento cadastrado com sucesso',
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    onClose: () => {
+                                        $(location).attr('href', '/cadastro/detentos')
+                                    }
+                                })
+                            }
 
                         }
 
@@ -225,16 +239,30 @@ function save() {
                 return;
 
             } else if (retorno['sucesso'] == true) {
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Usuario cadastrado com sucesso',
-                    showConfirmButton: false,
-                    timer: 1500,
-                    onClose: () => {
-                        $(location).attr('href', '/cadastro/usuarios')
-                    }
-                })
+
+                if(type==="ADMINISTRADOR"){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Usuario cadastrado com sucesso',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        onClose: () => {
+                            $(location).attr('href', '/cadastro/usuarios')
+                        }
+                    })
+                }else if(type==="DETENTO"){
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Detento cadastrado com sucesso',
+                        showConfirmButton: false,
+                        timer: 1500,
+                        onClose: () => {
+                            $(location).attr('href', '/cadastro/detentos')
+                        }
+                    })
+                }
             }
 
         }
@@ -627,7 +655,7 @@ function editPerfil(id) {
 }
 
 
-function destroy(id, name) {
+function destroy(id, name, type) {
     Swal.fire({
         title: 'Deseja realmente excluir o usuário ' + name + ' ?',
         footer: "",
@@ -644,21 +672,37 @@ function destroy(id, name) {
                 type: 'POST',
                 url: '/usuario/excluir',
                 data: JSON.stringify({
-                    user_id: id
+                    user_id: id,
+                    type:type
                 }),
                 success: function (data) {
                     var retorno = $.parseJSON(JSON.stringify(data));
                     if (retorno['excluido'] == true) {
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'Usuario excluido com sucesso',
-                            showConfirmButton: false,
-                            timer: 1500,
-                            onClose: () => {
-                                $(location).attr('href', '/cadastro/usuarios')
-                            }
-                        })
+                      if(type==='ADMINISTRADOR'){
+                          Swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Usuario excluido com sucesso',
+                              showConfirmButton: false,
+                              timer: 1500,
+                              onClose: () => {
+                                  $(location).attr('href', '/cadastro/usuarios')
+                              }
+                          })
+                      }
+
+                      if(type==='DETENTO'){
+                          Swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Detento excluido com sucesso',
+                              showConfirmButton: false,
+                              timer: 1500,
+                              onClose: () => {
+                                  $(location).attr('href', '/cadastro/detentos')
+                              }
+                          })
+                      }
                     }
                 },
                 contentType: "application/json",
