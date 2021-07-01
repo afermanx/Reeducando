@@ -289,7 +289,7 @@ class OrderServiceController extends Controller
 
 
         if($tipo==="quitado"){
-            $obs="Valor total recebido ".number_format( $valor ,2,",",".");
+            $obs="Valor total recebido R$ ".number_format( $valor ,2,",",".");
             switch (PHP_OS) {
                 case 'Linux':
                     $zoom = '1.1';
@@ -317,7 +317,7 @@ class OrderServiceController extends Controller
 
         $calc= $valor-$valorRecebido;
         if($tipo==="falta"){
-            $obs="Valor parcial recebido: ".number_format( $valorRecebido ,2,",",".")." Falta a pagar o valor de : ".number_format( $calc ,2,",",".");
+            $obs="Valor parcial recebido: R$ ".number_format( $valorRecebido ,2,",",".")." Falta a pagar o valor de : ".number_format( $calc ,2,",",".");
             switch (PHP_OS) {
                 case 'Linux':
                     $zoom = '1.1';
