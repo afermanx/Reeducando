@@ -1,3 +1,4 @@
+
 @extends('themes.Admin.adminLayout')
 @section('titleAdmin','Reeducando | Ordens de Serviços')
 @section('breadName','Ordens de Serviços')<!--Destaque do mapa de url-->
@@ -167,13 +168,11 @@
 
 
     <script>
-
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             }
         });
-
         jQuery(function () {
             $("#edtValorRecebimento").maskMoney({
                 prefix: 'R$ ',
@@ -184,35 +183,18 @@
                 allowZero: true,
                 defaultZero: false
             });
-
         })
-
-
         function finalizarOS(id, name, valor, detento_id, service_id, ) {
-
             $("#TitleModal").html('<h>' + name + '</h>');
             $("#edtValorReceber").val('R$ ' + valor + ',00')
-
-
-
             $('#modalFinalizarOS').modal('show');
-
             $("#btnFinalizar").attr("onclick", 'finalizar(' + id + ',' + valor + ','+ detento_id +','+ service_id +')');
         }
-
         $('#cancelar').click(function () {
             $('#edtValorRecebimento').val("");
         })
-
         function finalizar(id, valor, detento_id,service_id) {
-
-
             let valorRecebido = $("#edtValorRecebimento").maskMoney("unmasked")[0]
-
-
-
-
-
             if (!valorRecebido) {
                 Swal.fire({
                     icon: 'error'
@@ -222,12 +204,8 @@
                 });
                 return;
             }
-
             if (valorRecebido < valor) {
-
                 const calculo = valor - valorRecebido
-
-
                 Swal.fire({
                     title: 'O valor recebido é inferior ao valor do serviço',
                     text: "Deseja Receber mesmo assim ?",
@@ -239,7 +217,6 @@
                     confirmButtonText: 'Sim, Receber!'
                 }).then((result) => {
                     if (result.isConfirmed) {
-
                         let data = JSON.stringify({
                             calculo: calculo,
                             valorRecebido: valorRecebido,
@@ -247,20 +224,14 @@
                             valor:valor,
                             detento_id:detento_id,
                             service_id:service_id,
-
                             os_id: id,
-
-
                         })
-
-
                         $.ajax({
                             type: 'POST'
                             , url: '{{route('Admin.os.finalizar')}}'
                             , data: data,
                             success: function (data) {
                                 const retorno = $.parseJSON(JSON.stringify(data));
-
                                 $("#btnFinalizar").html('<i class="bx bx-add-to-queue"></i> Efetuar Cadastro');
                                 if (retorno['sucesso'] === false) {
                                     let mensagem = retorno['message'] + '</br>';
@@ -277,9 +248,7 @@
                                         , footer: 'Qualquer dúvida entre em contato com o Suporte'
                                     });
                                     return;
-
                                 } else if (retorno['sucesso'] == true) {
-
                                     Swal.fire(
                                         {
                                             icon: 'success',
@@ -290,34 +259,35 @@
                                         }
                                     )
 
-                                    $(location).attr('href', '{{route('Admin.caixa')}}')
+                                    let data = JSON.stringify({
 
+                                        valorRecebido: valorRecebido,
+                                        valor:valor,
+                                        detento_id:detento_id,
+                                        tipo:"falta",
+                                        service_id:service_id,
+                                        os_id: id,
+                                    })
+
+                                    $(location).attr('href', '/os/finalizar/recibo/'+data,'reeducando_pdf')
 
                                 }
-
                             }
                             , error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-
                             }
                             , contentType: "application/json"
                             , dataType: 'json'
                         });
-
                         $('#edtValorRecebimento').val("");
                         $('#modalFinalizarOS').modal('hide');
                     }
-
-
                 })
-
-
             }
-
             if (valorRecebido >= valor) {
                 let calculo = valorRecebido - valor
-
                 if (calculo === 0) {
+
+
                     let data = JSON.stringify({
                         calculo: calculo,
                         valorRecebido: valorRecebido,
@@ -325,9 +295,7 @@
                         tipo: 'quitado',
                         service_id:service_id,
                         detento_id:detento_id,
-
                         os_id: id
-
                     })
                     Swal.fire({
                         title: 'Finalizar Ordem Serviço',
@@ -346,7 +314,6 @@
                                 , data: data,
                                 success: function (data) {
                                     const retorno = $.parseJSON(JSON.stringify(data));
-
                                     $("#btnFinalizar").html('<i class="bx bx-add-to-queue"></i> Finalizar');
                                     if (retorno['sucesso'] === false) {
                                         let mensagem = retorno['message'] + '</br>';
@@ -363,9 +330,7 @@
                                             , footer: 'Qualquer dúvida entre em contato com o Suporte'
                                         });
                                         return;
-
                                     } else if (retorno['sucesso'] == true) {
-
                                         Swal.fire(
                                             {
                                                 icon: 'success',
@@ -375,26 +340,27 @@
                                                 timer: 1500,
                                             }
                                         )
+                                        let data = JSON.stringify({
 
-                                        $(location).attr('href', '{{route('Admin.caixa')}}')
+                                            valorRecebido: valorRecebido,
+                                            valor:valor,
+                                            tipo: 'quitado',
+                                            detento_id:detento_id,
+                                            service_id:service_id,
+                                            os_id: id,
+                                        })
 
-
+                                        $(location).attr('href', '/os/finalizar/recibo/'+data,'reeducando_pdf')
                                     }
-
                                 }
                                 , error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-
                                 }
                                 , contentType: "application/json"
                                 , dataType: 'json'
                             });
-
                             $('#edtValorRecebimento').val("");
                             $('#modalFinalizarOS').modal('hide');
                         }
-
-
                     })
                 } else {
                     let data = JSON.stringify({
@@ -404,9 +370,7 @@
                         detento_id:detento_id,
                         valor:valor,
                         service_id:service_id,
-
                         os_id: id
-
                     })
                     Swal.fire({
                         title: 'Finalizar Ordem Serviço',
@@ -425,7 +389,6 @@
                                 , data: data,
                                 success: function (data) {
                                     const retorno = $.parseJSON(JSON.stringify(data));
-
                                     $("#btnFinalizar").html('<i class="bx bx-add-to-queue"></i> Finalizar');
                                     if (retorno['sucesso'] === false) {
                                         let mensagem = retorno['message'] + '</br>';
@@ -442,9 +405,7 @@
                                             , footer: 'Qualquer dúvida entre em contato com o Suporte'
                                         });
                                         return;
-
                                     } else if (retorno['sucesso'] == true) {
-
                                         Swal.fire(
                                             {
                                                 icon: 'success',
@@ -454,35 +415,33 @@
                                                 timer: 1500,
                                             }
                                         )
+                                        let data = JSON.stringify({
 
-                                        $(location).attr('href', '{{route('Admin.caixa')}}')
+                                            valorRecebido: valorRecebido,
+                                            valor:valor,
+                                            tipo: "quitado",
+                                            detento_id:detento_id,
+                                            service_id:service_id,
+                                            os_id: id,
+                                        })
+
+                                        $(location).attr('href', '/os/finalizar/recibo/'+data,'reeducando_pdf')
 
 
                                     }
-
                                 }
                                 , error: function (XMLHttpRequest, textStatus, errorThrown) {
-
-
                                 }
                                 , contentType: "application/json"
                                 , dataType: 'json'
                             });
-
                             $('#edtValorRecebimento').val("");
                             $('#modalFinalizarOS').modal('hide');
                         }
-
-
                     })
                 }
-
-
             }
-
-
         }
-
         function destroy(id, name) {
             Swal.fire({
                 title: 'Deseja realmente excluir a Ordem de Serviço ' + name + ' ?',
@@ -510,7 +469,6 @@
                                     title: 'Ordem de Serviço excluido com sucesso',
                                     showConfirmButton: false,
                                     timer: 1500,
-
                                 })
                                 $(location).attr('href', '{{route('Admin.os')}}')
                             }
@@ -520,11 +478,7 @@
                     });
                 }
             });
-
         }
-
-
     </script>
 
 @endsection
-

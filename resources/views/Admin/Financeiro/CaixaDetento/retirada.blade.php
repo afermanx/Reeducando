@@ -63,7 +63,7 @@
                     @foreach($detentoRetiradas as $detentoRetirada)
 
                         <tr>
-                            <td class="text-center">{{$detentoRetirada->updated_at}}</td>
+                            <td class="text-center">{{(new DateTime($detentoRetirada->updated_at))->format('d/m/Y')}}</td>
                             <td class="font-w600">
                                 <a href="">{{$detentoRetirada->description}}</a>
                             </td>

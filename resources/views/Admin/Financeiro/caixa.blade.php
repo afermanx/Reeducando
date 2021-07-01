@@ -53,7 +53,7 @@
                     <tbody>
                     @foreach($transacoes as $transacao)
                         <tr>
-                            <td class="text-center">{{$transacao->updated_at}}</td>
+                            <td class="text-center">{{(new DateTime($transacao->updated_at))->format('d/m/Y')}}</td>
                             <td class="font-w600">
                                 <a href="">{{$transacao->description}}</a>
                             </td>

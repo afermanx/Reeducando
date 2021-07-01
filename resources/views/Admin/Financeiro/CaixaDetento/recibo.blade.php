@@ -43,7 +43,7 @@
             pdf.setProperties({
                 title:'Recibo',
                 subject: 'Recibo ' + nume,
-                author: '',
+                author: ',
                 keywords: 'gerador de recibos pessoal',
                 creator: 'gPDF, javascript, web 2.0, ajax'
             });

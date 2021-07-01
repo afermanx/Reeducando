@@ -10,6 +10,7 @@ use App\OrderService;
 use App\Service;
 use App\Transacoes;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -261,6 +262,84 @@ class OrderServiceController extends Controller
 
 
         }
+
+
+
+
+    }
+    public function gerarRecibo(Request $request){
+        $user = Auth::guard('user')->user();
+        if (!$user) {
+            return view('Auth.sessionExpired');
+        }
+
+//        {"valorRecebido":100,"valor":100,"detento_id":1,"service_id":2,"os_id":11}
+        $dados = json_decode($request->data, true);
+        $valorRecebido = $dados['valorRecebido'];
+        $valor = $dados['valor'];
+        $detento_id = $dados['detento_id'];
+        $service_id = $dados['service_id'];
+        $os_id = $dados['os_id'];
+        $tipo = $dados['tipo'];
+
+
+        $os =  OrderService::join('services','service_id','=','services.id')
+            ->where('order_services.id', $os_id)
+            ->get(['cliente as Cliente', 'services.name as Servico']);
+
+
+        if($tipo==="quitado"){
+            $obs="Valor total recebido ".number_format( $valor ,2,",",".");
+            switch (PHP_OS) {
+                case 'Linux':
+                    $zoom = '1.1';
+                    break;
+                default:
+                    $zoom = '1';
+            }
+
+
+
+            $pdf = \PDF::loadView('Admin.orderServices.recibo',[
+                'valorRecebido'=>$valor,
+
+                'obs'=>$obs,
+                'cliente'=>$os[0]->Cliente,
+                'servico'=>$os[0]->Servico,
+                'user'=>$user,
+
+            ]);
+            return $pdf->download('Recibo'.$os[0]->Cliente.'.pdf');
+
+        }
+
+
+
+        $calc= $valor-$valorRecebido;
+        if($tipo==="falta"){
+            $obs="Valor parcial recebido: ".number_format( $valorRecebido ,2,",",".")." Falta a pagar o valor de : ".number_format( $calc ,2,",",".");
+            switch (PHP_OS) {
+                case 'Linux':
+                    $zoom = '1.1';
+                    break;
+                default:
+                    $zoom = '1';
+            }
+
+
+
+            $pdf = \PDF::loadView('Admin.orderServices.recibo',[
+                'valorRecebido'=>$valorRecebido,
+
+                'obs'=>$obs,
+                'cliente'=>$os[0]->Cliente,
+                'servico'=>$os[0]->Servico,
+                'user'=>$user,
+
+            ]);
+            return $pdf->download('Recibo'.$os[0]->Cliente.'.pdf');
+        }
+
 
 
 

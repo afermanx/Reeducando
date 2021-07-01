@@ -14,7 +14,7 @@ function closeModal() {
 function save() {
     let name = $('#name').val();
     let description = $('#description').val();
-    let value = $('#value').val();
+    let value = $("#value").maskMoney("unmasked")[0]
     let detainee = $('#detainee').val();
     let workshop = $('#workshop').val();
 

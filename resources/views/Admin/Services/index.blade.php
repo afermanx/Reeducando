@@ -221,12 +221,28 @@
 
 @endsection
 @section('jsAdmin')
+    <script src="{{asset('js/plugins/jquery.mask.js')}}"></script>
+    <script src="{{asset('js/components/jquery.maskMoney.min.js')}}"></script>
+
     <script>
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             }
         });
+        jQuery(function () {
+            $("#value").maskMoney({
+                prefix: 'R$ ',
+                showSymbol: true,
+                thousands: '.',
+                decimal: ',',
+                symbolStay: true,
+                allowZero: true,
+                defaultZero: false
+            });
+
+
+        })
 
 
     </script>

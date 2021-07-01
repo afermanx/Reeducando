@@ -46,6 +46,7 @@ Route::namespace('Admin')->group(function () {
         Route::get('/os/mostrar/{id}', 'OrderServiceController@show')->name('Admin.os.show');
         Route::post('/os/editar', 'OrderServiceController@edit')->name('Admin.os.edit');
         Route::post('/os/finalizar', 'OrderServiceController@finalizar')->name('Admin.os.finalizar');
+        Route::get('/os/finalizar/recibo/{data}', 'OrderServiceController@gerarRecibo')->name('Admin.os.recibo');
 
         Route::post('/os/excluir', 'OrderServiceController@destroy')->name('Admin.os.delete');
 //     End routes ordens services
