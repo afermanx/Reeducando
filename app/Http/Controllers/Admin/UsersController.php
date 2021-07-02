@@ -206,6 +206,7 @@ class UsersController extends Controller
             $data = json_decode($request->getContent(), true);
             $name = $data['name'];
             $email = $data['email'];
+            $cpf = $data['cpf'];
             $type = $data['type'];
             $status= $data['status'];
             $password = $data['password'];
@@ -220,6 +221,7 @@ class UsersController extends Controller
             $users = User::find($id);
             $users->name=$name;
             $users->email=$email;
+            $users->cpf=$cpf;
             if($password){
                 $users->password=$passCrypt;
             }

@@ -34,8 +34,8 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label><span style="color:red">*</span> CPF:</label>
-                            <input type="email" id='cpf' class="form-control"
-                                   value="{{$user->cpf}}" placeholder="Digite um e-mail valido">
+                            <input type="text" id='cpf' class="form-control"
+                                   value="{{$user->cpf}}" placeholder="Digite um CPF">
                         </div>
                     </div>
                     <div class="col-lg-6 d-none">

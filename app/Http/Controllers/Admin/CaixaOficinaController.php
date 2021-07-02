@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use App\Detento;
 use App\Http\Controllers\Controller;
+use App\Oficina;
+use App\OficinaTransacao;
 use App\Transacoes;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CaixaDetentoController extends Controller
+class CaixaOficinaController extends Controller
 {
     public function index(Request $request){
         $user = Auth::guard('user')->user();
@@ -16,42 +20,19 @@ class CaixaDetentoController extends Controller
             return view('Auth.sessionExpired');
         }
 
-        $cxDetentos=Detento::get();
+        $idOficina=$request->id;
 
 
 
+        $cxOficina= Oficina::where('id', $idOficina)->first();
 
+        $oficinaRetiradas=OficinaTransacao::where('oficina_id',$idOficina)->where('status', 'RETIRADA')->get();
 
-
-
-        return view('Admin.Financeiro.CaixaDetento.caixa')
+        return view('Admin.Financeiro.CaixaOficina.retirada')
             ->with('user', $user)
-            ->with('cxDetentos', $cxDetentos);
-
-
-
+            ->with('cxOficina', $cxOficina)
+            ->with('oficinaRetiradas',$oficinaRetiradas);
     }
-    public function retirada(Request $request){
-        $user = Auth::guard('user')->user();
-        if (!$user) {
-            return view('Auth.sessionExpired');
-        }
-
-        $idDetento=$request->id;
-
-
-
-        $cxDetento= Detento::where('id', $idDetento)->first();
-
-        $detentoRetiradas=Transacoes::where('detento_id',$idDetento)->where('status', 'RETIRADA')->get();
-
-        return view('Admin.Financeiro.CaixaDetento.retirada')
-            ->with('user', $user)
-            ->with('cxDetento', $cxDetento)
-            ->with('detentoRetiradas',$detentoRetiradas);
-
-    }
-
     public function retirar(Request $request){
         $user = Auth::guard('user')->user();
         if (!$user) {
@@ -60,19 +41,16 @@ class CaixaDetentoController extends Controller
 
         $data = json_decode($request->getContent(), true);
         $valor = $data['valor'];
-        $detento_id = $data['detento_id'];
+        $oficina_id = $data['oficina_id'];
         $description = $data['description'];
 
         try {
 
+            $oficina = Oficina::find($oficina_id);
+            $oficina->valor = $oficina->valor-$valor;
+            $oficina->save();
 
-
-            $detento = Detento::find($detento_id);
-            $detento->valor = $detento->valor-$valor;
-            $detento->save();
-
-            $transacao= new Transacoes();
-            $transacao->detento_id=$detento_id;
+            $transacao= new OficinaTransacao();
             $transacao->oficina_id = 1;
             $transacao->valor=$valor;
             $transacao->description=$description;
@@ -91,7 +69,5 @@ class CaixaDetentoController extends Controller
 
 
     }
-
-
 
 }

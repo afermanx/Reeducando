@@ -25,7 +25,7 @@
                         <i class="bx bxs-badge-dollar"></i>
                     </div>
                     <span class="sub-title">Caixa Oficina</span>
-                    <h3 style="color: #1f292e">R$ {{number_format( $cxOficina ,2,",",".")}} <span class="badge badge-red"><a href="" type="button" class="badge-info">Visualizar</a> </span></h3>
+                    <h3 style="color: #1f292e">R$ {{number_format( $cxOficina ,2,",",".")}} <span class="badge badge-red"><a href="/caixa/oficina/retirada/1" type="button" class="badge-info">Visualizar</a> </span></h3>
                 </div>
             </div>
         </div>

@@ -60,6 +60,13 @@ Route::namespace('Admin')->group(function () {
     Route::post('/caixa/detento/retirada/', 'CaixaDetentoController@retirar')->name('Admin.caixa.detento.retirar');
     Route::get('/caixa/detento/recibo/', 'CaixaDetentoController@recibo')->name('Admin.caixa.detento.recibo');
 
+    //caixa Oficina
+
+    Route::get('/caixa/oficina/retirada/{id}', 'CaixaOficinaController@index')->name('Admin.caixa.oficina');
+    Route::post('/caixa/oficina/retirada/', 'CaixaOficinaController@retirar')->name('Admin.caixa.oficina.retirar');
+//    Route::get('/caixa/detento/recibo/', 'CaixaDetentoController@recibo')->name('Admin.caixa.detento.recibo');
+
+
 
 
 
