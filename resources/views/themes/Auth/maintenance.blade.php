@@ -25,8 +25,7 @@
         <div class="d-table-cell">
             <div class="not-authorized-content">
                 <a href="{{route('Auth.logout')}}" class="logo">
-{{--                    <img src="assets/img/logo.png" alt="image">--}}
-                    Reeducando
+                    <img src="{{asset('img/LogoReeducando.png')}}" alt="image" width="10%">
                 </a>
 
                 <h2>@yield('mainte.header')</h2>

@@ -34,7 +34,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label><span style="color:red">*</span> CPF:</label>
-                            <input type="text" id='cpf' class="form-control"
+                            <input type="text"   maxlength="14" id='cpf' class="form-control"
                                    value="{{$user->cpf}}" placeholder="Digite um CPF">
                         </div>
                     </div>
@@ -98,12 +98,21 @@
 @endsection
 
 @section('jsAdmin')
+    <script src="{{ asset('/js/plugins/jquery.mask.js') }}"></script>
     <script>
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': "{{ csrf_token() }}"
             }
 
+
+
+        });
+        let cpf= $("#cpf").val();
+        jQuery(function() {
+            $("#cpf").mask("###.###.###-##", {
+                reverse: true
+            });
         });
         function readURL(input) {
             if (input.files && input.files[0]) {

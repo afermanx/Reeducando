@@ -498,7 +498,7 @@ function editPerfil(id) {
         });
         return;
     }
-    if (!cpf & type==='ADMINISTRADOR' ) {
+    if (!cpf && type==='ADMINISTRADOR' ) {
         Swal.fire({
             icon: 'error'
             , title: 'Oops...'
@@ -509,7 +509,7 @@ function editPerfil(id) {
     }
 
 
-    if (password & type==='ADMINISTRADOR' ) {
+    if (password && type==='ADMINISTRADOR' ) {
 
         if (password.length < 6) {
             Swal.fire({

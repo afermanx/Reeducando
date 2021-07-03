@@ -60,7 +60,7 @@
                                         <span class="badge badge-success">{{$user->status}}</span>
                                     @endif
                                     @if($user->status ==="Inativo")
-                                        <span class="badge badge-warning" style="color: white6" >{{$user->status}}</span>
+                                        <span class="badge badge-warning" style="color: white" >{{$user->status}}</span>
                                     @endif
                                         @if($user->status ==="Bloqueado")
                                             <span class="badge badge-danger">{{$user->status}}</span>
@@ -190,7 +190,7 @@
                                             <select id="typeUser" class="form-control">
                                                 <option value="ADMINISTRADOR">Adminstrador</option>
                                                 <option value="DETENTO">Detento</option>
-                                                <option value="CLIENTE">Cliente</option>
+
 
                                             </select>
                                         </div>

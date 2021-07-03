@@ -28,18 +28,18 @@
 
                          <div class="form-group">
                              <div class="remember-forgot">
-                                 <label class="checkbox-box">Remember me
+                                 <label class="checkbox-box">lembrar-me
                                      <input type="checkbox">
                                      <span class="checkmark"></span>
                                  </label>
 
-                                 <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+
                              </div>
                          </div>
 
                          <button type="submit" class="login-btn"><span id="loading" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span> Acessar</button>
 
-                         <p class="mb-0">Caso não tenha usuario? <a href="{{route('Auth.registerForm')}}">Click aqui cadastrar</a></p>
+
                      </form>
                  </div>
              </div>
