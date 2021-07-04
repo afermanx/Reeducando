@@ -22,7 +22,7 @@
     <fieldset>
         <legend>RECIBO</legend>
 
-        <p>Recebi(emos) de: <b>{{$cliente}}</b> a importancia de : <b>R$ {{number_format( $valorRecebido ,2,",",".")}}</b></p>
+        <p>Recebi(emos) de: <b>{{$cliente}}</b> a importancia de: <b>R$ {{number_format( $valorRecebido ,2,",",".")}}</b></p>
         <p>Referente ao serviço: <b>{{$servico}}</b> </p>
         <p>Observções: {{$obs}} </p>
         <p>Emissão: <b>{{date('d/m/Y')}}</b>  Assinatura:__________________________________________</p>

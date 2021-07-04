@@ -58,6 +58,7 @@
                                     <em class="text-muted">{{$ordem->cliente}}</em>
                                 </td>
                                 <td class="d-none d-sm-table-cell">
+
                                     <em class="text-muted">{{$ordem->Detento}}</em>
                                 </td>
                                 <td>
@@ -91,6 +92,14 @@
                                                     title="Finalizar Ordem de Serviço">
                                             </button>
                                         @endif
+
+                                            @if($ordem->status==="FINALIZADO" || $ordem->status==="FALTA")
+                                                <button class="btn btn-outline-primary bx bxs-file-pdf"
+                                                        onclick="reimprimirRecibo({{$ordem->id}},{{$ordem->valor}},{{$ordem->valorAtual}}, '{{$ordem->status}}')"
+                                                        data-toggle="tooltip" data-placement="top"
+                                                        title="Imprimir Recibo">
+                                                </button>
+                                            @endif
 
                                         @if($user->type==="ADMINISTRADOR")
 
@@ -478,6 +487,35 @@
                     });
                 }
             });
+        }
+
+        function reimprimirRecibo(id, valor, valorAtual, status){
+
+alert(status)
+
+          if(status==="FINALIZADO"){
+              let data = JSON.stringify({
+
+                  valorRecebido: valor,
+                  valor:valor,
+                  tipo:"quitado",
+                  os_id: id,
+              })
+              $(location).attr('href', '/os/finalizar/recibo/'+data,'reeducando_pdf')
+          }
+
+            if(status==="FALTA"){
+                let data = JSON.stringify({
+
+                    valorRecebido: valorAtual,
+                    valor:valorAtual,
+                    tipo:"quitado",
+                    os_id: id,
+                })
+                $(location).attr('href', '/os/finalizar/recibo/'+data,'reeducando_pdf')
+            }
+
+
         }
     </script>
 

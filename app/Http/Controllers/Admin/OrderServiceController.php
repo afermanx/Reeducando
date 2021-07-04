@@ -277,8 +277,7 @@ class OrderServiceController extends Controller
         $dados = json_decode($request->data, true);
         $valorRecebido = $dados['valorRecebido'];
         $valor = $dados['valor'];
-        $detento_id = $dados['detento_id'];
-        $service_id = $dados['service_id'];
+
         $os_id = $dados['os_id'];
         $tipo = $dados['tipo'];
 
