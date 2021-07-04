@@ -491,7 +491,7 @@
 
         function reimprimirRecibo(id, valor, valorAtual, status){
 
-alert(status)
+
 
           if(status==="FINALIZADO"){
               let data = JSON.stringify({
@@ -505,10 +505,15 @@ alert(status)
           }
 
             if(status==="FALTA"){
-                let data = JSON.stringify({
+                let result = valor-valorAtual
 
-                    valorRecebido: valorAtual,
-                    valor:valorAtual,
+
+                    let data = JSON.stringify({
+
+
+
+                    valorRecebido: result,
+                    valor:result,
                     tipo:"quitado",
                     os_id: id,
                 })
