@@ -30,7 +30,7 @@
 
                 </div>
                 <button class="btn btn-outline-dark" type="button" id="button-addon2"
-                        onclick="retirar({{$cxOficina->id}}, {{$cxOficina->valor}})">Retirar
+                        onclick="retirar({{$cxOficina->id}}, {{$cxOficina->valor}})"><span id="loading" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span> Retirar
                 </button>
 
 
@@ -165,7 +165,7 @@
                 oficina_id: id,
                 description: description
             })
-
+            $("#loading").removeClass('d-none');
             $.ajax({
                 type: 'POST'
                 , url: '{{route('Admin.caixa.oficina.retirar')}}'
@@ -191,6 +191,7 @@
                         return;
 
                     } else if (retorno['sucesso'] == true) {
+                        $("#loading").addClass('d-none');
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',

@@ -30,7 +30,7 @@
 
                 </div>
                 <button class="btn btn-outline-dark" type="button" id="button-addon2"
-                        onclick="retirar({{$cxDetento->id}})">Retirar
+                        onclick="retirar({{$cxDetento->id}})"><span id="loading" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span> Retirar
                 </button>
 
 
@@ -165,6 +165,7 @@
                 detento_id: id,
                 description: description
             })
+            $("#loading").removeClass('d-none');
 
             $.ajax({
                 type: 'POST'
@@ -191,6 +192,8 @@
                         return;
 
                     } else if (retorno['sucesso'] == true) {
+                        $("#loading").addClass('d-none');
+
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
