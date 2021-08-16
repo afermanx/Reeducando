@@ -14,7 +14,7 @@ class ServicesSeeder extends Seeder
     {
             Service::create([
                'name'=>'INSULFIM CARRO HATCH',
-               'description'=>'INSULFIM CARRO HATCH ',
+               'description'=>'INSULFIM CARRO HATCH',
                'value'=>80.00,
                'detainee'=>90,
                'workshop'=>10

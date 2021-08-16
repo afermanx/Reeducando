@@ -79,9 +79,11 @@ class OrderServiceController extends Controller
             $service = $data['service'];
             $cliente = $data['cliente'];
             $detento = $data['detento'];
+            $serviceName = $data['serviceName'];
 
 //                pega id do seviço pela descrição
-            $servico = Service::where('description',$request->serviceName)->pluck('id')->all();
+            $servico = Service::where('name', $serviceName)->first();
+
 
 
 
@@ -102,7 +104,7 @@ class OrderServiceController extends Controller
             $os->valor=$valor;
             $os->valorAtual=$valor;
             $os->valorRecebido=0;
-            $os->service_id= $servico[0];
+            $os->service_id = $servico->id;
             $os->detento_id=$detento;
             $os->cliente=$cliente;
             $os->status='AGUARDANDO';

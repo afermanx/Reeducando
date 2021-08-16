@@ -215,7 +215,9 @@
             let select = document.getElementById('cbServico');
             let option = select.options[select.selectedIndex];
             let service= option.value
-            let serviceName= option.text
+            let serviceName = option.text
+
+
 
 
 
