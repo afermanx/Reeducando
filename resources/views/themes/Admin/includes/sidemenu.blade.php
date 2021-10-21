@@ -69,32 +69,32 @@
             <li class="nav-item-title">
                 Gerencial
             </li>
-            <li class="nav-item ">
-                <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
-                    <span class="icon"><i class='bx bxs-printer'></i></span>
-                    <span class="menu-title">Relatórios</span>
-                </a>
+{{--            <li class="nav-item {{ Request::segment(1) === 'relatorio' ? 'mm-active' : null }}">--}}
+{{--                <a href="#" class="collapsed-nav-link nav-link " aria-expanded="false">--}}
+{{--                    <span class="icon"><i class='bx bxs-printer'></i></span>--}}
+{{--                    <span class="menu-title">Relatórios</span>--}}
+{{--                </a>--}}
 
-                <ul class="sidemenu-nav-second-level">
+{{--                <ul class="sidemenu-nav-second-level">--}}
 
-                    <li class="nav-item ">
-                        <a href="{{route('Admin.users')}}" class="nav-link">
-                            <span class="icon"><i class='bx bxs-group'></i></span>
-                            <span class="menu-title">Usuarios</span>
-                        </a>
-                    </li>
-
-
-                    <li class="nav-item">
-                        <a href="{{route('Admin.services')}}" class="nav-link">
-                            <span class="icon"><i class='bx bxs-wrench'></i></span>
-                            <span class="menu-title">Serviços</span>
-                        </a>
-                    </li>
+{{--                    <li class="nav-item {{ Request::segment(2) === 'servico' ? 'mm-active' : null }} ">--}}
+{{--                        <a href="{{route('Admin.report.service')}}" class="nav-link">--}}
+{{--                            <span class="icon"><i class='bx bxs-report'></i></span>--}}
+{{--                            <span class="menu-title">Serviços</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
 
-                </ul>
-            </li>
+{{--                    <li class="nav-item">--}}
+{{--                        <a href="{{route('Admin.services')}}" class="nav-link">--}}
+{{--                            <span class="icon"><i class='bx bxs-wrench'></i></span>--}}
+{{--                            <span class="menu-title">Serviços</span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
+
+
+{{--                </ul>--}}
+{{--            </li>--}}
             <li class="nav-item {{ Request::segment(1) === 'cadastros' ? 'mm-active' : null }}" >
                 <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
                     <span class="icon"><i class='bx bx-table'></i></span>

@@ -6,7 +6,7 @@
         </div>
 
         <div class="col-lg-6 col-sm-6 col-md-6 text-right">
-            <p>Desenvolvido com  ❤️ <a href="#" target="_blank">TeamDev</a></p>
+            <p>Desenvolvido com  ❤️ <a href="#" target="_blank">pelo Acadêmicos Alex J. Ferman, Cleriston B. Santana</a></p>
         </div>
     </div>
 </footer>
@@ -18,18 +18,6 @@
 <!-- Vendors Min JS -->
 <script src="{{asset('/js/vendors.min.js')}}"></script>
 
-<!-- ApexCharts JS -->
-<script src="{{asset('/js/apexcharts/apexcharts.min.js')}}"></script>
-<script src="{{asset('/js/apexcharts/apexcharts-stock-prices.js')}}"></script>
-<script src="{{asset('/js/apexcharts/apexcharts-irregular-data-series.js')}}"></script>
-<script src="{{asset('/js/apexcharts/apex-custom-line-chart.js')}}"></script>
-<script src="{{asset('/js/apexcharts/apex-custom-pie-donut-chart.js')}}"></script>
-<script src="{{asset('/js/apexcharts/apex-custom-area-charts.js')}}"></script>
-<script src="{{asset('/js/apexcharts/apex-custom-column-chart.js')}}"></script>
-<script src="{{asset('/js/apexcharts/apex-custom-bar-charts.js')}}"></script>
-<script src="{{asset('/js/apexcharts/apex-custom-mixed-charts.js')}}"></script>
-<script src="{{asset('/js/apexcharts/apex-custom-radialbar-charts.js')}}"></script>
-<script src="{{asset('assets/js/apexcharts/apex-custom-radar-chart.js')}}"></script>
 
 <!-- ChartJS -->
 <script src="{{asset('js/chartjs/chartjs.min.js')}}"></script>

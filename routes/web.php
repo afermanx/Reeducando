@@ -66,10 +66,20 @@ Route::namespace('Admin')->group(function () {
     Route::post('/caixa/oficina/retirada/', 'CaixaOficinaController@retirar')->name('Admin.caixa.oficina.retirar');
 //    Route::get('/caixa/detento/recibo/', 'CaixaDetentoController@recibo')->name('Admin.caixa.detento.recibo');
 
-
-
-
-
     //end rotas financeiro
 
+    //start rotas relatorios services
+    Route::get('/relatorio/servico','reports\ReportSevicesController@index')->name('Admin.report.service');
+
+
+
+    //end rotas relatorios services
+
+
+
+});
+
+
+Route::fallback(function (){
+    return redirect()->route('Admin.dash');
 });

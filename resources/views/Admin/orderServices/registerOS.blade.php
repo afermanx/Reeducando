@@ -59,9 +59,7 @@
                         <button class="dropdown-item d-flex align-items-center" href="#">
                             <i class='bx bx-edit-alt'></i> Novo Cliente
                         </button>
-                        <button class="dropdown-item d-flex align-items-center" href="#">
-                            <i class='bx bx-edit-alt'></i> Novo detento
-                        </button>
+
 
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 @extends('themes.Admin.adminLayout')
-@section('titleAdmin','Reeducando | Caixa')
+@section('titleAdmin','Caixa - '.$cxDetento->name)
 @section('breadName','Caixa - '.$cxDetento->name)<!--Destaque do mapa de url-->
 @section('breadItem','Financeiro')<!--Meio do mapa-->
 @section('breadcrumb')
